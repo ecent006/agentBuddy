@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CE11CDE616517AF80040F455 /* CPCMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE11CDE516517AF80040F455 /* CPCMenuViewController.m */; };
 		CE11CDF2165191FF0040F455 /* CPCNewClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE11CDF1165191FF0040F455 /* CPCNewClaimViewController.m */; };
+		CE7FC679165689A700788FFE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7FC678165689A700788FFE /* libsqlite3.dylib */; };
+		CE7FC67C165689E900788FFE /* CPCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC67B165689E900788FFE /* CPCLogin.m */; };
 		CEFA0382164ED41E00616D50 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0381164ED41E00616D50 /* UIKit.framework */; };
 		CEFA0384164ED41E00616D50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0383164ED41E00616D50 /* Foundation.framework */; };
 		CEFA0386164ED41E00616D50 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0385164ED41E00616D50 /* CoreGraphics.framework */; };
@@ -27,6 +29,10 @@
 		CE11CDE516517AF80040F455 /* CPCMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCMenuViewController.m; sourceTree = "<group>"; };
 		CE11CDF0165191FF0040F455 /* CPCNewClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCNewClaimViewController.h; sourceTree = "<group>"; };
 		CE11CDF1165191FF0040F455 /* CPCNewClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCNewClaimViewController.m; sourceTree = "<group>"; };
+		CE7FC677165688DF00788FFE /* login.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = login.sqlite3; path = ../../../login.sqlite3; sourceTree = "<group>"; };
+		CE7FC678165689A700788FFE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		CE7FC67A165689E900788FFE /* CPCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCLogin.h; sourceTree = "<group>"; };
+		CE7FC67B165689E900788FFE /* CPCLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCLogin.m; sourceTree = "<group>"; };
 		CEFA037D164ED41E00616D50 /* AgentBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgentBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFA0381164ED41E00616D50 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CEFA0383164ED41E00616D50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -51,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7FC679165689A700788FFE /* libsqlite3.dylib in Frameworks */,
 				CEFA0382164ED41E00616D50 /* UIKit.framework in Frameworks */,
 				CEFA0384164ED41E00616D50 /* Foundation.framework in Frameworks */,
 				CEFA0386164ED41E00616D50 /* CoreGraphics.framework in Frameworks */,
@@ -80,6 +87,7 @@
 		CEFA0380164ED41E00616D50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE7FC678165689A700788FFE /* libsqlite3.dylib */,
 				CEFA0381164ED41E00616D50 /* UIKit.framework */,
 				CEFA0383164ED41E00616D50 /* Foundation.framework */,
 				CEFA0385164ED41E00616D50 /* CoreGraphics.framework */,
@@ -90,6 +98,8 @@
 		CEFA0387164ED41E00616D50 /* AgentBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				CE7FC67A165689E900788FFE /* CPCLogin.h */,
+				CE7FC67B165689E900788FFE /* CPCLogin.m */,
 				CE11CDE416517AF80040F455 /* CPCMenuViewController.h */,
 				CE11CDE516517AF80040F455 /* CPCMenuViewController.m */,
 				CEFA0390164ED41E00616D50 /* CPCAppDelegate.h */,
@@ -107,6 +117,7 @@
 		CEFA0388164ED41E00616D50 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE7FC677165688DF00788FFE /* login.sqlite3 */,
 				CEFA03A9164EDDDB00616D50 /* Default-Portrait~ipad.png */,
 				CEFA03A7164EDD5600616D50 /* Default.png */,
 				CEFA03A3164EDA2E00616D50 /* login field cells.PNG */,
@@ -190,6 +201,7 @@
 				CEFA0398164ED41E00616D50 /* CPCLoginViewController.m in Sources */,
 				CE11CDE616517AF80040F455 /* CPCMenuViewController.m in Sources */,
 				CE11CDF2165191FF0040F455 /* CPCNewClaimViewController.m in Sources */,
+				CE7FC67C165689E900788FFE /* CPCLogin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

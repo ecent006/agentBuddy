@@ -8,6 +8,7 @@
 
 #import "CPCAppDelegate.h"
 
+
 @implementation CPCAppDelegate
 
 @synthesize window = _window;
@@ -16,6 +17,7 @@
 {
     // Override point for customization after application launch.
     //sleep(5);//Delay application to display splashcreen for 5 seconds.
+  
     return YES;
 }
 							

@@ -82,7 +82,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4CP-zF-Xom" kind="push" id="IJ8-56-hDJ"/>
+                                    <action selector="loginIn:" destination="Clg-DD-4wd" eventType="touchUpInside" id="K0F-wy-WiE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -103,18 +103,18 @@
         <scene sceneID="jc6-mW-CAr">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cA1-aV-cYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="4CP-zF-Xom" customClass="CPCMenuViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Menu" id="4CP-zF-Xom" customClass="CPCMenuViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ODV-jX-Wii">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.19646956683346883" green="0.39735217512510168" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo.png" id="XQS-HH-Q3D">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="240"/>
+                            <rect key="frame" x="0.0" y="0.0" width="768" height="284"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="r8w-hw-23c">
-                                <rect key="frame" x="0.0" y="274" width="768" height="46"/>
+                                <rect key="frame" x="0.0" y="318" width="768" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="45" y="1" width="678" height="43"/>

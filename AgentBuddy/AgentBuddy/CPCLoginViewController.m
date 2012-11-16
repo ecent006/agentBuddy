@@ -7,17 +7,23 @@
 //
 
 #import "CPCLoginViewController.h"
+#import "CPCMenuViewController.h"
 
 @interface CPCLoginViewController ()
+{
+    NSArray *_login;
+}
 @property (weak, nonatomic) IBOutlet UITextField *agentUsername;
 @property (weak, nonatomic) IBOutlet UITextField *agentPassword;
 @property (nonatomic, retain) UIToolbar *keyboardNavigateToolBar;
+@property (nonatomic, retain) NSArray *login;
 @end
 
 @implementation CPCLoginViewController
 @synthesize agentUsername;
 @synthesize agentPassword;
 @synthesize keyboardNavigateToolBar;
+@synthesize login=_login;
 
 - (void)viewDidLoad
 {
@@ -51,6 +57,8 @@
     //Must assign the delegate to self for the firstresponder to work after return key are presssed
     self.agentUsername.delegate= self;
     self.agentPassword.delegate=self;
+    
+    
 }
 
 - (void)viewDidUnload
@@ -67,7 +75,30 @@
 
 
 - (IBAction)loginIn:(id)sender {
+   //UIview if uitextfield are empty
+    if ([agentUsername.text isEqualToString:@""] || [agentPassword.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:@"Please check that your username and password are input correctly" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+//    else {
+//        
+//        //Login checks out push the menu view
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+//        CPCMenuViewController *menuViewController = [storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+//        [self.navigationController pushViewController:menuViewController animated:YES];
+//    }
     
+    
+    //Database Validation
+//    if(){
+              //Login checks out push the menu view
+              UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+               CPCMenuViewController *menuViewController = [storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+               [self.navigationController pushViewController:menuViewController animated:YES];
+           
+//}
+
 }
 
 -(void)previousField:(id)sender {

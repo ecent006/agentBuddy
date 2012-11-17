@@ -93,7 +93,7 @@
 
       //Database Validation
     
-    if([appDelegate.nameArray containsObject:self.agentUsername.text] &&[appDelegate.nameArray containsObject:self.agentPassword.text] ){
+    if([appDelegate.nameArray containsObject:self.agentUsername.text] && [appDelegate.passwordArray containsObject:self.agentPassword.text]){
               //Login checks out push the menu view
               UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
                CPCMenuViewController *menuViewController = [storyboard instantiateViewControllerWithIdentifier:@"Menu"];

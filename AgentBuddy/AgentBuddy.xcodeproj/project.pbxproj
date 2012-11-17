@@ -12,7 +12,7 @@
 		CE7FC679165689A700788FFE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7FC678165689A700788FFE /* libsqlite3.dylib */; };
 		CE7FC67C165689E900788FFE /* CPCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC67B165689E900788FFE /* CPCLogin.m */; };
 		CEB957A316580F6600C7282F /* CPCDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB957A216580F6600C7282F /* CPCDatabase.m */; };
-		CEB957AA16582D7A00C7282F /* MyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CEB957A916582D7A00C7282F /* MyDatabase.sqlite */; };
+		CEB957B11658372600C7282F /* MyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CEB957B01658372600C7282F /* MyDatabase.sqlite */; };
 		CEFA0382164ED41E00616D50 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0381164ED41E00616D50 /* UIKit.framework */; };
 		CEFA0384164ED41E00616D50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0383164ED41E00616D50 /* Foundation.framework */; };
 		CEFA0386164ED41E00616D50 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0385164ED41E00616D50 /* CoreGraphics.framework */; };
@@ -36,7 +36,7 @@
 		CE7FC67B165689E900788FFE /* CPCLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCLogin.m; sourceTree = "<group>"; };
 		CEB957A116580F6600C7282F /* CPCDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCDatabase.h; sourceTree = "<group>"; };
 		CEB957A216580F6600C7282F /* CPCDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCDatabase.m; sourceTree = "<group>"; };
-		CEB957A916582D7A00C7282F /* MyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = MyDatabase.sqlite; path = ../../Desktop/MyDatabase.sqlite; sourceTree = "<group>"; };
+		CEB957B01658372600C7282F /* MyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = MyDatabase.sqlite; path = ../MyDatabase.sqlite; sourceTree = "<group>"; };
 		CEFA037D164ED41E00616D50 /* AgentBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgentBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFA0381164ED41E00616D50 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CEFA0383164ED41E00616D50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -106,7 +106,7 @@
 		CEFA0372164ED41E00616D50 = {
 			isa = PBXGroup;
 			children = (
-				CEB957A916582D7A00C7282F /* MyDatabase.sqlite */,
+				CEB957B01658372600C7282F /* MyDatabase.sqlite */,
 				CEFA0387164ED41E00616D50 /* AgentBuddy */,
 				CEFA0380164ED41E00616D50 /* Frameworks */,
 				CEFA037E164ED41E00616D50 /* Products */,
@@ -211,7 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEB957AA16582D7A00C7282F /* MyDatabase.sqlite in Resources */,
+				CEB957B11658372600C7282F /* MyDatabase.sqlite in Resources */,
 				CEFA038C164ED41E00616D50 /* InfoPlist.strings in Resources */,
 				CEFA0395164ED41E00616D50 /* MainStoryboard.storyboard in Resources */,
 				CEFA039F164ED73500616D50 /* Logo.png in Resources */,

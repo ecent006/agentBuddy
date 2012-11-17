@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface CPCAppDelegate : UIResponder <UIApplicationDelegate>
-
+{
+    NSMutableArray *nameArray;
+    NSMutableArray *passwordArray;
+}
+@property (nonatomic, retain) NSMutableArray *nameArray;
+@property (nonatomic,retain) NSMutableArray *passwordArray;
 @property (strong, nonatomic) UIWindow *window;
+
+-(void) copyDatabaseIfNeeded;
+-(NSString *) getDBPath;
 
 @end

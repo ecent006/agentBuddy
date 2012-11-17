@@ -7,16 +7,46 @@
 //
 
 #import "CPCAppDelegate.h"
-
+#import "CPCDatabase.h"
 
 @implementation CPCAppDelegate
 
 @synthesize window = _window;
+@synthesize nameArray, passwordArray;
 
+-(void) copyDatabaseIfNeeded{
+    //Using NSFileManager to perform file system operations.
+    NSFileManager *fileManager =[NSFileManager defaultManager];
+    NSError *error;
+    NSString *dbPath =[self getDBPath];
+    BOOL sucess = [fileManager fileExistsAtPath:dbPath];
+    
+    if (!sucess) {
+        NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"MyDatabase.sqlite"];
+        sucess = [fileManager copyItemAtPath:defaultDBPath toPath:dbPath error:&error];
+        if(!sucess)
+        {
+            NSAssert1(0, @"Failed to create a database to write to '%@'.", [error localizedDescription]);
+        }
+    }
+}
+-(NSString *) getDBPath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [paths objectAtIndex:0];
+    return [documentsDir stringByAppendingPathComponent:@"MyDatabase.sqlite"];
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     //sleep(5);//Delay application to display splashcreen for 5 seconds.
+    
+    [self copyDatabaseIfNeeded];
+    
+    NSMutableArray *tempArray= [[NSMutableArray alloc] init];
+    NSMutableArray *tempArray2= [[NSMutableArray alloc] init];
+    
+    self.nameArray =tempArray;
+    self.passwordArray = tempArray2;
   
     return YES;
 }
@@ -46,6 +76,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [CPCDatabase finalizeStatements];
 }
 
 @end

@@ -8,22 +8,25 @@
 
 #import "CPCLoginViewController.h"
 #import "CPCMenuViewController.h"
+#import "CPCAppDelegate.h"
+#import "CPCDatabase.h"
 
 @interface CPCLoginViewController ()
 {
+    
     NSArray *_login;
 }
 @property (weak, nonatomic) IBOutlet UITextField *agentUsername;
 @property (weak, nonatomic) IBOutlet UITextField *agentPassword;
 @property (nonatomic, retain) UIToolbar *keyboardNavigateToolBar;
-@property (nonatomic, retain) NSArray *login;
+
 @end
 
 @implementation CPCLoginViewController
 @synthesize agentUsername;
 @synthesize agentPassword;
 @synthesize keyboardNavigateToolBar;
-@synthesize login=_login;
+
 
 - (void)viewDidLoad
 {
@@ -50,6 +53,8 @@
         nextButton.width=70.0f;
         
         [keyboardNavigateToolBar setItems:[[NSArray alloc] initWithObjects:previousButton,nextButton, nil]];
+        
+        
 
     }
     agentUsername.inputAccessoryView = keyboardNavigateToolBar;
@@ -57,6 +62,10 @@
     //Must assign the delegate to self for the firstresponder to work after return key are presssed
     self.agentUsername.delegate= self;
     self.agentPassword.delegate=self;
+    
+    //Database instances from the delegate
+    appDelegate = (CPCAppDelegate *)[[UIApplication sharedApplication]delegate];
+    [CPCDatabase getInitialDataToDisplay:[appDelegate getDBPath]]; // Returns the path for database;
     
     
 }
@@ -81,23 +90,21 @@
         [alert show];
         return;
     }
-//    else {
-//        
-//        //Login checks out push the menu view
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-//        CPCMenuViewController *menuViewController = [storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-//        [self.navigationController pushViewController:menuViewController animated:YES];
-//    }
+
+      //Database Validation
     
-    
-    //Database Validation
-//    if(){
+    if([appDelegate.nameArray containsObject:self.agentUsername.text] &&[appDelegate.nameArray containsObject:self.agentPassword.text] ){
               //Login checks out push the menu view
               UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
                CPCMenuViewController *menuViewController = [storyboard instantiateViewControllerWithIdentifier:@"Menu"];
                [self.navigationController pushViewController:menuViewController animated:YES];
            
-//}
+    }
+    else {
+    //Incorrect input give a alert
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Credentials Invalid" message:@"Please check that your username and password are correct, or contact DB administrator" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+    }
 
 }
 

@@ -42,6 +42,8 @@
 }
 
 -(void) getLogininfo {
+    
+    [self makeDBCopyAsNeeded];
     if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
         const char *sql = "SELECT fldLUser, fldLPassword FROM tblLogin";
         sqlite3_stmt *selectstmt;

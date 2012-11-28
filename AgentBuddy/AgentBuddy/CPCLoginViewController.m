@@ -77,7 +77,7 @@
  //Database instances from the delegate
     loginQuery=[[CPCLogin alloc] init];
     
-    [loginQuery makeDBCopyAsNeeded];
+   
     [loginQuery getLogininfo];
     
     

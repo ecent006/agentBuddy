@@ -8,17 +8,23 @@
 
 #import "CPCLoginViewController.h"
 #import "CPCMenuViewController.h"
-#import "CPCAppDelegate.h"
-#import "CPCDatabase.h"
+//#import "CPCAppDelegate.h"
+ #import "CPCLogin.h"
 
 @interface CPCLoginViewController ()
 {
     
-    NSArray *_login;
+    CPCLogin *loginQuery;
+        
+   
+  
 }
+
 @property (weak, nonatomic) IBOutlet UITextField *agentUsername;
 @property (weak, nonatomic) IBOutlet UITextField *agentPassword;
 @property (nonatomic, retain) UIToolbar *keyboardNavigateToolBar;
+
+
 
 @end
 
@@ -26,6 +32,11 @@
 @synthesize agentUsername;
 @synthesize agentPassword;
 @synthesize keyboardNavigateToolBar;
+
+
+
+
+
 
 
 - (void)viewDidLoad
@@ -63,9 +74,11 @@
     self.agentUsername.delegate= self;
     self.agentPassword.delegate=self;
     
-    //Database instances from the delegate
-    appDelegate = (CPCAppDelegate *)[[UIApplication sharedApplication]delegate];
-    [CPCDatabase getInitialDataToDisplay:[appDelegate getDBPath]]; // Returns the path for database;
+ //Database instances from the delegate
+    loginQuery=[[CPCLogin alloc] init];
+    
+    [loginQuery makeDBCopyAsNeeded];
+    [loginQuery getLogininfo];
     
     
 }
@@ -92,8 +105,8 @@
     }
 
       //Database Validation
-    
-    if([appDelegate.nameArray containsObject:self.agentUsername.text] && [appDelegate.passwordArray containsObject:self.agentPassword.text]){
+   
+    if([loginQuery.nameArray containsObject:self.agentUsername.text] && [loginQuery.passwordArray containsObject:self.agentPassword.text]){
               //Login checks out push the menu view
               UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
                CPCMenuViewController *menuViewController = [storyboard instantiateViewControllerWithIdentifier:@"Menu"];

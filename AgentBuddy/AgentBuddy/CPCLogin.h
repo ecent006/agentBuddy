@@ -7,15 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <sqlite3.h>
 @interface CPCLogin : NSObject
 {
-    NSString *_user;
-    NSString *_password;
+    NSString *userName;
+    NSString *password;
+    sqlite3 *database;
+    NSMutableArray *nameArray;
+    NSMutableArray *passwordArray;
+
 }
-@property (nonatomic, copy) NSString *user;
+@property (nonatomic, copy) NSString *userName;
 @property (nonatomic, copy) NSString *password;
+@property (nonatomic, retain) NSMutableArray *nameArray;
+@property (nonatomic,retain) NSMutableArray *passwordArray;
 
-- (id)initWithUser:(NSString *)user password:(NSString *)password;
-
+-(void) makeDBCopyAsNeeded;
+-(void) getLogininfo;   
+ 
 @end

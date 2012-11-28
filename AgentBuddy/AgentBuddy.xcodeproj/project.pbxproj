@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE11CDE616517AF80040F455 /* CPCMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE11CDE516517AF80040F455 /* CPCMenuViewController.m */; };
 		CE11CDF2165191FF0040F455 /* CPCNewClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE11CDF1165191FF0040F455 /* CPCNewClaimViewController.m */; };
+		CE7647561666B31C00D25872 /* CPCCustomerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7647551666B31C00D25872 /* CPCCustomerInfo.m */; };
 		CE7FC679165689A700788FFE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7FC678165689A700788FFE /* libsqlite3.dylib */; };
 		CE7FC67C165689E900788FFE /* CPCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC67B165689E900788FFE /* CPCLogin.m */; };
 		CEB957A316580F6600C7282F /* CPCDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB957A216580F6600C7282F /* CPCDatabase.m */; };
@@ -31,6 +32,8 @@
 		CE11CDE516517AF80040F455 /* CPCMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCMenuViewController.m; sourceTree = "<group>"; };
 		CE11CDF0165191FF0040F455 /* CPCNewClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCNewClaimViewController.h; sourceTree = "<group>"; };
 		CE11CDF1165191FF0040F455 /* CPCNewClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCNewClaimViewController.m; sourceTree = "<group>"; };
+		CE7647541666B31C00D25872 /* CPCCustomerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCCustomerInfo.h; sourceTree = "<group>"; };
+		CE7647551666B31C00D25872 /* CPCCustomerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCCustomerInfo.m; sourceTree = "<group>"; };
 		CE7FC678165689A700788FFE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CE7FC67A165689E900788FFE /* CPCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCLogin.h; sourceTree = "<group>"; };
 		CE7FC67B165689E900788FFE /* CPCLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCLogin.m; sourceTree = "<group>"; };
@@ -135,11 +138,13 @@
 		CEFA0387164ED41E00616D50 /* AgentBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				CE7647541666B31C00D25872 /* CPCCustomerInfo.h */,
+				CE7647551666B31C00D25872 /* CPCCustomerInfo.m */,
+				CE7FC67A165689E900788FFE /* CPCLogin.h */,
+				CE7FC67B165689E900788FFE /* CPCLogin.m */,
 				CEB9579C16580BAC00C7282F /* Delegates */,
 				CEB9579B16580B9200C7282F /* Controllers */,
 				CEB9579916580B8400C7282F /* Views */,
-				CE7FC67A165689E900788FFE /* CPCLogin.h */,
-				CE7FC67B165689E900788FFE /* CPCLogin.m */,
 				CEFA0388164ED41E00616D50 /* Supporting Files */,
 			);
 			path = AgentBuddy;
@@ -234,6 +239,7 @@
 				CE11CDF2165191FF0040F455 /* CPCNewClaimViewController.m in Sources */,
 				CE7FC67C165689E900788FFE /* CPCLogin.m in Sources */,
 				CEB957A316580F6600C7282F /* CPCDatabase.m in Sources */,
+				CE7647561666B31C00D25872 /* CPCCustomerInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

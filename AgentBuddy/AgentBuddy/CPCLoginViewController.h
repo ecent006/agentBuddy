@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class  CPCAppDelegate;
+
 
 @interface CPCLoginViewController : UIViewController <UITextFieldDelegate>
-{
-    CPCAppDelegate *appDelegate;
-}
+
 
 @end

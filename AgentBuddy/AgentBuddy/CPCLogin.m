@@ -12,14 +12,63 @@
 @implementation CPCLogin
 
 
-@synthesize user=_user;
+@synthesize userName=_userName;
 @synthesize password=_password;
--(id)initWithUser:(NSString *)user password:(NSString *)password{
-    if ((self = [super init])) {
-        self.user = user;
-        self.password = password;
+@synthesize nameArray;
+@synthesize passwordArray;
+-(void)makeDBCopyAsNeeded{
+    //Using NSFileManager to perform file system operations.
+    NSFileManager *fileManager =[NSFileManager defaultManager];
+    NSError *error;
+    NSString *dbPath =[self getDBPath];
+    BOOL sucess = [fileManager fileExistsAtPath:dbPath];
     
+    if (!sucess) {
+        NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"MyDatabase.sqlite"];
+        sucess = [fileManager copyItemAtPath:defaultDBPath toPath:dbPath error:&error];
+        if(!sucess)
+        {
+            NSAssert1(0, @"Failed to create a database to write to '%@'.", [error localizedDescription]);
+        }
     }
-    return self;  
+    
+    
+}
+-(NSString *) getDBPath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [paths objectAtIndex:0];
+    
+    return [documentsDir stringByAppendingPathComponent:@"MyDatabase.sqlite"];
+}
+
+-(void) getLogininfo {
+    if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
+        const char *sql = "SELECT fldLUser, fldLPassword FROM tblLogin";
+        sqlite3_stmt *selectstmt;
+        if(sqlite3_prepare_v2(database, sql, -1, &selectstmt, NULL)==SQLITE_OK) {
+            
+            while (sqlite3_step(selectstmt)==SQLITE_ROW) {
+                NSString *primaryKey = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(selectstmt, 0)];
+                
+                
+                password=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 1)];
+                
+                NSMutableArray *tempArray= [[NSMutableArray alloc] init];
+                NSMutableArray *tempArray2= [[NSMutableArray alloc] init];
+                nameArray=tempArray;
+                passwordArray=tempArray2;
+                
+                [nameArray addObject:primaryKey];
+                [passwordArray addObject:password];
+                
+            }
+        }
+        
+        
+    }
+    else {
+        sqlite3_close(database);
+    }
+    
 }
 @end

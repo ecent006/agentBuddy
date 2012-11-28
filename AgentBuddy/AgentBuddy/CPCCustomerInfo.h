@@ -7,7 +7,65 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
 
-@interface CPCCustomerInfo : NSObject
+@interface CPCCustomerInfo : NSObject{
+      NSString *customerNumber;
+      NSString *firstName;
+      NSString *lastName;
+       NSString *houseAddress;
+      NSString *city;
+      NSString *state;
+    NSString *zipCode;
+      NSString *email;
+      NSNumber *phoneNumber;
+       NSDate *birthDate;
+      NSString *licenseNumber;
+    
+     sqlite3 *database;
+    
+    NSMutableArray *customerNumberArray;
+    NSMutableArray *firstNameArray;
+    NSMutableArray *lastNameArray;
+    NSMutableArray *addressArray;
+    NSMutableArray *cityArray;
+    NSMutableArray *stateArray;
+    NSMutableArray *zipCodeArray;
+    NSMutableArray *emailArray;
+    NSMutableArray *phoneNumberArray;
+    NSMutableArray *birthDateArray;
+    NSMutableArray *licenseNumberArray;
+
+    
+}
+
+@property (nonatomic,retain)NSString *customerNumber;
+@property (nonatomic,retain)NSString *firstName;
+@property (nonatomic,retain)NSString *lastName;
+@property (nonatomic,retain)NSString *houseAddress;
+@property (nonatomic,retain)NSString *city;
+@property (nonatomic,retain)NSString *state;
+@property (nonatomic,retain)NSString *zipCode; 
+@property (nonatomic,retain)NSString *email;
+@property (nonatomic,readwrite) NSNumber *phoneNumber;
+@property (nonatomic,retain)NSDate *birthDate;
+@property (nonatomic,retain)NSString *licenseNumber;
+
+@property (nonatomic,retain) NSMutableArray *customerNumberArray;
+@property (nonatomic,retain) NSMutableArray *firstNameArray;
+@property (nonatomic, retain) NSMutableArray *lastNameArray;
+@property (nonatomic, retain) NSMutableArray *addressArray;
+@property (nonatomic, retain) NSMutableArray *cityArray;
+@property (nonatomic, retain) NSMutableArray *stateArray;
+@property (nonatomic,retain) NSMutableArray *zipCodeArray;
+@property (nonatomic, retain) NSMutableArray *emailArray;
+@property (nonatomic, retain) NSMutableArray *phoneNumberArray;
+@property (nonatomic,retain) NSMutableArray *birthDateArray;
+@property (nonatomic,retain) NSMutableArray *licenseNumberArray;
+
+-(void) makeDBCopyAsNeeded;
+-(void) getCustomernInfo;
+-(void) storeCustomerInfo;
+
 
 @end

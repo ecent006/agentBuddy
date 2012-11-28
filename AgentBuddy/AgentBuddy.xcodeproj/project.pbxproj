@@ -12,7 +12,6 @@
 		CE7647561666B31C00D25872 /* CPCCustomerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7647551666B31C00D25872 /* CPCCustomerInfo.m */; };
 		CE7FC679165689A700788FFE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7FC678165689A700788FFE /* libsqlite3.dylib */; };
 		CE7FC67C165689E900788FFE /* CPCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC67B165689E900788FFE /* CPCLogin.m */; };
-		CEB957A316580F6600C7282F /* CPCDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB957A216580F6600C7282F /* CPCDatabase.m */; };
 		CEB957B11658372600C7282F /* MyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CEB957B01658372600C7282F /* MyDatabase.sqlite */; };
 		CEFA0382164ED41E00616D50 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0381164ED41E00616D50 /* UIKit.framework */; };
 		CEFA0384164ED41E00616D50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0383164ED41E00616D50 /* Foundation.framework */; };
@@ -37,8 +36,6 @@
 		CE7FC678165689A700788FFE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CE7FC67A165689E900788FFE /* CPCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCLogin.h; sourceTree = "<group>"; };
 		CE7FC67B165689E900788FFE /* CPCLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCLogin.m; sourceTree = "<group>"; };
-		CEB957A116580F6600C7282F /* CPCDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCDatabase.h; sourceTree = "<group>"; };
-		CEB957A216580F6600C7282F /* CPCDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCDatabase.m; sourceTree = "<group>"; };
 		CEB957B01658372600C7282F /* MyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = MyDatabase.sqlite; path = ../MyDatabase.sqlite; sourceTree = "<group>"; };
 		CEFA037D164ED41E00616D50 /* AgentBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgentBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFA0381164ED41E00616D50 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -74,6 +71,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE7647571666B90300D25872 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE7647541666B31C00D25872 /* CPCCustomerInfo.h */,
+				CE7647551666B31C00D25872 /* CPCCustomerInfo.m */,
+				CE7FC67A165689E900788FFE /* CPCLogin.h */,
+				CE7FC67B165689E900788FFE /* CPCLogin.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		CEB9579916580B8400C7282F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +106,6 @@
 		CEB9579C16580BAC00C7282F /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				CEB957A116580F6600C7282F /* CPCDatabase.h */,
-				CEB957A216580F6600C7282F /* CPCDatabase.m */,
 				CEFA0390164ED41E00616D50 /* CPCAppDelegate.h */,
 				CEFA0391164ED41E00616D50 /* CPCAppDelegate.m */,
 			);
@@ -138,10 +144,7 @@
 		CEFA0387164ED41E00616D50 /* AgentBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				CE7647541666B31C00D25872 /* CPCCustomerInfo.h */,
-				CE7647551666B31C00D25872 /* CPCCustomerInfo.m */,
-				CE7FC67A165689E900788FFE /* CPCLogin.h */,
-				CE7FC67B165689E900788FFE /* CPCLogin.m */,
+				CE7647571666B90300D25872 /* Models */,
 				CEB9579C16580BAC00C7282F /* Delegates */,
 				CEB9579B16580B9200C7282F /* Controllers */,
 				CEB9579916580B8400C7282F /* Views */,
@@ -238,7 +241,6 @@
 				CE11CDE616517AF80040F455 /* CPCMenuViewController.m in Sources */,
 				CE11CDF2165191FF0040F455 /* CPCNewClaimViewController.m in Sources */,
 				CE7FC67C165689E900788FFE /* CPCLogin.m in Sources */,
-				CEB957A316580F6600C7282F /* CPCDatabase.m in Sources */,
 				CE7647561666B31C00D25872 /* CPCCustomerInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

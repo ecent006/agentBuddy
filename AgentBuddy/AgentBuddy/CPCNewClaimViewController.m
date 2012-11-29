@@ -14,6 +14,8 @@
     UIDatePicker  *datePicker;
     
 }
+@property (nonatomic, retain) UIToolbar *keyboardNavigateToolBar;
+
 @property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
 @end
 
@@ -22,6 +24,7 @@
     CPCCustomerInfo *customer;
     
 }
+@synthesize keyboardNavigateToolBar;
 @synthesize datePicker;
 @synthesize customerNumber;
 @synthesize firstName;
@@ -49,6 +52,56 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     customer=[[CPCCustomerInfo alloc] init];
+    
+    //Add a previous and a next toolbar to move from one textfield to the next one or previous one.
+    if(keyboardNavigateToolBar ==nil)
+    {
+        keyboardNavigateToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+        
+        UIBarButtonItem * previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" 
+                                                                            style:UIBarButtonItemStyleBordered 
+                                                                           target:self 
+                                                                           action:@selector(previousField:)];
+        
+        
+        
+        UIBarButtonItem * nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" 
+                                                                        style:UIBarButtonItemStyleBordered 
+                                                                       target:self 
+                                                                       action:@selector(nextField:)];
+        
+        previousButton.width=70.0f;
+        nextButton.width=70.0f;
+        
+        [keyboardNavigateToolBar setItems:[[NSArray alloc] initWithObjects:previousButton,nextButton, nil]];
+        
+        
+        
+    }
+    firstName.inputAccessoryView = keyboardNavigateToolBar;
+    lastName.inputAccessoryView = keyboardNavigateToolBar;
+    address.inputAccessoryView = keyboardNavigateToolBar;
+    city.inputAccessoryView = keyboardNavigateToolBar;
+    state.inputAccessoryView = keyboardNavigateToolBar;
+    zipCode.inputAccessoryView = keyboardNavigateToolBar;
+    email.inputAccessoryView = keyboardNavigateToolBar;
+    phoneNumber.inputAccessoryView = keyboardNavigateToolBar;
+    birthDate.inputAccessoryView = keyboardNavigateToolBar;
+    licenseNumber.inputAccessoryView = keyboardNavigateToolBar;
+    
+   
+    //Must assign the delegate to self for the firstresponder to work after return key are presssed
+    self.firstName.delegate= self;
+    self.lastName.delegate=self;
+    self.address.delegate= self;
+    self.city.delegate=self;
+    self.state.delegate= self;
+    self.zipCode.delegate=self;
+    self.email.delegate= self;
+    self.phoneNumber.delegate=self;
+    self.birthDate.delegate= self;
+    self.licenseNumber.delegate=self;
+    
 }
 
 - (void)viewDidUnload
@@ -71,6 +124,49 @@
 {
 	return YES;
 }
+
+-(void)previousField:(id)sender {
+    if([firstName isFirstResponder])
+        [lastName becomeFirstResponder];
+    else if ([lastName isFirstResponder]) 
+        [address becomeFirstResponder];
+    else if ([address isFirstResponder]) 
+        [city becomeFirstResponder];
+    else if ([city isFirstResponder]) 
+        [state becomeFirstResponder];
+    else if ([state isFirstResponder]) 
+        [zipCode becomeFirstResponder];
+    else if ([zipCode isFirstResponder]) 
+        [email becomeFirstResponder];
+    else if ([email isFirstResponder]) 
+        [phoneNumber becomeFirstResponder];
+    else if ([phoneNumber isFirstResponder]) 
+        [birthDate becomeFirstResponder];
+    else if ([birthDate isFirstResponder]) 
+        [licenseNumber becomeFirstResponder];
+    
+}
+-(void)nextField:(id)sender {
+    if([firstName isFirstResponder])
+        [lastName becomeFirstResponder];
+    else if ([lastName isFirstResponder]) 
+        [address becomeFirstResponder];
+    else if ([address isFirstResponder]) 
+        [city becomeFirstResponder];
+    else if ([city isFirstResponder]) 
+        [state becomeFirstResponder];
+    else if ([state isFirstResponder]) 
+        [zipCode becomeFirstResponder];
+    else if ([zipCode isFirstResponder]) 
+        [email becomeFirstResponder];
+    else if ([email isFirstResponder]) 
+        [phoneNumber becomeFirstResponder];
+    else if ([phoneNumber isFirstResponder]) 
+        [birthDate becomeFirstResponder];
+    else if ([birthDate isFirstResponder]) 
+        [licenseNumber becomeFirstResponder];
+}
+    
 - (IBAction)showCalendar:(id)sender {
     
     //Presss to show datepicker and press again to remove and destroy

@@ -106,17 +106,11 @@
    
     customerNumber  = [NSString stringWithFormat:@"%0.5u", arc4random()];
     
-    
-    NSDateFormatter *dateFormatter =[[NSDateFormatter alloc] init];
-    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    NSDate *date =[dateFormatter dateFromString:birthDate.text];
+      
     
     
+    [customer storeCustomerInfo:customerNumber andFirstName:firstName.text andLastName:lastName.text andAddress:address.text andCity:city.text andState:state.text andZipCode:zipCode.text andEmail:email.text andPhoneNumber:phoneNumber.text andBirthDate:birthDate.text andLicenseNumber:licenseNumber.text];
     
-    [customer storeCustomerInfo:customerNumber andFirstName:firstName.text andLastName:lastName.text andAddress:address.text andCity:city.text andState:state.text andZipCode:zipCode.text andEmail:email.text andPhoneNumber:phoneNumber.text andBirthDate:date andLicenseNumber:licenseNumber.text];
-    
-    NSLog(@"%@, %@, %@, %@, %@, %@ ,%@ ,%@ ,%@ ,%@ ,%@", customerNumber, firstName.text, lastName.text, address.text, city.text)
+    NSLog(@"%@, %@, %@, %@, %@, %@ ,%@ ,%@ ,%@ ,%@ ,%@", customerNumber, firstName.text, lastName.text, address.text, city.text, state.text, zipCode.text, email.text, phoneNumber.text , birthDate.text, licenseNumber.text);
 }
 @end

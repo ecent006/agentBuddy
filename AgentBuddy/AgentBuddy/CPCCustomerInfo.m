@@ -101,25 +101,26 @@
         }
     }
     else {
+        
         sqlite3_close(database);
     }
 
 
 
 }
--(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSDate *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber {
+-(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSString *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber {
     
     [self makeDBCopyAsNeeded];
-    
+     sqlite3_stmt *selectstmt;
     
     if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
         
         NSString *insertSQL = [NSString stringWithFormat: 
-                               @"INSERT INTO tblCustomer (fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber) value ('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@')",setCustomerNumber, setFirstName, setLastName, setAddress, setCity, setState, setZipCode, setEmail, setPhoneNumber, setBirthDate, setLicenseNumber];
+                               @"INSERT INTO tblCustomer(fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",[setCustomerNumber UTF8String], [setFirstName UTF8String], [setLastName UTF8String], [setAddress UTF8String], [setCity UTF8String], [setState UTF8String], [setZipCode UTF8String], [setEmail UTF8String], [setPhoneNumber UTF8String], [setBirthDate UTF8String], [setLicenseNumber UTF8String]];
             const char *insert_stmt = [insertSQL UTF8String];
         
         
-           sqlite3_stmt *selectstmt;
+          
          sqlite3_prepare_v2(database, insert_stmt, -1, &selectstmt, NULL);
         
         if(sqlite3_step(selectstmt)==SQLITE_DONE)
@@ -131,6 +132,7 @@
             NSLog(@"insert not successfully");
             
         }
+        sqlite3_finalize(selectstmt);
         
     }
     else {

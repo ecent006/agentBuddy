@@ -19,7 +19,7 @@
     NSString *zipCode;
       NSString *email;
       NSString *phoneNumber;
-       NSDate *birthDate;
+       NSString *birthDate;
       NSString *licenseNumber;
     
      sqlite3 *database;
@@ -48,7 +48,7 @@
 @property (nonatomic,retain)NSString *zipCode; 
 @property (nonatomic,retain)NSString *email;
 @property (nonatomic,retain) NSString *phoneNumber;
-@property (nonatomic,retain)NSDate *birthDate;
+@property (nonatomic,retain)NSString *birthDate;
 @property (nonatomic,retain)NSString *licenseNumber;
 
 @property (nonatomic,retain) NSMutableArray *customerNumberArray;
@@ -65,7 +65,7 @@
 
 -(void) makeDBCopyAsNeeded;
 -(void) getCustomernInfo;
--(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSDate *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber ;
+-(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSString *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber ;
 
 //-(void) findCustomer: (NSString *)theFirstName andTheLastName:(NSString *)theLastName;
 

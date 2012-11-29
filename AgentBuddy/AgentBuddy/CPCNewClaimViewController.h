@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface CPCNewClaimViewController : UIViewController
+@interface CPCNewClaimViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic,retain) NSString  *customerNumber;
 @property (weak, nonatomic) IBOutlet UITextField *firstName;
 @property (weak, nonatomic) IBOutlet UITextField *lastName;

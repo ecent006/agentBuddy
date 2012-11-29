@@ -105,11 +105,7 @@
 - (IBAction)btnContinue:(id)sender {
    
     customerNumber  = [NSString stringWithFormat:@"%0.5u", arc4random()];
-    NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-  
-    NSNumber * myNumber = [numberFormatter numberFromString:phoneNumber.text];
-    myNumber=[[NSNumber alloc] init];
+    
     
     NSDateFormatter *dateFormatter =[[NSDateFormatter alloc] init];
     [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
@@ -119,6 +115,8 @@
     
     
     
-    [customer storeCustomerInfo:customerNumber andFirstName:firstName.text andLastName:lastName.text andAddress:address.text andCity:city.text andState:state.text andZipCode:zipCode.text andEmail:email.text andPhoneNumber:myNumber andBirthDate:date andLicenseNumber:licenseNumber.text];
+    [customer storeCustomerInfo:customerNumber andFirstName:firstName.text andLastName:lastName.text andAddress:address.text andCity:city.text andState:state.text andZipCode:zipCode.text andEmail:email.text andPhoneNumber:phoneNumber.text andBirthDate:date andLicenseNumber:licenseNumber.text];
+    
+    NSLog(@"%@, %@, %@, %@, %@, %@ ,%@ ,%@ ,%@ ,%@ ,%@", customerNumber, firstName.text, lastName.text, address.text, city.text)
 }
 @end

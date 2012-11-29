@@ -18,7 +18,7 @@
       NSString *state;
     NSString *zipCode;
       NSString *email;
-      NSNumber *phoneNumber;
+      NSString *phoneNumber;
        NSDate *birthDate;
       NSString *licenseNumber;
     
@@ -47,7 +47,7 @@
 @property (nonatomic,retain)NSString *state;
 @property (nonatomic,retain)NSString *zipCode; 
 @property (nonatomic,retain)NSString *email;
-@property (nonatomic,readwrite) NSNumber *phoneNumber;
+@property (nonatomic,retain) NSString *phoneNumber;
 @property (nonatomic,retain)NSDate *birthDate;
 @property (nonatomic,retain)NSString *licenseNumber;
 
@@ -65,7 +65,7 @@
 
 -(void) makeDBCopyAsNeeded;
 -(void) getCustomernInfo;
--(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSNumber *)setPhoneNumber andBirthDate:(NSDate *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber ;
+-(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSDate *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber ;
 
 //-(void) findCustomer: (NSString *)theFirstName andTheLastName:(NSString *)theLastName;
 

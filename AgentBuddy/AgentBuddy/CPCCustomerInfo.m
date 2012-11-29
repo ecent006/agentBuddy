@@ -55,7 +55,7 @@
                 state=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 5)];
                 zipCode=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 6)];
                 email=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 7)];
-                phoneNumber=[NSNumber  numberWithInt:sqlite3_column_int(selectstmt1, 8)] ;
+                phoneNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 8)];
                 birthDate=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 9)];
                 licenseNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 10)];
                 
@@ -107,7 +107,7 @@
 
 
 }
--(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSNumber *)setPhoneNumber andBirthDate:(NSDate *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber {
+-(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSDate *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber {
     
     [self makeDBCopyAsNeeded];
     

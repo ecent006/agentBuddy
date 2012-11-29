@@ -9,20 +9,28 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
-@interface CPCCustomerInfo : NSObject{
-      NSString *customerNumber;
-      NSString *firstName;
-      NSString *lastName;
-       NSString *houseAddress;
-      NSString *city;
-      NSString *state;
+@interface CPCCustomerInfo : NSObject
+{
+    NSString *customerNumber;
+    NSString *firstName;
+    NSString *lastName;
+    NSString *houseAddress;
+    NSString *city;
+    NSString *state;
     NSString *zipCode;
+<<<<<<< HEAD
       NSString *email;
       NSString *phoneNumber;
        NSString *birthDate;
       NSString *licenseNumber;
+=======
+    NSString *email;
+    NSString *phoneNumber;
+    NSDate *birthDate;
+    NSString *licenseNumber;
+>>>>>>> Add CarInfo
     
-     sqlite3 *database;
+    sqlite3 *database;
     
     NSMutableArray *customerNumberArray;
     NSMutableArray *firstNameArray;

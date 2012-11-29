@@ -8,9 +8,7 @@
 
 #import "CPCLogin.h"
 
-
 @implementation CPCLogin
-
 
 @synthesize userName=_userName;
 @synthesize password=_password;

@@ -8,9 +8,41 @@
 
 #import "CPCCustomerInfo.h"
 
-@implementation CPCCustomerInfo
+@implementation CPCCustomerInfo{
+    NSMutableArray *tempArrayC;
+    NSMutableArray *tempArrayC1;
+    NSMutableArray *tempArrayC2;
+    NSMutableArray *tempArrayC3;
+    NSMutableArray *tempArrayC4;
+    NSMutableArray *tempArrayC5;
+    NSMutableArray *tempArrayC6;
+    NSMutableArray *tempArrayC7;
+    NSMutableArray *tempArrayC8;
+    NSMutableArray *tempArrayC9;
+    NSMutableArray *tempArrayC10;
+}
 @synthesize customerNumber, firstName, lastName, houseAddress, city, state, zipCode, email, phoneNumber, birthDate, licenseNumber;
 @synthesize customerNumberArray,firstNameArray,lastNameArray,addressArray,cityArray,stateArray,zipCodeArray,emailArray,phoneNumberArray,birthDateArray,licenseNumberArray;
+
+-(id)init
+{
+    if (self = [super init])
+    {
+        tempArrayC=[[NSMutableArray alloc] init];
+        tempArrayC1=[[NSMutableArray alloc] init];
+        tempArrayC2=[[NSMutableArray alloc] init];
+        tempArrayC3=[[NSMutableArray alloc] init];
+        tempArrayC4=[[NSMutableArray alloc] init];
+        tempArrayC5=[[NSMutableArray alloc] init];
+        tempArrayC6=[[NSMutableArray alloc] init];
+        tempArrayC7=[[NSMutableArray alloc] init];
+        tempArrayC8=[[NSMutableArray alloc] init];
+        tempArrayC9=[[NSMutableArray alloc] init];
+        tempArrayC10=[[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 
 
 -(void) makeDBCopyAsNeeded{
@@ -39,7 +71,7 @@
     [self makeDBCopyAsNeeded];
     
     if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
-        const char *sql1 = "SELECT fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber FROM tblCustomer";
+        const char *sql1 = "SELECT fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber FROM tblCustomer order by fldLastName asc";
         sqlite3_stmt *selectstmt1;
         if(sqlite3_prepare_v2(database, sql1, -1, &selectstmt1, NULL)==SQLITE_OK) {
             
@@ -59,17 +91,7 @@
                 birthDate=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 9)];
                 licenseNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 10)];
                 
-                NSMutableArray *tempArrayC=[[NSMutableArray alloc] init];
-                NSMutableArray *tempArrayC1=[[NSMutableArray alloc] init];
-                NSMutableArray *tempArrayC2=[[NSMutableArray alloc] init];
-                NSMutableArray *tempArrayC3=[[NSMutableArray alloc] init];
-                NSMutableArray *tempArrayC4=[[NSMutableArray alloc] init];
-                NSMutableArray *tempArrayC5=[[NSMutableArray alloc] init];
-                NSMutableArray *tempArrayC6=[[NSMutableArray alloc] init];
-                NSMutableArray *tempArrayC7=[[NSMutableArray alloc] init];
-                NSMutableArray *tempArrayC8=[[NSMutableArray alloc] init];
-                NSMutableArray *tempArrayC9=[[NSMutableArray alloc] init];
-                NSMutableArray *tempArrayC10=[[NSMutableArray alloc] init];
+             
                
                 customerNumberArray=tempArrayC;
                 firstNameArray=tempArrayC1;

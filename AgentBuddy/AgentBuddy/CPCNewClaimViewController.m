@@ -8,6 +8,7 @@
 
 #import "CPCNewClaimViewController.h"
 #import "CPCCustomerInfo.h"
+#import "CPCNewClaimViewController2.h"
 
 @interface CPCNewClaimViewController ()
 {
@@ -116,6 +117,7 @@
     [self setPhoneNumber:nil];
     [self setBirthDate:nil];
     [self setLicenseNumber:nil];
+    //customer=nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -286,7 +288,13 @@
     if (datePicker !=nil) {
         [datePicker removeFromSuperview];
         datePicker =nil;
- 
     }
+    
+    NSLog(@"%@", customerNumber);
+    
+    CPCNewClaimViewController2 *newClaimViewController2= [[CPCNewClaimViewController2 alloc] init];
+    newClaimViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"newClaim2"]; 
+    [self.navigationController pushViewController:newClaimViewController2 animated:YES];
+
 }
 @end

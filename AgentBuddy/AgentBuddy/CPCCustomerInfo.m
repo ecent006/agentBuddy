@@ -115,15 +115,23 @@
     if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
         
         NSString *insertSQL = [NSString stringWithFormat: 
-                               @"INSERT INTO tblCustomer (fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber) VALUES (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")",setFirstName, setLastName, setAddress, setCity,setState,setZipCode,setEmail,setPhoneNumber,setBirthDate,setLicenseNumber];
+                               @"INSERT INTO tblCustomer (fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber) value ('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@')",setCustomerNumber, setFirstName, setLastName, setAddress, setCity, setState, setZipCode, setEmail, setPhoneNumber, setBirthDate, setLicenseNumber];
             const char *insert_stmt = [insertSQL UTF8String];
         
         
            sqlite3_stmt *selectstmt;
-          if(sqlite3_prepare_v2(database, insert_stmt, -1, &selectstmt, NULL)==SQLITE_OK) {
-              NSLog(@"Wrote to database");
-         
+         sqlite3_prepare_v2(database, insert_stmt, -1, &selectstmt, NULL);
+        
+        if(sqlite3_step(selectstmt)==SQLITE_DONE)
+        {
+            NSLog(@"insert successfully");
         }
+        else
+        {
+            NSLog(@"insert not successfully");
+            
+        }
+        
     }
     else {
         sqlite3_close(database);

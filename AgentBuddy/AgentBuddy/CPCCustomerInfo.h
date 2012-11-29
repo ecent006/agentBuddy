@@ -67,5 +67,7 @@
 -(void) getCustomernInfo;
 -(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSNumber *)setPhoneNumber andBirthDate:(NSDate *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber ;
 
+//-(void) findCustomer: (NSString *)theFirstName andTheLastName:(NSString *)theLastName;
+
 
 @end

@@ -7,12 +7,33 @@
 //
 
 #import "CPCNewClaimViewController.h"
+#import "CPCCustomerInfo.h"
 
 @interface CPCNewClaimViewController ()
-
+{
+    UIDatePicker  *datePicker;
+    
+}
+@property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
 @end
 
-@implementation CPCNewClaimViewController
+@implementation CPCNewClaimViewController{
+     
+    CPCCustomerInfo *customer;
+    
+}
+@synthesize datePicker;
+@synthesize customerNumber;
+@synthesize firstName;
+@synthesize lastName;
+@synthesize address;
+@synthesize city;
+@synthesize state;
+@synthesize zipCode;
+@synthesize email;
+@synthesize phoneNumber;
+@synthesize birthDate;
+@synthesize licenseNumber;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,10 +48,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    customer=[[CPCCustomerInfo alloc] init];
 }
 
 - (void)viewDidUnload
 {
+    [self setFirstName:nil];
+    [self setLastName:nil];
+    [self setAddress:nil];
+    [self setCity:nil];
+    [self setState:nil];
+    [self setZipCode:nil];
+    [self setEmail:nil];
+    [self setPhoneNumber:nil];
+    [self setBirthDate:nil];
+    [self setLicenseNumber:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -39,5 +71,54 @@
 {
 	return YES;
 }
+- (IBAction)showCalendar:(id)sender {
+    
+    //Presss to show datepicker and press again to remove and destroy
+    if (datePicker ==nil) {
+        
+        datePicker = [[UIDatePicker alloc] init];
+        datePicker.datePickerMode=UIDatePickerModeDate;
+        [datePicker setFrame:CGRectMake(300,100,320,220)];
+        [datePicker setMaximumDate:[NSDate date] ];    
+        [datePicker addTarget:self action:@selector(finishSelecting) forControlEvents:UIControlEventValueChanged];
+        [self.view addSubview:datePicker];
+    }
+    else {
+        [datePicker removeFromSuperview];
+        datePicker =nil;
+    }
+}
 
+-(void)finishSelecting{
+    //Dismiss Datepicker after selection
+    NSDateFormatter *dateFormatter =[[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    [self.birthDate setText:[dateFormatter stringFromDate:datePicker.date]];
+    
+    
+    
+}
+
+
+- (IBAction)btnContinue:(id)sender {
+   
+    customerNumber  = [NSString stringWithFormat:@"%0.5u", arc4random()];
+    NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+  
+    NSNumber * myNumber = [numberFormatter numberFromString:phoneNumber.text];
+    myNumber=[[NSNumber alloc] init];
+    
+    NSDateFormatter *dateFormatter =[[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    NSDate *date =[dateFormatter dateFromString:birthDate.text];
+    
+    
+    
+    [customer storeCustomerInfo:customerNumber andFirstName:firstName.text andLastName:lastName.text andAddress:address.text andCity:city.text andState:state.text andZipCode:zipCode.text andEmail:email.text andPhoneNumber:myNumber andBirthDate:date andLicenseNumber:licenseNumber.text];
+}
 @end

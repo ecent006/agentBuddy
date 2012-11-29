@@ -10,5 +10,17 @@
 
 
 @interface CPCNewClaimViewController : UIViewController
+@property (nonatomic,retain) NSString  *customerNumber;
+@property (weak, nonatomic) IBOutlet UITextField *firstName;
+@property (weak, nonatomic) IBOutlet UITextField *lastName;
+@property (weak, nonatomic) IBOutlet UITextField *address;
+@property (weak, nonatomic) IBOutlet UITextField *city;
+@property (weak, nonatomic) IBOutlet UITextField *state;
+@property (weak, nonatomic) IBOutlet UITextField *zipCode;
+@property (weak, nonatomic) IBOutlet UITextField *email;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
+@property (weak, nonatomic) IBOutlet UITextField *birthDate;
+@property (weak, nonatomic) IBOutlet UITextField *licenseNumber;
+- (IBAction)btnContinue:(id)sender;
 
 @end

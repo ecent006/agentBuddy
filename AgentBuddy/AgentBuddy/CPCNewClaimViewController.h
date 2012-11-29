@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *birthDate;
 @property (weak, nonatomic) IBOutlet UITextField *licenseNumber;
-- (IBAction)btnContinue:(id)sender;
 
+- (IBAction)btnContinue:(id)sender;
+- (IBAction)showCalendar:(id)sender;
 @end

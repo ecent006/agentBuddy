@@ -127,23 +127,25 @@
 
 -(void)previousField:(id)sender {
     if([firstName isFirstResponder])
-        [lastName becomeFirstResponder];
-    else if ([lastName isFirstResponder]) 
-        [address becomeFirstResponder];
-    else if ([address isFirstResponder]) 
-        [city becomeFirstResponder];
-    else if ([city isFirstResponder]) 
-        [state becomeFirstResponder];
-    else if ([state isFirstResponder]) 
-        [zipCode becomeFirstResponder];
-    else if ([zipCode isFirstResponder]) 
-        [email becomeFirstResponder];
-    else if ([email isFirstResponder]) 
-        [phoneNumber becomeFirstResponder];
-    else if ([phoneNumber isFirstResponder]) 
-        [birthDate becomeFirstResponder];
-    else if ([birthDate isFirstResponder]) 
         [licenseNumber becomeFirstResponder];
+    else if ([lastName isFirstResponder]) 
+        [firstName becomeFirstResponder];
+    else if ([address isFirstResponder]) 
+        [lastName becomeFirstResponder];
+    else if ([city isFirstResponder]) 
+        [address becomeFirstResponder];
+    else if ([state isFirstResponder]) 
+        [city becomeFirstResponder];
+    else if ([zipCode isFirstResponder]) 
+        [state becomeFirstResponder];
+    else if ([email isFirstResponder]) 
+        [zipCode becomeFirstResponder];
+    else if ([phoneNumber isFirstResponder]) 
+        [email becomeFirstResponder];
+    else if ([birthDate isFirstResponder]) 
+        [phoneNumber becomeFirstResponder];
+    else if ([licenseNumber isFirstResponder]) 
+        [birthDate becomeFirstResponder];
     
 }
 -(void)nextField:(id)sender {
@@ -165,7 +167,76 @@
         [birthDate becomeFirstResponder];
     else if ([birthDate isFirstResponder]) 
         [licenseNumber becomeFirstResponder];
+    else if ([licenseNumber isFirstResponder]) 
+        [firstName becomeFirstResponder];
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [firstName resignFirstResponder];
+    [lastName resignFirstResponder];
+    [address resignFirstResponder];
+    [city resignFirstResponder];
+    [state resignFirstResponder];
+    [zipCode resignFirstResponder];
+    [email resignFirstResponder];
+    [phoneNumber resignFirstResponder];
+    [birthDate resignFirstResponder];
+    [licenseNumber resignFirstResponder];
+    [super touchesBegan:touches withEvent:event];
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	if (textField == firstName) {
+		[textField resignFirstResponder];
+		[lastName becomeFirstResponder];
+	} 
+	else if (textField == lastName) {
+		[textField resignFirstResponder];
+        [address becomeFirstResponder];
+        
+	}
+    else if (textField == address) {
+		[textField resignFirstResponder];
+        [city becomeFirstResponder];
+        
+	}
+    else if (textField == city) {
+		[textField resignFirstResponder];
+        [state becomeFirstResponder];
+        
+        
+	}
+    else if (textField == state) {
+		[textField resignFirstResponder];
+        [zipCode becomeFirstResponder];
+        
+	}
+    else if (textField == zipCode) {
+		[textField resignFirstResponder];
+        [email becomeFirstResponder];
+        
+	}
+    else if (textField == email) {
+		[textField resignFirstResponder];
+        [phoneNumber becomeFirstResponder];
+        
+	}else if (textField == phoneNumber) {
+		[textField resignFirstResponder];
+        [birthDate becomeFirstResponder];
+        
+	}
+    else if (textField == birthDate) {
+		[textField resignFirstResponder];
+        [licenseNumber becomeFirstResponder];
+
+    }
+	else if (textField == licenseNumber) {
+		[textField resignFirstResponder];
+       
+    }
+	return YES;
+}
+
     
 - (IBAction)showCalendar:(id)sender {
     
@@ -200,13 +271,22 @@
 
 - (IBAction)btnContinue:(id)sender {
    
-    customerNumber  = [NSString stringWithFormat:@"%0.5u", arc4random()];
     
-      
+    if ([firstName.text isEqualToString:@""] || [lastName.text isEqualToString:@""]|| [address.text isEqualToString:@""] || [city.text isEqualToString:@""] || [state.text isEqualToString:@""] || [zipCode.text isEqualToString:@""] || [email.text isEqualToString:@""] || [phoneNumber.text isEqualToString:@""]|| [licenseNumber.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Do not leave anything blank" message:@"Please make sure you fully completed the text fields" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+
+      customerNumber  = [NSString stringWithFormat:@"%0.5u", arc4random()];
     
     
     [customer storeCustomerInfo:customerNumber andFirstName:firstName.text andLastName:lastName.text andAddress:address.text andCity:city.text andState:state.text andZipCode:zipCode.text andEmail:email.text andPhoneNumber:phoneNumber.text andBirthDate:birthDate.text andLicenseNumber:licenseNumber.text];
     
-    NSLog(@"%@, %@, %@, %@, %@, %@ ,%@ ,%@ ,%@ ,%@ ,%@", customerNumber, firstName.text, lastName.text, address.text, city.text, state.text, zipCode.text, email.text, phoneNumber.text , birthDate.text, licenseNumber.text);
+    if (datePicker !=nil) {
+        [datePicker removeFromSuperview];
+        datePicker =nil;
+ 
+    }
 }
 @end

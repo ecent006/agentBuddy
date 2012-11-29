@@ -18,18 +18,11 @@
     NSString *city;
     NSString *state;
     NSString *zipCode;
-<<<<<<< HEAD
-      NSString *email;
-      NSString *phoneNumber;
-       NSString *birthDate;
-      NSString *licenseNumber;
-=======
     NSString *email;
     NSString *phoneNumber;
-    NSDate *birthDate;
+    NSString *birthDate;
     NSString *licenseNumber;
->>>>>>> Add CarInfo
-    
+
     sqlite3 *database;
     
     NSMutableArray *customerNumberArray;

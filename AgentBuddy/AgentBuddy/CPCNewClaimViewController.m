@@ -124,7 +124,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return YES;
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 -(void)previousField:(id)sender {
@@ -279,6 +279,8 @@
         [alert show];
         return;
     }
+    
+   
 
       customerNumber  = [NSString stringWithFormat:@"%0.5u", arc4random()];
     
@@ -297,4 +299,6 @@
     [self.navigationController pushViewController:newClaimViewController2 animated:YES];
 
 }
+
+
 @end

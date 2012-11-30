@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad
 {
-    NSArray *array = [[NSArray alloc] initWithObjects:@"New Claim", @"Edit Claim", @"View Recent Claims", @"Look Up",nil];
+    NSArray *array = [[NSArray alloc] initWithObjects:@"New Claim", @"View/Edit Claim By Customer", @"Look Up",nil];
     self.menuList = array;
     [super viewDidLoad];
 
@@ -53,7 +53,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return YES;
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source
@@ -162,5 +162,7 @@
     }                                                    
  
 }
+
+
 
 @end

@@ -10,7 +10,7 @@
 
 @interface CPCEditClaimByCustomerViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 {
-    UITableView *myTableView;
+    //UITableView *myTableView;
    
 }
 //@property (strong, nonatomic) IBOutlet UITableView *myTableView;

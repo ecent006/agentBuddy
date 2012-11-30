@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPCNewClaimViewController2 : UIViewController
+@interface CPCNewClaimViewController2 :  UIViewController <UITextFieldDelegate>
 
 @end

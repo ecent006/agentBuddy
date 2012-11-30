@@ -1,22 +1,23 @@
 //
-//  CPCEditClaimByCustomerViewController.m
+//  CPCEditByCustomer2ViewController.m
 //  AgentBuddy
 //
 //  Created by Lion User on 29/11/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "CPCEditClaimByCustomerViewController.h"
 #import "CPCEditByCustomer2ViewController.h"
-#import "CPCCustomerInfo.h"
-//#import "CPCCarInfo.h"
+#import "CPCCarInfo.h"
 
-@implementation CPCEditClaimByCustomerViewController
+
+@interface CPCEditByCustomer2ViewController ()
 {
-    CPCCustomerInfo *customer;
-   // CPCCarInfo *claimCarInfo;
+     CPCCarInfo *claimCarInfo;
 }
-//@synthesize myTableView;
+@end
+
+@implementation CPCEditByCustomer2ViewController
+@synthesize customerNumber;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,25 +28,20 @@
     return self;
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 - (void)viewDidLoad
 {
-      [super viewDidLoad];
-     
+    [super viewDidLoad];
     
-    customer=[[CPCCustomerInfo alloc] init];
-    
-    [customer getCustomernInfo];
-    
-    //claimCarInfo =[[CPCCarInfo alloc] init];
-   
+    claimCarInfo =[[CPCCarInfo alloc] init];
+    [claimCarInfo getClaimByCustomerNumber:customerNumber];
     
 }
 
@@ -59,8 +55,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-   
-    //[myTableView reloadData];
+    
+  // [self.myTableView reloadData];
 }
 
 
@@ -75,9 +71,9 @@
 {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    NSLog(@"%@",[customer lastNameArray] );
-    return [[customer lastNameArray] count];
-    ;
+  //  NSLog(@"%@",[customer lastNameArray] );
+  return [[claimCarInfo claimNumberArray] count];
+    
 }
 
 
@@ -100,8 +96,8 @@
     }
     
     //Customization of cell
- 
-    NSString *name=[NSString stringWithFormat:@"%@       %@, %@",[[customer customerNumberArray] objectAtIndex:indexPath.row],[[customer lastNameArray] objectAtIndex:indexPath.row], [[customer firstNameArray] objectAtIndex:indexPath.row]];
+    
+   NSString *name=[NSString stringWithFormat:@"%@       %@, %@",[[claimCarInfo claimNumberArray] objectAtIndex:indexPath.row],[[claimCarInfo dateClaimCreatedArray] objectAtIndex:indexPath.row], [[claimCarInfo dateClaimExpiresArray] objectAtIndex:indexPath.row]];
     cell.textLabel.text = name;
     cell.textLabel.textAlignment=UITextAlignmentLeft; //Center the text on the cells
     
@@ -153,29 +149,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-  
+    //Navigation logic may go here. Create and push another view controller from the menuView
+    //CPCEditByCustomer2ViewController *editByCustomer2ViewController = [[CPCEditByCustomer2ViewController alloc] init];
     
-    
-    if([[customer customerNumberArray] objectAtIndex:indexPath.row]){
-        
-                CPCEditByCustomer2ViewController *editByCustomer2ViewController = [[CPCEditByCustomer2ViewController alloc] init];
-        
-       editByCustomer2ViewController.customerNumber = [[customer customerNumberArray] objectAtIndex:indexPath.row ];
-
-        
-        editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
-        [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
-        
-
-    }                                                  
+    switch(indexPath.row)
+    {
+        case 0:
+            // newClaimViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"claim"]; 
+            // [self.navigationController pushViewController:newClaimViewController animated:YES];
+            break;
+            // case 1:
+            
+            
+    }                                                    
     
 }
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 
 @end

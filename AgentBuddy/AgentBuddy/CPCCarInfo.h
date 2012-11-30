@@ -72,7 +72,9 @@
 
 
 -(void) makeDBCopyAsNeeded;
--(void) getCarInfo;
+-(void) getClaimByCustomerNumber:(NSString *)theCustomerNumber
+
+
 -(void) storeCarInfo:(NSString *)setVinNumber 
      andVehicleModel:(NSString *)setVehicleModel 
       andVehicleMake:(NSString *)setVehicleMake

@@ -72,7 +72,7 @@
 
 
 -(void) makeDBCopyAsNeeded;
--(void) getClaimByCustomerNumber:(NSString *)theCustomerNumber
+-(void) getClaimByCustomerNumber:(NSString *)theCustomerNumber;
 
 
 -(void) storeCarInfo:(NSString *)setVinNumber 

@@ -1,0 +1,58 @@
+//
+//  CPCDataClass.m
+//  AgentBuddy
+//
+//  Created by Lion User on 11/30/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "CPCDataClass.h"
+
+@implementation CPCDataClass
+
+@synthesize carInfo;
+@synthesize customerInfo;
+@synthesize login;
+
++ (CPCDataClass *)sharedInstance
+{
+    // the instance of this class is stored here
+    static CPCDataClass *myInstance = nil;
+    
+    // check to see if an instance already exists
+    if (nil == myInstance) {
+        myInstance  = [[[self class] alloc] init];
+        // initialize variables here
+    }
+    // return the instance of this class
+    return myInstance;
+}
+
+-(CPCLogin*) login
+{
+    if(login == nil)
+    {
+        login = [[CPCLogin alloc] init];
+    }
+    return login;
+}
+
+-(CPCCarInfo*) carInfo
+{
+    if(carInfo == nil)
+    {
+        carInfo = [[CPCCarInfo alloc] init];
+    }
+    return carInfo;
+}
+
+-(CPCCustomerInfo*) customerInfo
+{
+    if (customerInfo == nil)
+    {
+        customerInfo = [[CPCCustomerInfo alloc] init];
+    }
+    return customerInfo;
+}
+
+@end

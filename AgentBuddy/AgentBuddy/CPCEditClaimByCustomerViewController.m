@@ -8,18 +8,19 @@
 
 #import "CPCEditClaimByCustomerViewController.h"
 #import "CPCEditByCustomer2ViewController.h"
-#import "CPCCustomerInfo.h"
+//#import "CPCCustomerInfo.h"
 //#import "CPCCarInfo.h"
-#import "CPCDataClass.h"
+
 
 @implementation CPCEditClaimByCustomerViewController
 {
     CPCCustomerInfo *customer;
+    NSMutableArray *customerList;
    // CPCCarInfo *claimCarInfo;
     CPCEditByCustomer2ViewController *editByCustomer2ViewController;
 }
 //@synthesize myTableView;
-@synthesize customerNumber;
+//@synthesize customerNumber;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,12 +43,13 @@
 {
       [super viewDidLoad];
      
-    
+    customerList = [[NSMutableArray alloc] init];
 //    customer=[[CPCCustomerInfo alloc] init];
     customer = [[CPCDataClass sharedInstance] customerInfo];
-    [customer getCustomernInfo];
+    //[customer getCustomernInfo];
     
     editByCustomer2ViewController = [[CPCEditByCustomer2ViewController alloc] init];
+    [self getCustomerInfo];
     
     //claimCarInfo =[[CPCCarInfo alloc] init];
    
@@ -68,6 +70,44 @@
     //[myTableView reloadData];
 }
 
+-(NSString *) getDBPath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [paths objectAtIndex:0];
+    
+    return [documentsDir stringByAppendingPathComponent:@"MyDatabase.sqlite"];
+}
+
+-(void) getCustomerInfo
+{
+    if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
+        const char *sql1 = "SELECT fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber FROM tblCustomer order by fldLastName asc";
+        sqlite3_stmt *selectstmt1;
+        if(sqlite3_prepare_v2(database, sql1, -1, &selectstmt1, NULL)==SQLITE_OK) {
+            
+            while (sqlite3_step(selectstmt1)==SQLITE_ROW) {
+                
+                
+                
+                NSString *customerNumber = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectstmt1, 0)];
+                NSString *firstName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 1)];
+                NSString *lastName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 2)];
+                
+                CPCCustomerInfo *tempCust = [[CPCCustomerInfo alloc] init];
+                [tempCust setCustomerNum:customerNumber andFirstName:firstName andLastName:lastName];
+                
+                [customerList addObject:tempCust];
+                
+            }
+            sqlite3_finalize(selectstmt1);
+        }
+    }
+    else {
+        
+        
+        sqlite3_close(database);
+    }
+
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -80,9 +120,9 @@
 {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    NSLog(@"%@",[customer lastNameArray] );
-    return [[customer lastNameArray] count];
-    ;
+//    NSLog(@"%@",[customer lastNameArray] );
+//    return [[customer lastNameArray] count];
+    return [customerList count];
 }
 
 
@@ -106,7 +146,7 @@
     
     //Customization of cell
  
-    NSString *name=[NSString stringWithFormat:@"%@       %@, %@",[[customer customerNumberArray] objectAtIndex:indexPath.row],[[customer lastNameArray] objectAtIndex:indexPath.row], [[customer firstNameArray] objectAtIndex:indexPath.row]];
+    NSString *name=[NSString stringWithFormat:@"%@       %@, %@",[[customerList objectAtIndex:indexPath.row] customerNumber],[[customerList objectAtIndex:indexPath.row] lastName], [[customerList objectAtIndex:indexPath.row] firstName]];
     cell.textLabel.text = name;
     cell.textLabel.textAlignment=UITextAlignmentLeft; //Center the text on the cells
     
@@ -162,20 +202,20 @@
   
     
     
-    if([[customer customerNumberArray] objectAtIndex:indexPath.row]){
-        
-                
-        
-       customerNumber = [[customer customerNumberArray] objectAtIndex:indexPath.row ];
-        //NSLog(@"%@", customerNumber);
-
-        
-        editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
-        
-        [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
-        
-
-    }                                                  
+//    if([[customer customerNumberArray] objectAtIndex:indexPath.row]){
+//        
+//                
+//        
+//       customerNumber = [[customer customerNumberArray] objectAtIndex:indexPath.row ];
+//        //NSLog(@"%@", customerNumber);
+//
+//        
+//        editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
+//        
+//        [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
+//        
+//
+//    }                                                  
     
 }
 

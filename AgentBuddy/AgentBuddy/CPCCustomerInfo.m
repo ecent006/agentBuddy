@@ -22,7 +22,7 @@
     NSMutableArray *tempArrayC10;
 }
 @synthesize customerNumber, firstName, lastName, houseAddress, city, state, zipCode, email, phoneNumber, birthDate, licenseNumber;
-@synthesize customerNumberArray,firstNameArray,lastNameArray,addressArray,cityArray,stateArray,zipCodeArray,emailArray,phoneNumberArray,birthDateArray,licenseNumberArray;
+//@synthesize customerNumberArray,firstNameArray,lastNameArray,addressArray,cityArray,stateArray,zipCodeArray,emailArray,phoneNumberArray,birthDateArray,licenseNumberArray;
 
 -(id)init
 {
@@ -93,31 +93,31 @@
                 
              
                
-                customerNumberArray=tempArrayC;
-                firstNameArray=tempArrayC1;
-                lastNameArray=tempArrayC2;
-                addressArray=tempArrayC3;
-                cityArray=tempArrayC4;
-                stateArray=tempArrayC5;
-                zipCodeArray=tempArrayC6;
-                emailArray=tempArrayC7;
-                phoneNumberArray=tempArrayC8;
-                birthDateArray=tempArrayC9;
-                licenseNumberArray=tempArrayC10;
-
-
-                
-                [customerNumberArray addObject:customerNumber];
-                [firstNameArray addObject:firstName];
-                [lastNameArray addObject:lastName];
-                [addressArray addObject:houseAddress];
-                [cityArray addObject:city];
-                [stateArray addObject:state];
-                [zipCodeArray addObject:zipCode];
-                [emailArray addObject:email];
-                [phoneNumberArray addObject:phoneNumber];
-                [birthDateArray addObject:birthDate];
-                [licenseNumberArray addObject:licenseNumber];
+//                customerNumberArray=tempArrayC;
+//                firstNameArray=tempArrayC1;
+//                lastNameArray=tempArrayC2;
+//                addressArray=tempArrayC3;
+//                cityArray=tempArrayC4;
+//                stateArray=tempArrayC5;
+//                zipCodeArray=tempArrayC6;
+//                emailArray=tempArrayC7;
+//                phoneNumberArray=tempArrayC8;
+//                birthDateArray=tempArrayC9;
+//                licenseNumberArray=tempArrayC10;
+//
+//
+//                
+//                [customerNumberArray addObject:customerNumber];
+//                [firstNameArray addObject:firstName];
+//                [lastNameArray addObject:lastName];
+//                [addressArray addObject:houseAddress];
+//                [cityArray addObject:city];
+//                [stateArray addObject:state];
+//                [zipCodeArray addObject:zipCode];
+//                [emailArray addObject:email];
+//                [phoneNumberArray addObject:phoneNumber];
+//                [birthDateArray addObject:birthDate];
+//                [licenseNumberArray addObject:licenseNumber];
                 
             }
              sqlite3_finalize(selectstmt1);
@@ -166,6 +166,14 @@
 
     
     
+    
+}
+
+-(void) setCustomerNum:(NSString *)theCustomerNumber andFirstName:(NSString *)theFirstName andLastName:(NSString *)theLastName
+{
+    customerNumber = theCustomerNumber;
+    firstName = theFirstName;
+    lastName = theLastName;
     
 }
 @end

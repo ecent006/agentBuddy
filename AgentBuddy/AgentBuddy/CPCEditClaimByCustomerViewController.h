@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPCDataClass.h"
+#import <sqlite3.h>
 
 @interface CPCEditClaimByCustomerViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 {
    // NSString *customerNumber;
     
-   
+   sqlite3 *database;
 }
-@property (nonatomic, retain) NSString * customerNumber;
+//@property (nonatomic, retain) NSString * customerNumber;
+
+-(void) getCustomerInfo;
 
 @end

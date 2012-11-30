@@ -15,17 +15,18 @@
 
     sqlite3 *database;
     
-    NSMutableArray *customerNumberArray, *firstNameArray, *lastNameArray, *addressArray, *cityArray, *stateArray, *zipCodeArray, *emailArray, *phoneNumberArray, *birthDateArray, *licenseNumberArray;
+    //NSMutableArray *customerNumberArray, *firstNameArray, *lastNameArray, *addressArray, *cityArray, *stateArray, *zipCodeArray, *emailArray, *phoneNumberArray, *birthDateArray, *licenseNumberArray;
    
 }
 
 @property (nonatomic,retain)NSString *customerNumber, *firstName, *lastName, *houseAddress, *city, *state, *zipCode, *email, *phoneNumber, *birthDate, *licenseNumber;
 
-@property (nonatomic,retain) NSMutableArray *customerNumberArray, *firstNameArray, *lastNameArray, *addressArray, *cityArray, *stateArray, *zipCodeArray, *emailArray, *phoneNumberArray, *birthDateArray, *licenseNumberArray;
+//@property (nonatomic,retain) NSMutableArray *customerNumberArray, *firstNameArray, *lastNameArray, *addressArray, *cityArray, *stateArray, *zipCodeArray, *emailArray, *phoneNumberArray, *birthDateArray, *licenseNumberArray;
 
 -(void) makeDBCopyAsNeeded;
 -(void) getCustomernInfo;
 -(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSString *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber ;
+-(void) setCustomerNum:(NSString *) theCustomerNumber andFirstName:(NSString *) theFirstName andLastName:(NSString *) theLastName;
 
 //-(void) findCustomer: (NSString *)theFirstName andTheLastName:(NSString *)theLastName;
 

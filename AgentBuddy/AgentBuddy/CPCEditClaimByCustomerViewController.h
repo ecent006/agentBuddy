@@ -14,6 +14,6 @@
     
    
 }
-@property (nonatomic, retain)NSString * customerNumber;
+@property (nonatomic, retain) NSString * customerNumber;
 
 @end

@@ -14,9 +14,8 @@
 @interface CPCEditByCustomer2ViewController ()
 {
      CPCCarInfo *claimCarInfo;
-     CPCEditClaimByCustomerViewController *getCustomerNumber;
+     
 }
-@property(nonatomic,strong) CPCEditClaimByCustomerViewController *getCustomerNumber;
 
 @end
 

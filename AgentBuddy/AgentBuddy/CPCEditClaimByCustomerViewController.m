@@ -48,6 +48,7 @@
     
     editByCustomer2ViewController = [[CPCEditByCustomer2ViewController alloc] init];
     
+    
     //claimCarInfo =[[CPCCarInfo alloc] init];
    
     
@@ -170,6 +171,7 @@
 
         
         editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
+        
         [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
         
 

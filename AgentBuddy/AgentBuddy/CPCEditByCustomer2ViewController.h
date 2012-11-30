@@ -13,7 +13,10 @@
 @interface CPCEditByCustomer2ViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 {
    // NSString *customerNumber;
+    CPCEditClaimByCustomerViewController *getCustomerNumber;
+
 }
 //@property (nonatomic, retain)NSString * customerNumber;
+@property(nonatomic,strong) CPCEditClaimByCustomerViewController *getCustomerNumber;
 
 @end

@@ -9,6 +9,8 @@
 #import "CPCEditByCustomer2ViewController.h"
 #import "CPCCarInfo.h"
 #import "CPCEditClaimByCustomerViewController.h"
+#import "CPCDataClass.h"
+
 
 
 @interface CPCEditByCustomer2ViewController ()
@@ -43,12 +45,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    CPCCustomerInfo *customerInfo = [[CPCDataClass sharedInstance] customerInfo];
     
     getCustomerNumber=[[CPCEditClaimByCustomerViewController alloc]init];
     claimCarInfo =[[CPCCarInfo alloc] init];
     
-    [claimCarInfo getClaimByCustomerNumber:getCustomerNumber.customerNumber];
-    NSLog(@"%@", getCustomerNumber.customerNumber);
+    [claimCarInfo getClaimByCustomerNumber:customerInfo.customerNumber];
+    NSLog(@"Edit Claim 2 - Current customer is: %@", customerInfo.customerNumber);
     
 }
 

@@ -52,7 +52,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Agent Account" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="BNi-Ef-bQ6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="allstate@allstate.com" borderStyle="roundedRect" placeholder="Agent Account" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="BNi-Ef-bQ6">
                                 <rect key="frame" x="354" y="576" width="167" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -61,7 +61,7 @@
                                     <outlet property="delegate" destination="SWq-34-oeZ" id="xCM-83-HxH"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="EYj-5p-6d7">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="EYj-5p-6d7">
                                 <rect key="frame" x="354" y="615" width="167" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -562,6 +562,56 @@
         <image name="Logo.png" width="720" height="460"/>
         <image name="login field cells.PNG" width="286" height="89"/>
     </resources>
+    <classes>
+        <class className="CPCEditByCustomer2ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCEditByCustomer2ViewController.h"/>
+        </class>
+        <class className="CPCEditClaimByCustomerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCEditClaimByCustomerViewController.h"/>
+        </class>
+        <class className="CPCLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCLoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="agentPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="agentUsername" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CPCLookUpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCLookUpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="searchClaimNumber:"/>
+                <relationship kind="action" name="searchCustomerID:"/>
+                <relationship kind="action" name="searchLastName:"/>
+                <relationship kind="outlet" name="claimNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="customerID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CPCMenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCMenuViewController.h"/>
+        </class>
+        <class className="CPCNewClaimViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCNewClaimViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnContinue:"/>
+                <relationship kind="action" name="showCalendar:"/>
+                <relationship kind="outlet" name="address" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="birthDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="city" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="licenseNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phoneNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="state" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="zipCode" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CPCNewClaimViewController2" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCNewClaimViewController2.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

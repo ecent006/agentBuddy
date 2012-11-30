@@ -8,16 +8,21 @@
 
 #import "CPCEditByCustomer2ViewController.h"
 #import "CPCCarInfo.h"
+#import "CPCEditClaimByCustomerViewController.h"
 
 
 @interface CPCEditByCustomer2ViewController ()
 {
      CPCCarInfo *claimCarInfo;
+     CPCEditClaimByCustomerViewController *getCustomerNumber;
 }
+@property(nonatomic,strong) CPCEditClaimByCustomerViewController *getCustomerNumber;
+
 @end
 
 @implementation CPCEditByCustomer2ViewController
-@synthesize customerNumber;
+@synthesize getCustomerNumber;
+//@synthesize customerNumber;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,8 +45,11 @@
 {
     [super viewDidLoad];
     
+    getCustomerNumber=[[CPCEditClaimByCustomerViewController alloc]init];
     claimCarInfo =[[CPCCarInfo alloc] init];
-    [claimCarInfo getClaimByCustomerNumber:customerNumber];
+    
+    [claimCarInfo getClaimByCustomerNumber:getCustomerNumber.customerNumber];
+    NSLog(@"%@", getCustomerNumber.customerNumber);
     
 }
 

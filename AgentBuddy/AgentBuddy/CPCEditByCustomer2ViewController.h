@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CPCEditClaimByCustomerViewController;
 
 
 @interface CPCEditByCustomer2ViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 {
-    NSString *customerNumber;
+   // NSString *customerNumber;
 }
-@property (nonatomic, retain)NSString * customerNumber;
+//@property (nonatomic, retain)NSString * customerNumber;
 
 @end

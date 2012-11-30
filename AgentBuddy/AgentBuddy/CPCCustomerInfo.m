@@ -120,9 +120,11 @@
                 [licenseNumberArray addObject:licenseNumber];
                 
             }
+             sqlite3_finalize(selectstmt1);
         }
     }
     else {
+       
         
         sqlite3_close(database);
     }

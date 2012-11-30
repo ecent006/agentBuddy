@@ -15,8 +15,10 @@
 {
     CPCCustomerInfo *customer;
    // CPCCarInfo *claimCarInfo;
+    CPCEditByCustomer2ViewController *editByCustomer2ViewController;
 }
 //@synthesize myTableView;
+@synthesize customerNumber;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +45,8 @@
     customer=[[CPCCustomerInfo alloc] init];
     
     [customer getCustomernInfo];
+    
+    editByCustomer2ViewController = [[CPCEditByCustomer2ViewController alloc] init];
     
     //claimCarInfo =[[CPCCarInfo alloc] init];
    
@@ -159,9 +163,10 @@
     
     if([[customer customerNumberArray] objectAtIndex:indexPath.row]){
         
-                CPCEditByCustomer2ViewController *editByCustomer2ViewController = [[CPCEditByCustomer2ViewController alloc] init];
+                
         
-       editByCustomer2ViewController.customerNumber = [[customer customerNumberArray] objectAtIndex:indexPath.row ];
+       customerNumber= [[customer customerNumberArray] objectAtIndex:indexPath.row ];
+        NSLog(@"%@", customerNumber);
 
         
         editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 

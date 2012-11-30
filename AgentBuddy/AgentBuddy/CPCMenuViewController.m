@@ -9,6 +9,7 @@
 #import "CPCMenuViewController.h"
 #import "CPCNewClaimViewController.h"
 #import "CPCEditClaimByCustomerViewController.h"
+#import "CPCLookUpViewController.h"
 
 @interface CPCMenuViewController ()
 @end
@@ -147,6 +148,8 @@
     //Navigation logic may go here. Create and push another view controller from the menuView
     CPCNewClaimViewController *newClaimViewController = [[CPCNewClaimViewController alloc] init];
     CPCEditClaimByCustomerViewController *editClaimViewController= [[CPCEditClaimByCustomerViewController alloc] init];
+    CPCLookUpViewController *lookUpViewController=
+    [[CPCLookUpViewController alloc]init];
 
     switch(indexPath.row)
     {
@@ -158,6 +161,12 @@
             editClaimViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim"]; 
             [self.navigationController pushViewController:editClaimViewController animated:YES];
             break;
+            case 2:
+            lookUpViewController =[self.storyboard 
+                                   instantiateViewControllerWithIdentifier:@"lookUp"];
+            [self.navigationController pushViewController:lookUpViewController
+                                                 animated:YES];
+            
     
     }                                                    
  

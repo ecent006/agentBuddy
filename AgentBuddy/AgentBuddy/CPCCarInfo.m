@@ -65,15 +65,18 @@
     sqlite3_stmt *selectstmt1;
     
     if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
-        NSString  *selectSQL = [NSString stringWithFormat:@"SELECT fldClaimNumber, fldNote, fldDateClaimCreate, fldDateClaimExpires FROM tblClaims WHERE fldCustomerNumber = ('%s')", [theCustomerNumber UTF8String]];
+        NSString  *selectSQL = [NSString stringWithFormat:@"SELECT fldClaimNumber, fldNote, fldDateClaimCreate, fldDateClaimExpires FROM tblClaims WHERE fldCustomerNumber = %@",theCustomerNumber];
+        NSLog(@"%@", theCustomerNumber);
         
         const char *select_stmt= [selectSQL UTF8String];
-        sqlite3_prepare_v2(database, select_stmt, -1, &selectstmt1, NULL);
-                   NSLog(@"HERE");
+        if(sqlite3_prepare_v2(database, select_stmt, -1, &selectstmt1, NULL)==SQLITE_OK){
+            
+        NSLog(@"HERE2");
+                 
 
             while (sqlite3_step(selectstmt1)==SQLITE_ROW) {
                 
-                
+                  NSLog(@"HERE2");
                 
                 claimNumber = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectstmt1, 0)];
                 note=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 1)];
@@ -98,6 +101,13 @@
                 NSLog(@"%@, %@, %@, %@", claimNumber,note,dateClaimCreatedArray,dateClaimExpires);
             
         }
+         sqlite3_finalize(selectstmt1);
+        }
+    }
+    else {
+        
+        
+        sqlite3_close(database);
     }
 
     

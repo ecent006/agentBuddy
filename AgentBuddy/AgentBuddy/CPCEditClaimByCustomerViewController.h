@@ -10,9 +10,10 @@
 
 @interface CPCEditClaimByCustomerViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 {
-    //UITableView *myTableView;
+   // NSString *customerNumber;
+    
    
 }
-//@property (strong, nonatomic) IBOutlet UITableView *myTableView;
+@property (nonatomic, retain)NSString * customerNumber;
 
 @end

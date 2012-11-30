@@ -10,7 +10,9 @@
 
 @implementation CPCCarInfo
 
+@synthesize claimNumber, note, dateClaimCreated, dateClaimExpires;
 @synthesize customerNumber, licensePlateNumber, make, model, vehicleColor, vehicleYear, vinNumber;
+@synthesize claimNumberArray, noteArray, dateClaimCreatedArray, dateClaimExpiresArray;
 @synthesize customerNumberArray, licensePlateNumberArray, makeArray, modelArray, vehicleColorArray, vehicleYearArray, vinNumberArray;
 
 

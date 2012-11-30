@@ -8,12 +8,28 @@
 
 #import "CPCLogin.h"
 
-@implementation CPCLogin
+@implementation CPCLogin{
+    NSMutableArray *tempArray;
+    NSMutableArray *tempArray2;
+    
+}
 
 @synthesize userName=_userName;
 @synthesize password=_password;
 @synthesize nameArray;
 @synthesize passwordArray;
+
+
+-(id)init
+{
+    if (self = [super init])
+    {
+     tempArray= [[NSMutableArray alloc] init];
+     tempArray2= [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 -(void)makeDBCopyAsNeeded{
     //Using NSFileManager to perform file system operations.
     NSFileManager *fileManager =[NSFileManager defaultManager];
@@ -53,8 +69,7 @@
                 
                 password=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 1)];
                 
-                NSMutableArray *tempArray= [[NSMutableArray alloc] init];
-                NSMutableArray *tempArray2= [[NSMutableArray alloc] init];
+               
                 nameArray=tempArray;
                 passwordArray=tempArray2;
                 

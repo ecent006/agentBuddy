@@ -95,9 +95,9 @@
     
     //Customization of cell
  
-    NSString *name=[NSString stringWithFormat:@"%@, %@",[[customer lastNameArray] objectAtIndex:indexPath.row], [[customer firstNameArray] objectAtIndex:indexPath.row]];
+    NSString *name=[NSString stringWithFormat:@"%@       %@, %@",[[customer customerNumberArray] objectAtIndex:indexPath.row],[[customer lastNameArray] objectAtIndex:indexPath.row], [[customer firstNameArray] objectAtIndex:indexPath.row]];
     cell.textLabel.text = name;
-    cell.textLabel.textAlignment=UITextAlignmentCenter; //Center the text on the cells
+    cell.textLabel.textAlignment=UITextAlignmentLeft; //Center the text on the cells
     
     
     

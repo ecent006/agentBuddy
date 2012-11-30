@@ -66,9 +66,11 @@
     
     if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
         NSString  *selectSQL = [NSString stringWithFormat:@"SELECT fldClaimNumber, fldNote, fldDateClaimCreate, fldDateClaimExpires FROM tblClaims WHERE fldCustomerNumber = ('%s')", [theCustomerNumber UTF8String]];
+        
         const char *select_stmt= [selectSQL UTF8String];
-        if(sqlite3_prepare_v2(database, select_stmt, -1, &selectstmt1, NULL)==SQLITE_OK) {
-            
+        sqlite3_prepare_v2(database, select_stmt, -1, &selectstmt1, NULL);
+                   NSLog(@"HERE");
+
             while (sqlite3_step(selectstmt1)==SQLITE_ROW) {
                 
                 
@@ -92,8 +94,9 @@
                 [dateClaimCreatedArray addObject:dateClaimCreated];
                 [dateClaimExpiresArray addObject:dateClaimExpires];
                
-                
-            }
+                //test coming from database
+                NSLog(@"%@, %@, %@, %@", claimNumber,note,dateClaimCreatedArray,dateClaimExpires);
+            
         }
     }
 

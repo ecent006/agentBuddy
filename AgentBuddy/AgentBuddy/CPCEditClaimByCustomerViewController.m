@@ -10,6 +10,7 @@
 #import "CPCEditByCustomer2ViewController.h"
 #import "CPCCustomerInfo.h"
 //#import "CPCCarInfo.h"
+#import "CPCDataClass.h"
 
 @implementation CPCEditClaimByCustomerViewController
 {
@@ -42,12 +43,11 @@
       [super viewDidLoad];
      
     
-    customer=[[CPCCustomerInfo alloc] init];
-    
+//    customer=[[CPCCustomerInfo alloc] init];
+    customer = [[CPCDataClass sharedInstance] customerInfo];
     [customer getCustomernInfo];
     
     editByCustomer2ViewController = [[CPCEditByCustomer2ViewController alloc] init];
-    
     
     //claimCarInfo =[[CPCCarInfo alloc] init];
    
@@ -166,8 +166,8 @@
         
                 
         
-       customerNumber= [[customer customerNumberArray] objectAtIndex:indexPath.row ];
-        NSLog(@"%@", customerNumber);
+       customerNumber = [[customer customerNumberArray] objectAtIndex:indexPath.row ];
+        //NSLog(@"%@", customerNumber);
 
         
         editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 

@@ -50,12 +50,12 @@
     NSFileManager *fileManager =[NSFileManager defaultManager];
     NSError *error;
     NSString *dbPath =[self getDBPath];
-    BOOL sucess = [fileManager fileExistsAtPath:dbPath];
+    BOOL success = [fileManager fileExistsAtPath:dbPath];
     
-    if (!sucess) {
+    if (!success) {
         NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"MyDatabase.sqlite"];
-        sucess = [fileManager copyItemAtPath:defaultDBPath toPath:dbPath error:&error];
-        if(!sucess)
+        success = [fileManager copyItemAtPath:defaultDBPath toPath:dbPath error:&error];
+        if(!success)
         {
             NSAssert1(0, @"Failed to create a database to write to '%@'.", [error localizedDescription]);
         }

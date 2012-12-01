@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPCDataClass.h"
 
 @interface CPCNewClaimViewController2 :  UIViewController <UITextFieldDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *vinNumber;
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *claimNotes;
 @property (weak, nonatomic) IBOutlet UIImageView *picture1;
 @property (weak, nonatomic) IBOutlet UIImageView *picture2;
+@property (strong, nonatomic) IBOutlet UILabel *customerLabel;
 
 //-(IBAction)showCamera1:(id)sender;
 //-(IBAction)showCamera2:(id)sender;

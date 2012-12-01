@@ -8,6 +8,7 @@
 
 #import "CPCEditClaimByCustomerViewController.h"
 #import "CPCEditByCustomer2ViewController.h"
+#import "CPCNewClaimViewController2.h"
 
 @implementation CPCEditClaimByCustomerViewController
 
@@ -173,9 +174,16 @@
 {
     NSString *customerNumber = [[customerList objectAtIndex:indexPath.row ] customerNumber];
     [[[CPCDataClass sharedInstance] customerInfo] setCurrentCustomerByCustomerID:customerNumber];
-        
-    CPCEditByCustomer2ViewController *editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
-    [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
+    if([[CPCDataClass sharedInstance] addClaimState])
+    {
+        CPCNewClaimViewController2 *newClaimViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"newClaim2"];
+        [self.navigationController pushViewController:newClaimViewController2 animated:YES];
+    }
+    else if ([[CPCDataClass sharedInstance] editClaimState])
+    {
+        CPCEditByCustomer2ViewController *editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
+        [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
+    }
     
 }
 

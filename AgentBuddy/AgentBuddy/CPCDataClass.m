@@ -13,6 +13,7 @@
 @synthesize carInfo;
 @synthesize customerInfo;
 @synthesize login;
+@synthesize addClaimState,editClaimState;
 
 + (CPCDataClass *)sharedInstance
 {
@@ -22,6 +23,7 @@
     // check to see if an instance already exists
     if (nil == myInstance) {
         myInstance  = [[[self class] alloc] init];
+        
         // initialize variables here
     }
     // return the instance of this class
@@ -53,6 +55,26 @@
         customerInfo = [[CPCCustomerInfo alloc] init];
     }
     return customerInfo;
+}
+
+-(BOOL) addClaimState
+{
+    return addClaimState;
+}
+
+-(void) setAddClaimState:(BOOL)state
+{
+    addClaimState = state;
+}
+
+-(BOOL) editClaimState
+{
+    return editClaimState;
+}
+
+-(void) setEditClaimState:(BOOL)state
+{
+    editClaimState = state;
 }
 
 @end

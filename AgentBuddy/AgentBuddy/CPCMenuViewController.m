@@ -159,10 +159,17 @@
             break;
             case 1:
             //Send them to choose customer
+            editClaimViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim"]; 
+            [self.navigationController pushViewController:editClaimViewController animated:YES];
+            [[CPCDataClass sharedInstance] setAddClaimState:YES];
+            [[CPCDataClass sharedInstance] setEditClaimState:NO];
+            
             break;
            case 2:
             editClaimViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim"]; 
             [self.navigationController pushViewController:editClaimViewController animated:YES];
+            [[CPCDataClass sharedInstance] setAddClaimState:NO];
+            [[CPCDataClass sharedInstance] setEditClaimState:YES];
             break;
             case 3:
             lookUpViewController =[self.storyboard 

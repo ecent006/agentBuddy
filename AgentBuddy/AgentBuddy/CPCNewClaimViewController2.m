@@ -23,6 +23,7 @@
 @synthesize claimNotes;
 @synthesize picture1;
 @synthesize picture2;
+@synthesize customerLabel;
 
 
 @synthesize  keyboardNavigateToolBar;
@@ -85,6 +86,9 @@
     self.licensePlateNumber.delegate=self;
     self.claimNotes.delegate= self;
     
+    CPCCustomerInfo *customerInfo = [[CPCDataClass sharedInstance] customerInfo];
+    customerLabel.text = [NSString stringWithFormat:@"%@, %@", [customerInfo lastName], [customerInfo firstName]];
+    
 }
 
 
@@ -98,6 +102,7 @@
     [self setClaimNotes:nil];
     [self setPicture1:nil];
     [self setPicture2:nil];
+    [self setCustomerLabel:nil];
     [super viewDidUnload];
 }
 

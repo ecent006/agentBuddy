@@ -8,30 +8,16 @@
 
 #import "CPCCarInfo.h"
 
-@implementation CPCCarInfo{
-    
-    NSMutableArray * tempArrayD;
-    NSMutableArray * tempArrayD1;
-    NSMutableArray * tempArrayD2;
-    NSMutableArray * tempArrayD3;
-    
-}
+@implementation CPCCarInfo
 
-@synthesize claimNumber, note, dateClaimCreated, dateClaimExpires;
-@synthesize customerNumber, licensePlateNumber, make, model, vehicleColor, vehicleYear, vinNumber;
-//@synthesize claimNumberArray, noteArray, dateClaimCreatedArray, dateClaimExpiresArray;
-//@synthesize customerNumberArray, licensePlateNumberArray, makeArray, modelArray, vehicleColorArray, vehicleYearArray, vinNumberArray;
-
+@synthesize claimNumber, note, dateClaimCreated, dateClaimExpires, customerNumber, licensePlateNumber, make, model, vehicleColor, vehicleYear, vinNumber;
 
 -(id)init
 {
     if (self = [super init])
     {
-        tempArrayD=[[NSMutableArray alloc] init];
-        tempArrayD1=[[NSMutableArray alloc] init];
-        tempArrayD2=[[NSMutableArray alloc] init];
-        tempArrayD3=[[NSMutableArray alloc] init];
-            }
+    
+    }
     return self;
 }
 
@@ -59,66 +45,19 @@
     return [documentsDir stringByAppendingPathComponent:@"MyDatabase.sqlite"];
 }
 
-//-(void) getClaimByCustomerNumber:(NSString *)theCustomerNumber
-//{
-//    [self makeDBCopyAsNeeded];
-//    sqlite3_stmt *selectstmt1;
-//    
-//    if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
-//        NSString  *selectSQL = [NSString stringWithFormat:@"SELECT fldClaimNumber, fldNote, fldDateClaimCreated, fldDateClaimExpires FROM tblClaims WHERE fldCustomerNumber = %@",theCustomerNumber];
-//        NSLog(@"%@", theCustomerNumber);
-//        
-//        const char *select_stmt= [selectSQL UTF8String];
-//        if(sqlite3_prepare_v2(database, select_stmt, -1, &selectstmt1, NULL)==SQLITE_OK){
-//            
-//        NSLog(@"HERE2");
-//                 
-//
-//            while (sqlite3_step(selectstmt1)==SQLITE_ROW) {
-//                
-//                  NSLog(@"HERE2");
-//                
-//                claimNumber = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectstmt1, 0)];
-//                note=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 1)];
-//                dateClaimCreated=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 2)];
-//                dateClaimExpires=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 3)];
-//                                
-//                
-//                
-////                claimNumberArray=tempArrayD;
-////                noteArray=tempArrayD1;
-////                dateClaimCreatedArray=tempArrayD2;
-////                dateClaimExpiresArray=tempArrayD3;
-////                               
-////                
-////                
-////                [claimNumberArray addObject:claimNumber];
-////                [noteArray addObject:note];
-////                [dateClaimCreatedArray addObject:dateClaimCreated];
-////                [dateClaimExpiresArray addObject:dateClaimExpires];
-//               
-//                //test coming from database
-//                //NSLog(@"%@, %@, %@, %@", claimNumber,note,dateClaimCreatedArray,dateClaimExpires);
-//            
-//        }
-//         sqlite3_finalize(selectstmt1);
-//        }
-//    }
-//    else {
-//        
-//        
-//        sqlite3_close(database);
-//    }
-//
-//    
-//}
-
--(void) setClaimNumber:(NSString *)theClaimNumber andNote:(NSString *)theNote andDateCreated:(NSString *)theDateCreated andDateExpires:(NSString *)theDateExpires andVehicleModel:(NSString *)theVehicleModel andVehicleMake:(NSString *)theVehicleMake andVehicleYear:(NSString *)theVehicleYear andVehicleColor:(NSString *)theVehicleColor andCustomerNumber:(NSString *)theCustomerNumber andLicensePlateNumber:(NSString *)theLincensePlateNumber
+-(void) setClaimNumber:(NSString *)theClaimNumber andNote:(NSString *)theNote andDateCreated:(NSString *)theDateCreated andDateExpires:(NSString *)theDateExpires andVehicleModel:(NSString *)theVehicleModel andVehicleMake:(NSString *)theVehicleMake andVehicleYear:(NSString *)theVehicleYear andVehicleColor:(NSString *)theVehicleColor andCustomerNumber:(NSString *)theCustomerNumber andLicensePlateNumber:(NSString *)theLincensePlateNumber andVinNumber:(NSString *) theVinNumber
 {
     claimNumber = theClaimNumber;
     note = theNote;
     dateClaimCreated = theDateCreated;
     dateClaimExpires = theDateExpires;
+    model = theVehicleModel;
+    make = theVehicleMake;
+    vehicleYear = theVehicleYear;
+    vehicleColor = theVehicleColor;
+    vinNumber = theVinNumber;
+    customerNumber = theCustomerNumber;
+    licensePlateNumber = theLincensePlateNumber;
 
 }
 

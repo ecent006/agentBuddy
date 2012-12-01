@@ -186,4 +186,18 @@
       
 	return YES;
 }
+- (IBAction)addClaimBtn:(UIButton *)sender 
+{
+    if ([vinNumber.text isEqualToString:@""] || [model.text isEqualToString:@""]|| [make.text isEqualToString:@""] || [year.text isEqualToString:@""] || [color.text isEqualToString:@""] || [licensePlateNumber.text isEqualToString:@""] || [claimNotes.text isEqualToString:@""] ) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Do not leave anything blank" message:@"Please make sure you fully completed the text fields" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    CPCCarInfo *tempCarInfo = [[CPCCarInfo alloc] init];
+    [tempCarInfo setClaimNumber:[NSString stringWithFormat:@"%0.5u", arc4random()] andNote: self.claimNotes.text andDateCreated:@"" andDateExpires:@"" andVehicleModel:model.text andVehicleMake:self.make.text andVehicleYear:self.year.text andVehicleColor:self.color.text andCustomerNumber: [[[CPCDataClass sharedInstance]customerInfo] customerNumber] andLicensePlateNumber:self.licensePlateNumber.text andVinNumber:self.vinNumber.text];
+    
+    [[[CPCDataClass sharedInstance]customerInfo]addClaimToCustomer:tempCarInfo];
+}
+
 @end

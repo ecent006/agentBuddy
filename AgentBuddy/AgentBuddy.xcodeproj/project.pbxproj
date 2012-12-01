@@ -117,20 +117,20 @@
 		CEB9579B16580B9200C7282F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE88638B1668442000883CAB /* CPCEditByCustomer2ViewController.h */,
+				CE88638C1668442100883CAB /* CPCEditByCustomer2ViewController.m */,
+				CE894E521667AF80009850F6 /* CPCEditClaimByCustomerViewController.h */,
+				CE894E531667AF80009850F6 /* CPCEditClaimByCustomerViewController.m */,
+				CEFA0396164ED41E00616D50 /* CPCLoginViewController.h */,
+				CEFA0397164ED41E00616D50 /* CPCLoginViewController.m */,
+				CE8A123C1669018F00D4B35B /* CPCLookUpViewController.h */,
+				CE8A123D1669018F00D4B35B /* CPCLookUpViewController.m */,
 				CE11CDE416517AF80040F455 /* CPCMenuViewController.h */,
 				CE11CDE516517AF80040F455 /* CPCMenuViewController.m */,
 				CE11CDF0165191FF0040F455 /* CPCNewClaimViewController.h */,
 				CE11CDF1165191FF0040F455 /* CPCNewClaimViewController.m */,
-				CEFA0396164ED41E00616D50 /* CPCLoginViewController.h */,
-				CEFA0397164ED41E00616D50 /* CPCLoginViewController.m */,
-				CE894E521667AF80009850F6 /* CPCEditClaimByCustomerViewController.h */,
-				CE894E531667AF80009850F6 /* CPCEditClaimByCustomerViewController.m */,
 				CE2943571667BC1D0089912B /* CPCNewClaimViewController2.h */,
 				CE2943581667BC1D0089912B /* CPCNewClaimViewController2.m */,
-				CE88638B1668442000883CAB /* CPCEditByCustomer2ViewController.h */,
-				CE88638C1668442100883CAB /* CPCEditByCustomer2ViewController.m */,
-				CE8A123C1669018F00D4B35B /* CPCLookUpViewController.h */,
-				CE8A123D1669018F00D4B35B /* CPCLookUpViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

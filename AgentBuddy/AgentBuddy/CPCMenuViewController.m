@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad
 {
-    NSArray *array = [[NSArray alloc] initWithObjects:@"New Claim",@"Add Claim By Existing Customer", @"View/Edit Claim By Customer", @"Look Up",nil];
+    NSArray *array = [[NSArray alloc] initWithObjects:@"New Customer",@"Add Claim By Existing Customer", @"View/Edit Claim By Customer", @"Look Up",nil];
     self.menuList = array;
     [super viewDidLoad];
 

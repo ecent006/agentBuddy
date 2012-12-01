@@ -48,28 +48,29 @@
     return [documentsDir stringByAppendingPathComponent:@"MyDatabase.sqlite"];
 }
 
--(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSString *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber {
+-(void) storeCustomerInfo
+{
     
     [self makeDBCopyAsNeeded];
-     sqlite3_stmt *selectstmt;
+    sqlite3_stmt *selectstmt;
     
     if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
         
         NSString *insertSQL = [NSString stringWithFormat: 
-                               @"INSERT INTO tblCustomer(fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",[setCustomerNumber UTF8String], [setFirstName UTF8String], [setLastName UTF8String], [setAddress UTF8String], [setCity UTF8String], [setState UTF8String], [setZipCode UTF8String], [setEmail UTF8String], [setPhoneNumber UTF8String], [setBirthDate UTF8String], [setLicenseNumber UTF8String]];
-            const char *insert_stmt = [insertSQL UTF8String];
+                               @"INSERT INTO tblCustomer(fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",[customerNumber UTF8String], [firstName UTF8String], [lastName UTF8String], [houseAddress UTF8String], [city UTF8String], [state UTF8String], [zipCode UTF8String], [email UTF8String], [phoneNumber UTF8String], [birthDate UTF8String], [licenseNumber UTF8String]];
+        const char *insert_stmt = [insertSQL UTF8String];
         
         
-          
-         sqlite3_prepare_v2(database, insert_stmt, -1, &selectstmt, NULL);
+        
+        sqlite3_prepare_v2(database, insert_stmt, -1, &selectstmt, NULL);
         
         if(sqlite3_step(selectstmt)==SQLITE_DONE)
         {
-            NSLog(@"insert successfully");
+            NSLog(@"Record inserted successfully.");
         }
         else
         {
-            NSLog(@"insert not successfully");
+            NSLog(@"Insert not successful!");
             
         }
         sqlite3_finalize(selectstmt);
@@ -79,18 +80,34 @@
         sqlite3_close(database);
     }
     
-
+    
     
     
     
 }
 
--(void) setCustomerNum:(NSString *)theCustomerNumber andFirstName:(NSString *)theFirstName andLastName:(NSString *)theLastName
+-(void) setCustomerInfo:(NSString *)setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSString *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber
 {
-    customerNumber = theCustomerNumber;
-    firstName = theFirstName;
-    lastName = theLastName;
+    customerNumber = setCustomerNumber;
+    firstName = setFirstName;
+    lastName = setLastName;
+    houseAddress = setAddress;
+    city = setCity;
+    state = setState;
+    zipCode = setZipCode;
+    email = setEmail;
+    phoneNumber = setPhoneNumber;
+    birthDate = setBirthDate;
+    licenseNumber = setLicenseNumber;
     
+}
+
+-(void) setCustomerInfo:(NSString *)setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName 
+{
+    customerNumber = setCustomerNumber;
+    firstName = setFirstName;
+    lastName = setLastName;
+   
 }
 
 -(void) setCurrentCustomerByCustomerID:(NSString *)custID
@@ -152,7 +169,7 @@
                     NSString *dateClaimExpires=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 3)];
                     
                     CPCCarInfo *tempClaim = [[CPCCarInfo alloc] init];
-                    [tempClaim setClaimNumber:claimNumber andNote:note andDateCreated:dateClaimCreated andDateExpires:dateClaimExpires andVehicleModel:nil andVehicleMake:nil andVehicleYear:nil andVehicleColor:nil andCustomerNumber:nil andLicensePlateNumber:nil];
+                    [tempClaim setClaimNumber:claimNumber andNote:note andDateCreated:dateClaimCreated andDateExpires:dateClaimExpires andVehicleModel:nil andVehicleMake:nil andVehicleYear:nil andVehicleColor:nil andCustomerNumber:nil andLicensePlateNumber:nil andVinNumber:nil];
                     
                     [claimsList addObject:tempClaim];
                     
@@ -177,6 +194,40 @@
 -(NSMutableArray *) claimsList
 {
     return claimsList;
+}
+
+-(void) addClaimToCustomer:(CPCCarInfo *)claim
+{
+    [self makeDBCopyAsNeeded];
+    sqlite3_stmt *selectstmt;
+    
+    if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
+        
+        NSString *insertSQL = [NSString stringWithFormat: 
+                               @"INSERT INTO tblClaims(fldClaimNumber, fldCustomerNumber, fldNote, fldDateClaimCreated, fldDateClaimExpires, fldVinNumber) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",[[claim claimNumber] UTF8String], [[claim customerNumber] UTF8String], [[claim note] UTF8String], [[claim dateClaimCreated] UTF8String], [[claim dateClaimExpires] UTF8String], [[claim vinNumber] UTF8String]];
+        const char *insert_stmt = [insertSQL UTF8String];
+        NSLog(@"%@", insertSQL);
+        
+        
+        sqlite3_prepare_v2(database, insert_stmt, -1, &selectstmt, NULL);
+        
+        if(sqlite3_step(selectstmt)==SQLITE_DONE)
+        {
+            NSLog(@"insert successfully");
+        }
+        else
+        {
+            NSLog(@"insert not successfully");
+            
+        }
+        sqlite3_finalize(selectstmt);
+        
+    }
+    else {
+        sqlite3_close(database);
+    }
+    
+    [self refreshClaimsList];
 }
 
 @end

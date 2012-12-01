@@ -74,7 +74,7 @@
                 NSString *lastName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 2)];
                 
                 CPCCustomerInfo *tempCust = [[CPCCustomerInfo alloc] init];
-                [tempCust setCustomerNum:customerNumber andFirstName:firstName andLastName:lastName];
+                [tempCust setCustomerInfo:customerNumber andFirstName:firstName andLastName:lastName];
                 
                 [customerList addObject:tempCust];
                 

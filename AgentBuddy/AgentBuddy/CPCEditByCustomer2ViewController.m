@@ -94,7 +94,7 @@
     
     //Customization of cell
     
-   NSString *name=[NSString stringWithFormat:@"%@     %@, %@",[[claimsList objectAtIndex:indexPath.row]claimNumber],[[claimsList objectAtIndex:indexPath.row ]dateClaimCreated], [[claimsList objectAtIndex:indexPath.row ]dateClaimExpires]];
+   NSString *name=[NSString stringWithFormat:@"%@     %@",[[claimsList objectAtIndex:indexPath.row]claimNumber],[[claimsList objectAtIndex:indexPath.row ]note]];
     cell.textLabel.text = name;
     cell.textLabel.textAlignment=UITextAlignmentLeft; //Center the text on the cells
     

@@ -21,7 +21,7 @@
 
 -(void) makeDBCopyAsNeeded;
 //-(void) getClaimByCustomerNumber:(NSString *)theCustomerNumber;
--(void) setClaimNumber:(NSString *)theClaimNumber andNote:(NSString *) theNote andDateCreated:(NSString *)theDateCreated andDateExpires:(NSString *) theDateExpires andVehicleModel:(NSString *)theVehicleModel andVehicleMake:(NSString *)theVehicleMake andVehicleYear:(NSString *)theVehicleYear andVehicleColor:(NSString *)theVehicleColor andCustomerNumber:(NSString *)theCustomerNumber andLicensePlateNumber:(NSString *)theLincensePlateNumber;
+-(void) setClaimNumber:(NSString *)theClaimNumber andNote:(NSString *) theNote andDateCreated:(NSString *)theDateCreated andDateExpires:(NSString *) theDateExpires andVehicleModel:(NSString *)theVehicleModel andVehicleMake:(NSString *)theVehicleMake andVehicleYear:(NSString *)theVehicleYear andVehicleColor:(NSString *)theVehicleColor andCustomerNumber:(NSString *)theCustomerNumber andLicensePlateNumber:(NSString *)theLincensePlateNumber andVinNumber:(NSString *) theVinNumber;
 
 -(void) storeCarInfo:(NSString *)setVinNumber 
      andVehicleModel:(NSString *)setVehicleModel 

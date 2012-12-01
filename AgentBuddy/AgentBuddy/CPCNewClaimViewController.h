@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CPCDataClass.h"
 
 @interface CPCNewClaimViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic,retain) NSString  *customerNumber;

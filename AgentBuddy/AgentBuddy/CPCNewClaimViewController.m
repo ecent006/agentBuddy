@@ -280,19 +280,19 @@
         return;
     }
     
-   
-
-      customerNumber  = [NSString stringWithFormat:@"%0.5u", arc4random()];
+    CPCCustomerInfo *tempCustomerInfo = [[CPCCustomerInfo alloc] init];
     
-    
-    [customer storeCustomerInfo:customerNumber andFirstName:firstName.text andLastName:lastName.text andAddress:address.text andCity:city.text andState:state.text andZipCode:zipCode.text andEmail:email.text andPhoneNumber:phoneNumber.text andBirthDate:birthDate.text andLicenseNumber:licenseNumber.text];
-    
+    customerNumber  = [NSString stringWithFormat:@"%0.5u", arc4random()];
+    [tempCustomerInfo setCustomerInfo:customerNumber andFirstName:firstName.text andLastName:lastName.text andAddress:address.text andCity:city.text andState:state.text andZipCode:zipCode.text andEmail:email.text andPhoneNumber:phoneNumber.text andBirthDate:birthDate.text andLicenseNumber:licenseNumber.text];
+    [tempCustomerInfo storeCustomerInfo];
+       
     if (datePicker !=nil) {
         [datePicker removeFromSuperview];
         datePicker =nil;
     }
     
-    NSLog(@"%@", customerNumber);
+    //NSLog(@"%@", customerNumber);
+    [[[CPCDataClass sharedInstance] customerInfo] setCurrentCustomerByCustomerID:customerNumber];
     
     CPCNewClaimViewController2 *newClaimViewController2= [[CPCNewClaimViewController2 alloc] init];
     newClaimViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"newClaim2"]; 

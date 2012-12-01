@@ -23,11 +23,13 @@
 @property (nonatomic, retain) NSMutableArray *claimsList;
 
 -(void) makeDBCopyAsNeeded;
--(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSString *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber ;
--(void) setCustomerNum:(NSString *) theCustomerNumber andFirstName:(NSString *) theFirstName andLastName:(NSString *) theLastName;
+
+-(void) storeCustomerInfo;
+-(void) setCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSString *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber;
+-(void) setCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName;
 -(void) setCurrentCustomerByCustomerID: (NSString *) custID;
 -(void) refreshClaimsList;
-
+-(void) addClaimToCustomer:(CPCCarInfo *) claim;
 -(NSMutableArray *) claimsList;
 
 //-(void) findCustomer: (NSString *)theFirstName andTheLastName:(NSString *)theLastName;

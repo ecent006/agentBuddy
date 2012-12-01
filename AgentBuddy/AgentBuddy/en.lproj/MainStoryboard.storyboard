@@ -74,7 +74,7 @@
                                 <rect key="frame" x="325" y="694" width="151" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Login in">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -687,6 +687,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addClaimBtn:" destination="r3r-Q3-Xd6" eventType="touchUpInside" id="hmR-rA-WdA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Customer:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Rh8-z5-gmx">
                                 <rect key="frame" x="195" y="249" width="150" height="21"/>
@@ -695,7 +698,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vin #:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="HwX-yt-mnD">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="HwX-yt-mnD">
                                 <rect key="frame" x="374" y="249" width="150" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -728,6 +731,69 @@
         <image name="camera_iconTAP.jpeg" width="300" height="300"/>
         <image name="login field cells.PNG" width="286" height="89"/>
     </resources>
+    <classes>
+        <class className="CPCEditByCustomer2ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCEditByCustomer2ViewController.h"/>
+        </class>
+        <class className="CPCEditClaimByCustomerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCEditClaimByCustomerViewController.h"/>
+        </class>
+        <class className="CPCLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCLoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="agentPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="agentUsername" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CPCLookUpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCLookUpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="searchClaimNumber:"/>
+                <relationship kind="action" name="searchCustomerID:"/>
+                <relationship kind="action" name="searchLastName:"/>
+                <relationship kind="outlet" name="claimNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="customerID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CPCMenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCMenuViewController.h"/>
+        </class>
+        <class className="CPCNewClaimViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCNewClaimViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnContinue:"/>
+                <relationship kind="action" name="showCalendar:"/>
+                <relationship kind="outlet" name="address" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="birthDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="city" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="licenseNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phoneNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="state" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="zipCode" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CPCNewClaimViewController2" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCNewClaimViewController2.h"/>
+            <relationships>
+                <relationship kind="action" name="addClaimBtn:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="claimNotes" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="color" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="customerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="licensePlateNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="make" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="model" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="picture1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="picture2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="vinNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="year" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

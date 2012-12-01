@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *picture1;
 @property (weak, nonatomic) IBOutlet UIImageView *picture2;
 @property (strong, nonatomic) IBOutlet UILabel *customerLabel;
+- (IBAction)addClaimBtn:(UIButton *)sender;
 
 //-(IBAction)showCamera1:(id)sender;
 //-(IBAction)showCamera2:(id)sender;

@@ -38,6 +38,7 @@
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Claims Available" message:@"There are no claims available for this Customer." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
+        self.view.hidden = YES;
     }
     
 }
@@ -69,7 +70,8 @@
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
   //  NSLog(@"%@",[customer lastNameArray] );
-  return [claimsList count];
+
+    return [claimsList count];
     
 }
 

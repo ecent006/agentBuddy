@@ -7,8 +7,10 @@
 //
 
 #import "CPCNewClaimViewController2.h"
+#import <MobileCoreServices/UTCoreTypes.h>
 
 @interface  CPCNewClaimViewController2() {
+    UITouch *selectCamera;
     
 }
 @property (nonatomic, retain) UIToolbar *keyboardNavigateToolBar;
@@ -146,16 +148,7 @@
         [vinNumber becomeFirstResponder];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [vinNumber resignFirstResponder];
-    [model resignFirstResponder];
-    [year resignFirstResponder];
-    [color resignFirstResponder];
-    [licensePlateNumber resignFirstResponder];
-    [claimNotes resignFirstResponder];
-   
-}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	if (textField == vinNumber) {
 		[textField resignFirstResponder];
@@ -186,6 +179,115 @@
       
 	return YES;
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [vinNumber resignFirstResponder];
+    [model resignFirstResponder];
+    [year resignFirstResponder];
+    [color resignFirstResponder];
+    [licensePlateNumber resignFirstResponder];
+    [claimNotes resignFirstResponder];
+    
+    selectCamera =[touches anyObject];
+    
+    if([selectCamera view]== picture1)
+    {
+        [self startCameraControllerFromViewController: self
+                                        usingDelegate: self]; 
+    }
+    else if ([selectCamera view]==picture2) {
+        [self startCameraControllerFromViewController: self
+                                        usingDelegate: self]; 
+    }
+    
+}
+
+
+#pragma mark - Camera Image Interface
+
+- (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
+                                   usingDelegate: (id <UIImagePickerControllerDelegate,
+                                                   UINavigationControllerDelegate>) delegate {
+    // Does hardware support a camera
+    if (([UIImagePickerController isSourceTypeAvailable:
+          UIImagePickerControllerSourceTypeCamera] == NO)
+        || (delegate == nil)
+        || (controller == nil))
+        return NO;
+    
+    // Create the picker object
+    UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
+    
+    // Specify the types of camera features available
+    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    
+    // Displays a control that allows the user to take pictures only.    
+    cameraUI.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];  
+    
+    
+    // Hides the controls for moving & scaling pictures, or for
+    // trimming movies. To instead show the controls, use YES.
+    cameraUI.allowsEditing = NO;
+    
+    // Specify which object contains the picker's methods
+    cameraUI.delegate = delegate;
+    
+    // Picker object view is attached to view hierarchy and displayed.
+    [controller presentViewController: cameraUI animated: YES completion: nil ];
+    return YES;
+}
+
+#pragma mark - Camera Delegate Methods 
+
+// For responding to the user tapping Cancel.
+- (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
+    
+    [self dismissViewControllerAnimated: YES completion: nil];
+    
+}
+
+// For responding to the user accepting a newly-captured picture 
+// Picker passes a NSDictionary with acquired camera data
+
+- (void) imagePickerController: (UIImagePickerController *) picker
+ didFinishPickingMediaWithInfo: (NSDictionary *) info {
+    
+    // Create an image and store the acquired picture
+    
+    UIImage  *imageToSave;
+    
+    imageToSave = (UIImage *) [info objectForKey:
+                               UIImagePickerControllerOriginalImage];
+    
+    // Save the new image to the Camera Roll
+    UIImageWriteToSavedPhotosAlbum (imageToSave, nil, nil , nil);
+    
+    // View the image on screen 
+    if([selectCamera view]== picture1){
+    self.picture1.image = imageToSave;
+    }
+    else if([selectCamera view]== picture2)
+    {
+       self.picture1.image = imageToSave; 
+    }
+    // Tell controller to remove the picker from the view hierarchy and release object.
+    [self dismissViewControllerAnimated: YES completion: ^{[self doSomethingElse];} ];
+    
+}
+
+- (void) doSomethingElse {
+    NSLog(@"Camera Dismissed");
+    
+}
+
+
+
+
+
+
+
 - (IBAction)addClaimBtn:(UIButton *)sender 
 {
     if ([vinNumber.text isEqualToString:@""] || [model.text isEqualToString:@""]|| [make.text isEqualToString:@""] || [year.text isEqualToString:@""] || [color.text isEqualToString:@""] || [licensePlateNumber.text isEqualToString:@""] || [claimNotes.text isEqualToString:@""] ) {

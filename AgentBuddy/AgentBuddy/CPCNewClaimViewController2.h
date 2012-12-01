@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CPCDataClass.h"
 
-@interface CPCNewClaimViewController2 :  UIViewController <UITextFieldDelegate, UITextViewDelegate>
+@interface CPCNewClaimViewController2 :  UIViewController <UITextFieldDelegate, UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *vinNumber;
 @property (weak, nonatomic) IBOutlet UITextField *model;
 @property (weak, nonatomic) IBOutlet UITextField *make;

@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad
 {
-    NSArray *array = [[NSArray alloc] initWithObjects:@"New Claim", @"View/Edit Claim By Customer", @"Look Up",nil];
+    NSArray *array = [[NSArray alloc] initWithObjects:@"New Claim",@"Add Claim By Existing Customer", @"View/Edit Claim By Customer", @"Look Up",nil];
     self.menuList = array;
     [super viewDidLoad];
 
@@ -157,11 +157,14 @@
           newClaimViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"claim"]; 
             [self.navigationController pushViewController:newClaimViewController animated:YES];
             break;
-           case 1:
+            case 1:
+            //Send them to choose customer
+            break;
+           case 2:
             editClaimViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim"]; 
             [self.navigationController pushViewController:editClaimViewController animated:YES];
             break;
-            case 2:
+            case 3:
             lookUpViewController =[self.storyboard 
                                    instantiateViewControllerWithIdentifier:@"lookUp"];
             [self.navigationController pushViewController:lookUpViewController

@@ -12,11 +12,9 @@
 
 @interface CPCEditClaimByCustomerViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 {
-   // NSString *customerNumber;
-    
+    NSMutableArray *customerList;
    sqlite3 *database;
 }
-//@property (nonatomic, retain) NSString * customerNumber;
 
 -(void) getCustomerInfo;
 

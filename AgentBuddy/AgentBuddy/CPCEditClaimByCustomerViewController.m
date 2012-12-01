@@ -8,19 +8,8 @@
 
 #import "CPCEditClaimByCustomerViewController.h"
 #import "CPCEditByCustomer2ViewController.h"
-//#import "CPCCustomerInfo.h"
-//#import "CPCCarInfo.h"
-
 
 @implementation CPCEditClaimByCustomerViewController
-{
-    CPCCustomerInfo *customer;
-    NSMutableArray *customerList;
-   // CPCCarInfo *claimCarInfo;
-    CPCEditByCustomer2ViewController *editByCustomer2ViewController;
-}
-//@synthesize myTableView;
-//@synthesize customerNumber;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,16 +33,8 @@
       [super viewDidLoad];
      
     customerList = [[NSMutableArray alloc] init];
-//    customer=[[CPCCustomerInfo alloc] init];
-    customer = [[CPCDataClass sharedInstance] customerInfo];
-    //[customer getCustomernInfo];
-    
-    editByCustomer2ViewController = [[CPCEditByCustomer2ViewController alloc] init];
     [self getCustomerInfo];
-    
-    //claimCarInfo =[[CPCCarInfo alloc] init];
-   
-    
+
 }
 
 - (void)viewDidUnload
@@ -79,15 +60,14 @@
 
 -(void) getCustomerInfo
 {
+    [customerList removeAllObjects];
     if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
-        const char *sql1 = "SELECT fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber FROM tblCustomer order by fldLastName asc";
+        const char *sql1 = "SELECT fldCustomerNumber, fldFirstName, fldLastName FROM tblCustomer order by fldLastName asc";
         sqlite3_stmt *selectstmt1;
         if(sqlite3_prepare_v2(database, sql1, -1, &selectstmt1, NULL)==SQLITE_OK) {
             
-            while (sqlite3_step(selectstmt1)==SQLITE_ROW) {
-                
-                
-                
+            while (sqlite3_step(selectstmt1)==SQLITE_ROW) 
+            {
                 NSString *customerNumber = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectstmt1, 0)];
                 NSString *firstName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 1)];
                 NSString *lastName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 2)];
@@ -111,20 +91,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-//    NSLog(@"%@",[customer lastNameArray] );
-//    return [[customer lastNameArray] count];
     return [customerList count];
 }
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -198,24 +171,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-  
-    
-    
-//    if([[customer customerNumberArray] objectAtIndex:indexPath.row]){
-//        
-//                
-//        
-//       customerNumber = [[customer customerNumberArray] objectAtIndex:indexPath.row ];
-//        //NSLog(@"%@", customerNumber);
-//
-//        
-//        editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
-//        
-//        [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
-//        
-//
-//    }                                                  
+    NSString *customerNumber = [[customerList objectAtIndex:indexPath.row ] customerNumber];
+    [[[CPCDataClass sharedInstance] customerInfo] setCurrentCustomerByCustomerID:customerNumber];
+        
+    CPCEditByCustomer2ViewController *editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
+    [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
     
 }
 

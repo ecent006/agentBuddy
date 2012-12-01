@@ -7,23 +7,8 @@
 //
 
 #import "CPCEditByCustomer2ViewController.h"
-#import "CPCCarInfo.h"
-#import "CPCEditClaimByCustomerViewController.h"
-#import "CPCDataClass.h"
-
-
-
-@interface CPCEditByCustomer2ViewController ()
-{
-     CPCCarInfo *claimCarInfo;
-     
-}
-
-@end
 
 @implementation CPCEditByCustomer2ViewController
-@synthesize getCustomerNumber;
-//@synthesize customerNumber;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,13 +30,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     CPCCustomerInfo *customerInfo = [[CPCDataClass sharedInstance] customerInfo];
+    claimsList = [customerInfo claimsList];
     
-    getCustomerNumber=[[CPCEditClaimByCustomerViewController alloc]init];
-    claimCarInfo =[[CPCCarInfo alloc] init];
-    
-    [claimCarInfo getClaimByCustomerNumber:customerInfo.customerNumber];
-    NSLog(@"Edit Claim 2 - Current customer is: %@", customerInfo.customerNumber);
+    if([claimsList count] == 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Claims Available" message:@"There are no claims available for this Customer." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
     
 }
 
@@ -82,7 +69,7 @@
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
   //  NSLog(@"%@",[customer lastNameArray] );
-  return [[claimCarInfo claimNumberArray] count];
+  return [claimsList count];
     
 }
 
@@ -107,7 +94,7 @@
     
     //Customization of cell
     
-   NSString *name=[NSString stringWithFormat:@"%@     %@, %@",[[claimCarInfo claimNumberArray] objectAtIndex:indexPath.row],[[claimCarInfo dateClaimCreatedArray] objectAtIndex:indexPath.row], [[claimCarInfo dateClaimExpiresArray] objectAtIndex:indexPath.row]];
+   NSString *name=[NSString stringWithFormat:@"%@     %@, %@",[[claimsList objectAtIndex:indexPath.row]claimNumber],[[claimsList objectAtIndex:indexPath.row ]dateClaimCreated], [[claimsList objectAtIndex:indexPath.row ]dateClaimExpires]];
     cell.textLabel.text = name;
     cell.textLabel.textAlignment=UITextAlignmentLeft; //Center the text on the cells
     

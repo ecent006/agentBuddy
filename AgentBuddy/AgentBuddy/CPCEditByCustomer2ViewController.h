@@ -8,16 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CPCDataClass.h"
+
 @class CPCEditClaimByCustomerViewController;
 
 
 @interface CPCEditByCustomer2ViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 {
-   // NSString *customerNumber;
-    CPCEditClaimByCustomerViewController *getCustomerNumber;
-
+    NSMutableArray *claimsList;
 }
-//@property (nonatomic, retain)NSString * customerNumber;
-@property(nonatomic,strong) CPCEditClaimByCustomerViewController *getCustomerNumber;
 
 @end

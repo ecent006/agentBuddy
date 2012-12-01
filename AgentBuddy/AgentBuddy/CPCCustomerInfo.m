@@ -9,41 +9,20 @@
 #import "CPCCustomerInfo.h"
 
 @implementation CPCCustomerInfo{
-    NSMutableArray *tempArrayC;
-    NSMutableArray *tempArrayC1;
-    NSMutableArray *tempArrayC2;
-    NSMutableArray *tempArrayC3;
-    NSMutableArray *tempArrayC4;
-    NSMutableArray *tempArrayC5;
-    NSMutableArray *tempArrayC6;
-    NSMutableArray *tempArrayC7;
-    NSMutableArray *tempArrayC8;
-    NSMutableArray *tempArrayC9;
-    NSMutableArray *tempArrayC10;
+    
 }
 @synthesize customerNumber, firstName, lastName, houseAddress, city, state, zipCode, email, phoneNumber, birthDate, licenseNumber;
-//@synthesize customerNumberArray,firstNameArray,lastNameArray,addressArray,cityArray,stateArray,zipCodeArray,emailArray,phoneNumberArray,birthDateArray,licenseNumberArray;
+
+@synthesize claimsList;
 
 -(id)init
 {
     if (self = [super init])
     {
-        tempArrayC=[[NSMutableArray alloc] init];
-        tempArrayC1=[[NSMutableArray alloc] init];
-        tempArrayC2=[[NSMutableArray alloc] init];
-        tempArrayC3=[[NSMutableArray alloc] init];
-        tempArrayC4=[[NSMutableArray alloc] init];
-        tempArrayC5=[[NSMutableArray alloc] init];
-        tempArrayC6=[[NSMutableArray alloc] init];
-        tempArrayC7=[[NSMutableArray alloc] init];
-        tempArrayC8=[[NSMutableArray alloc] init];
-        tempArrayC9=[[NSMutableArray alloc] init];
-        tempArrayC10=[[NSMutableArray alloc] init];
+        claimsList = [[NSMutableArray alloc] init];
     }
     return self;
 }
-
-
 
 -(void) makeDBCopyAsNeeded{
     //Using NSFileManager to perform file system operations.
@@ -61,77 +40,14 @@
         }
     }
 }
+
 -(NSString *) getDBPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDir = [paths objectAtIndex:0];
     
     return [documentsDir stringByAppendingPathComponent:@"MyDatabase.sqlite"];
 }
--(void) getCustomernInfo{
-    [self makeDBCopyAsNeeded];
-    
-    if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
-        const char *sql1 = "SELECT fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber FROM tblCustomer order by fldLastName asc";
-        sqlite3_stmt *selectstmt1;
-        if(sqlite3_prepare_v2(database, sql1, -1, &selectstmt1, NULL)==SQLITE_OK) {
-            
-            while (sqlite3_step(selectstmt1)==SQLITE_ROW) {
-                
-                
-                
-                customerNumber = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectstmt1, 0)];
-                firstName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 1)];
-                lastName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 2)];
-                houseAddress=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 3)];
-                city=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 4)];
-                state=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 5)];
-                zipCode=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 6)];
-                email=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 7)];
-                phoneNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 8)];
-                birthDate=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 9)];
-                licenseNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 10)];
-                
-             
-               
-//                customerNumberArray=tempArrayC;
-//                firstNameArray=tempArrayC1;
-//                lastNameArray=tempArrayC2;
-//                addressArray=tempArrayC3;
-//                cityArray=tempArrayC4;
-//                stateArray=tempArrayC5;
-//                zipCodeArray=tempArrayC6;
-//                emailArray=tempArrayC7;
-//                phoneNumberArray=tempArrayC8;
-//                birthDateArray=tempArrayC9;
-//                licenseNumberArray=tempArrayC10;
-//
-//
-//                
-//                [customerNumberArray addObject:customerNumber];
-//                [firstNameArray addObject:firstName];
-//                [lastNameArray addObject:lastName];
-//                [addressArray addObject:houseAddress];
-//                [cityArray addObject:city];
-//                [stateArray addObject:state];
-//                [zipCodeArray addObject:zipCode];
-//                [emailArray addObject:email];
-//                [phoneNumberArray addObject:phoneNumber];
-//                [birthDateArray addObject:birthDate];
-//                [licenseNumberArray addObject:licenseNumber];
-                
-            }
-             sqlite3_finalize(selectstmt1);
-        }
-    }
-    else {
-       
-        
-        sqlite3_close(database);
-    }
 
-
-
-}
 -(void) storeCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSString *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber {
     
     [self makeDBCopyAsNeeded];
@@ -176,4 +92,91 @@
     lastName = theLastName;
     
 }
+
+-(void) setCurrentCustomerByCustomerID:(NSString *)custID
+{
+    if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
+        //const char *sql1 = "SELECT fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber FROM tblCustomer WHERE fldCustomer = '%@'";
+        NSString *sqlStatement = [NSString stringWithFormat:@"SELECT fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber FROM tblCustomer WHERE fldCustomerNumber = '%@'",custID];
+        sqlite3_stmt *selectstmt1;
+        if(sqlite3_prepare_v2(database, [sqlStatement UTF8String], -1, &selectstmt1, NULL)==SQLITE_OK) {
+            
+            while (sqlite3_step(selectstmt1)==SQLITE_ROW) {
+                
+                
+                
+                customerNumber = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectstmt1, 0)];
+                firstName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 1)];
+                lastName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 2)];
+                houseAddress=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 3)];
+                city=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 4)];
+                state=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 5)];
+                zipCode=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 6)];
+                email=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 7)];
+                phoneNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 8)];
+                birthDate=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 9)];
+                licenseNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 10)];
+                
+                [self refreshClaimsList];
+            }
+        }
+    }
+}
+
+-(void) refreshClaimsList
+{
+ 
+    [claimsList removeAllObjects];
+    
+    if(customerNumber)
+    {
+        [self makeDBCopyAsNeeded];
+        sqlite3_stmt *selectstmt1;
+        
+        if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
+            NSString  *selectSQL = [NSString stringWithFormat:@"SELECT fldClaimNumber, fldNote, fldDateClaimCreated, fldDateClaimExpires FROM tblClaims WHERE fldCustomerNumber = '%@'",customerNumber];
+            //NSLog(@"%@", customerNumber);
+            
+            const char *select_stmt= [selectSQL UTF8String];
+            if(sqlite3_prepare_v2(database, select_stmt, -1, &selectstmt1, NULL)==SQLITE_OK){
+                
+                //NSLog(@"HERE2");
+                
+                while (sqlite3_step(selectstmt1)==SQLITE_ROW) {
+                    
+                    //NSLog(@"HERE2");
+                    
+                    NSString *claimNumber = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectstmt1, 0)];
+                    NSString *note=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 1)];
+                    NSString *dateClaimCreated=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 2)];
+                    NSString *dateClaimExpires=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 3)];
+                    
+                    CPCCarInfo *tempClaim = [[CPCCarInfo alloc] init];
+                    [tempClaim setClaimNumber:claimNumber andNote:note andDateCreated:dateClaimCreated andDateExpires:dateClaimExpires andVehicleModel:nil andVehicleMake:nil andVehicleYear:nil andVehicleColor:nil andCustomerNumber:nil andLicensePlateNumber:nil];
+                    
+                    [claimsList addObject:tempClaim];
+                    
+                    
+                    
+                    
+                    //test coming from database
+                    //NSLog(@"%@, %@, %@, %@", claimNumber,note,dateClaimCreatedArray,dateClaimExpires);
+                    
+                }
+                sqlite3_finalize(selectstmt1);
+            }
+        }
+        else {
+            
+            
+            sqlite3_close(database);
+        }
+    }
+}
+
+-(NSMutableArray *) claimsList
+{
+    return claimsList;
+}
+
 @end

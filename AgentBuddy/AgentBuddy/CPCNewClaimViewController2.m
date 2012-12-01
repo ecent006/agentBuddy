@@ -158,9 +158,15 @@
 	} 
 	else if (textField == model) {
 		[textField resignFirstResponder];
+        [make becomeFirstResponder];
+        
+	}
+    else if (textField == make) {
+		[textField resignFirstResponder];
         [year becomeFirstResponder];
         
 	}
+
     else if (textField == year) {
 		[textField resignFirstResponder];
         [color becomeFirstResponder];

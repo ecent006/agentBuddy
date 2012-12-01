@@ -11,6 +11,8 @@
 
 @interface  CPCNewClaimViewController2() {
     UITouch *selectCamera;
+    bool selectPicture1;
+    bool selectPicture2;
     
 }
 @property (nonatomic, retain) UIToolbar *keyboardNavigateToolBar;
@@ -195,10 +197,13 @@
     {
         [self startCameraControllerFromViewController: self
                                         usingDelegate: self]; 
+        selectPicture1= true;
+        
     }
     else if ([selectCamera view]==picture2) {
         [self startCameraControllerFromViewController: self
-                                        usingDelegate: self]; 
+                                        usingDelegate: self];
+        selectPicture2=true;
     }
     
 }
@@ -265,13 +270,15 @@
     UIImageWriteToSavedPhotosAlbum (imageToSave, nil, nil , nil);
     
     // View the image on screen 
-    if([selectCamera view]== picture1){
+    if(selectPicture1 ==true){
     self.picture1.image = imageToSave;
+    selectPicture1=false;
     }
-    else if([selectCamera view]== picture2)
-    {
-       self.picture1.image = imageToSave; 
-    }
+
+    if(selectPicture2==true){
+    self.picture2.image = imageToSave; 
+    selectPicture2=false;
+    }   
     // Tell controller to remove the picker from the view hierarchy and release object.
     [self dismissViewControllerAnimated: YES completion: ^{[self doSomethingElse];} ];
     

@@ -35,6 +35,7 @@
     NSFileManager *fileManager =[NSFileManager defaultManager];
     NSError *error;
     NSString *dbPath =[self getDBPath];
+    //[fileManager removeItemAtPath:dbPath error:nil];
     BOOL sucess = [fileManager fileExistsAtPath:dbPath];
     
     if (!sucess) {

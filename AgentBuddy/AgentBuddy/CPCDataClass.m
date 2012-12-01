@@ -35,6 +35,7 @@
     if(login == nil)
     {
         login = [[CPCLogin alloc] init];
+        
     }
     return login;
 }

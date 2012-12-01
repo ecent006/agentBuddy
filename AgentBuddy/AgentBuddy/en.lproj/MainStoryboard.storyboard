@@ -181,7 +181,7 @@
                     </navigationItem>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1722" y="-332"/>
+            <point key="canvasLocation" x="1514" y="-300"/>
         </scene>
         <!--Look Up View Controller - LookUp-->
         <scene sceneID="ftd-EX-w4M">
@@ -287,7 +287,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1778" y="986"/>
+            <point key="canvasLocation" x="1610" y="1138"/>
         </scene>
         <!--Edit By Customer2 View Controller - EditClaimByCustomer2-->
         <scene sceneID="hLJ-vN-Rae">
@@ -335,7 +335,7 @@
                     <navigationItem key="navigationItem" title="Claims" id="UGf-sX-3aL"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2768" y="-343"/>
+            <point key="canvasLocation" x="2624" y="-311"/>
         </scene>
         <!--New Claim View Controller - Customer Information-->
         <scene sceneID="zMj-m4-fHH">
@@ -540,7 +540,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1664" y="-1802"/>
+            <point key="canvasLocation" x="1552" y="-2042"/>
         </scene>
         <!--New Claim View Controller2 - ClaimInformation-->
         <scene sceneID="Dor-0e-Lvh">
@@ -660,22 +660,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="LQk-Ed-5py">
-                                <rect key="frame" x="72" y="720" width="240" height="128"/>
+                            <imageView contentMode="scaleToFill" image="camera_iconTAP.jpeg" id="LQk-Ed-5py">
+                                <rect key="frame" x="63" y="720" width="190" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                    <bool key="isElement" value="NO"/>
                                 </accessibility>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="1tq-Ek-v9c">
-                                <rect key="frame" x="500" y="720" width="240" height="128"/>
+                            <imageView contentMode="scaleToFill" image="camera_iconTAP.jpeg" id="1tq-Ek-v9c">
+                                <rect key="frame" x="515" y="720" width="190" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                    <bool key="isElement" value="NO"/>
                                 </accessibility>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kSs-br-fbZ">
-                                <rect key="frame" x="339" y="895" width="151" height="37"/>
+                                <rect key="frame" x="309" y="863" width="151" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Finish">
@@ -690,13 +692,25 @@
                         <color key="backgroundColor" red="0.1019607931" green="0.33725491169999999" blue="1" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Claim Information" id="dvD-Ty-SRL"/>
+                    <connections>
+                        <outlet property="claimNotes" destination="dar-nT-FKz" id="Bvc-3I-dGy"/>
+                        <outlet property="color" destination="Ur0-7H-yhE" id="mH7-HW-81V"/>
+                        <outlet property="licensePlateNumber" destination="NeI-Tl-OIc" id="w8p-kG-WI8"/>
+                        <outlet property="make" destination="7YW-3v-0xK" id="d5W-Iu-7xs"/>
+                        <outlet property="model" destination="Vut-RN-vBI" id="7OI-Cb-xbz"/>
+                        <outlet property="picture1" destination="LQk-Ed-5py" id="Chq-r9-d3W"/>
+                        <outlet property="picture2" destination="1tq-Ek-v9c" id="JQM-MM-Zoj"/>
+                        <outlet property="vinNumber" destination="JDq-NA-IE8" id="otp-ZS-VeF"/>
+                        <outlet property="year" destination="qhf-IK-KfN" id="sGf-wz-9iV"/>
+                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2678" y="-1802"/>
+            <point key="canvasLocation" x="3542" y="-2026"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo.png" width="720" height="460"/>
+        <image name="camera_iconTAP.jpeg" width="300" height="300"/>
         <image name="login field cells.PNG" width="286" height="89"/>
     </resources>
     <classes>
@@ -747,6 +761,17 @@
         </class>
         <class className="CPCNewClaimViewController2" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCNewClaimViewController2.h"/>
+            <relationships>
+                <relationship kind="outlet" name="claimNotes" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="color" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="licensePlateNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="make" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="model" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="picture1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="picture2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="vinNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="year" candidateClass="UITextField"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

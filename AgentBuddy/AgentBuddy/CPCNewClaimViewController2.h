@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPCNewClaimViewController2 :  UIViewController <UITextFieldDelegate>
+@interface CPCNewClaimViewController2 :  UIViewController <UITextFieldDelegate, UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *vinNumber;
+@property (weak, nonatomic) IBOutlet UITextField *model;
+@property (weak, nonatomic) IBOutlet UITextField *make;
+@property (weak, nonatomic) IBOutlet UITextField *year;
+@property (weak, nonatomic) IBOutlet UITextField *color;
+@property (weak, nonatomic) IBOutlet UITextField *licensePlateNumber;
+@property (weak, nonatomic) IBOutlet UITextView *claimNotes;
+@property (weak, nonatomic) IBOutlet UIImageView *picture1;
+@property (weak, nonatomic) IBOutlet UIImageView *picture2;
 
+//-(IBAction)showCamera1:(id)sender;
+//-(IBAction)showCamera2:(id)sender;
 @end

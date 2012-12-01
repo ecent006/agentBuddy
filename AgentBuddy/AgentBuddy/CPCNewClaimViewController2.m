@@ -329,9 +329,8 @@
     if (buttonIndex==0) {
         [self dismissModalViewControllerAnimated:YES];
 
-    //We need to remove instatiation
-//        CPCMenuViewController *goBackMenu = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"]; 
-//        [self.navigationController pushViewController:goBackMenu animated:YES];
+        //Pop back to Menu View Controller
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
 
     }
         }

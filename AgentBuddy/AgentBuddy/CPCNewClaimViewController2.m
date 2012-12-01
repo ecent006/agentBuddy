@@ -8,12 +8,13 @@
 
 #import "CPCNewClaimViewController2.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "CPCMenuViewController.h"
 
 @interface  CPCNewClaimViewController2() {
     UITouch *selectCamera;
     bool selectPicture1;
     bool selectPicture2;
-    
+ 
 }
 @property (nonatomic, retain) UIToolbar *keyboardNavigateToolBar;
 @end
@@ -310,9 +311,28 @@
     }
     
     CPCCarInfo *tempCarInfo = [[CPCCarInfo alloc] init];
-    [tempCarInfo setClaimNumber:[NSString stringWithFormat:@"%0.5u", arc4random()] andNote: self.claimNotes.text andDateCreated:@"" andDateExpires:@"" andVehicleModel:model.text andVehicleMake:self.make.text andVehicleYear:self.year.text andVehicleColor:self.color.text andCustomerNumber: [[[CPCDataClass sharedInstance]customerInfo] customerNumber] andLicensePlateNumber:self.licensePlateNumber.text andVinNumber:self.vinNumber.text];
+    NSString *claimNumber=[NSString stringWithFormat:@"%0.5u", arc4random()];
+    
+    [tempCarInfo setClaimNumber:claimNumber andNote: self.claimNotes.text andDateCreated:@"" andDateExpires:@"" andVehicleModel:model.text andVehicleMake:self.make.text andVehicleYear:self.year.text andVehicleColor:self.color.text andCustomerNumber: [[[CPCDataClass sharedInstance]customerInfo] customerNumber] andLicensePlateNumber:self.licensePlateNumber.text andVinNumber:self.vinNumber.text];
     
     [[[CPCDataClass sharedInstance]customerInfo]addClaimToCustomer:tempCarInfo];
+    
+    
+    NSString *messageClaim=[NSString stringWithFormat:@"The Claim has been completed. \n Your Claim Number is: %@",claimNumber];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Claim Completed" message:messageClaim delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+
+   
 }
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0) {
+        [self dismissModalViewControllerAnimated:YES];
+
+    //We need to remove instatiation
+//        CPCMenuViewController *goBackMenu = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"]; 
+//        [self.navigationController pushViewController:goBackMenu animated:YES];
+
+    }
+        }
 @end

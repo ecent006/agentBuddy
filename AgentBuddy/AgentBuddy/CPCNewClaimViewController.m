@@ -293,12 +293,24 @@
     
     //NSLog(@"%@", customerNumber);
     [[[CPCDataClass sharedInstance] customerInfo] setCurrentCustomerByCustomerID:customerNumber];
+    NSString *messageCustomer=[NSString stringWithFormat:@"The Customer was added. \n Your Customer ID is: %@",customerNumber];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Customer Added" message:messageCustomer delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+
     
-    CPCNewClaimViewController2 *newClaimViewController2= [[CPCNewClaimViewController2 alloc] init];
-    newClaimViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"newClaim2"]; 
-    [self.navigationController pushViewController:newClaimViewController2 animated:YES];
+   
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0) {
+        [self dismissModalViewControllerAnimated:YES];
+        
+        CPCNewClaimViewController2 *newClaimViewController2= [[CPCNewClaimViewController2 alloc] init];
+        newClaimViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"newClaim2"]; 
+        [self.navigationController pushViewController:newClaimViewController2 animated:YES];
+    }
 
 }
+
 
 
 @end

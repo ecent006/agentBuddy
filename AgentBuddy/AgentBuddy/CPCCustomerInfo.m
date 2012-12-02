@@ -137,10 +137,18 @@
                 
                 [self refreshClaimsList];
                 
+                sqlite3_finalize(selectstmt1);
                 return YES;
             }
+            sqlite3_finalize(selectstmt1);
         }
         
+    }
+    
+    else {
+        
+        
+        sqlite3_close(database);
     }
     return NO;
 }
@@ -252,7 +260,7 @@
     {
         NSString *tempClaimID = [claim claimNumber];
         //Pick up here. for some reason the if statement is not executing even though the id's match up
-        if(theClaimID == tempClaimID)
+        if([theClaimID isEqualToString: tempClaimID])
         {
             activeClaim = claim;
             return YES;
@@ -264,42 +272,42 @@
 -(BOOL) searchForClaimByID:(NSString *)claimID
 {
     [self makeDBCopyAsNeeded];
-    sqlite3_stmt *selectstmt2;
+    sqlite3_stmt *selectstmt1;
     //sqlite3 *database2;
     
-    if (sqlite3_open([[self getDBPath] UTF8String], &database2)== SQLITE_OK) {
+    if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
         NSString  *selectSQL = [NSString stringWithFormat:@"SELECT fldCustomerNumber FROM tblClaims WHERE fldClaimNumber = '%@'",claimID];
         //NSLog(@"%@", customerNumber);
         
         const char *select_stmt= [selectSQL UTF8String];
-        if(sqlite3_prepare_v2(database2, select_stmt, -1, &selectstmt2, NULL)==SQLITE_OK){
+        if(sqlite3_prepare_v2(database, select_stmt, -1, &selectstmt1, NULL)==SQLITE_OK){
             
             //NSLog(@"HERE2");
             
-            while (sqlite3_step(selectstmt2)==SQLITE_ROW) {
+            while (sqlite3_step(selectstmt1)==SQLITE_ROW) {
                 
                 //NSLog(@"HERE2");
                 
-                NSString *tempCustNum = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectstmt2, 0)];
+                NSString *tempCustNum = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectstmt1, 0)];
                 
                 [self setCurrentCustomerByCustomerID:tempCustNum];
                 if([self setCurrentlyActiveClaimByID:claimID])
                 {
-                    sqlite3_finalize(selectstmt2);
+                    sqlite3_finalize(selectstmt1);
                     return YES;
                 }
                 
                 
                 
             }
-            sqlite3_finalize(selectstmt2);
+            sqlite3_finalize(selectstmt1);
             
         }
     }
     else {
         
         
-        sqlite3_close(database2);
+        sqlite3_close(database);
     }
     
     return NO;

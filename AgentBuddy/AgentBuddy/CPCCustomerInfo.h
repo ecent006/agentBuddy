@@ -15,7 +15,7 @@
     NSString *customerNumber, *firstName, *lastName, *houseAddress, *city, *state, *zipCode, *email, *phoneNumber, *birthDate, *licenseNumber;
 
     sqlite3 *database;
-    sqlite3 *database2;
+    //sqlite3 *database2;
     NSMutableArray *claimsList;
     CPCCarInfo *activeClaim;
   

@@ -10,7 +10,6 @@
 
 @implementation CPCDataClass
 
-@synthesize carInfo;
 @synthesize customerInfo;
 @synthesize login;
 @synthesize addClaimState,editClaimState;
@@ -38,15 +37,6 @@
         
     }
     return login;
-}
-
--(CPCCarInfo*) carInfo
-{
-    if(carInfo == nil)
-    {
-        carInfo = [[CPCCarInfo alloc] init];
-    }
-    return carInfo;
 }
 
 -(CPCCustomerInfo*) customerInfo
@@ -78,9 +68,5 @@
     editClaimState = state;
 }
 
--(void) setCurrentClaim:(CPCCarInfo *)claim
-{
-    carInfo = claim;
-}
 
 @end

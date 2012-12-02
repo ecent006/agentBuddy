@@ -14,6 +14,7 @@
 @synthesize customerNumber, firstName, lastName, houseAddress, city, state, zipCode, email, phoneNumber, birthDate, licenseNumber;
 
 @synthesize claimsList;
+@synthesize activeClaim;
 
 -(id)init
 {
@@ -151,7 +152,7 @@
         sqlite3_stmt *selectstmt1;
         
         if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
-            NSString  *selectSQL = [NSString stringWithFormat:@"SELECT fldClaimNumber, fldNote, fldDateClaimCreated, fldDateClaimExpires FROM tblClaims WHERE fldCustomerNumber = '%@'",customerNumber];
+            NSString  *selectSQL = [NSString stringWithFormat:@"SELECT fldClaimNumber, fldNote, fldDateClaimCreated, fldDateClaimExpires, fldVinNumber, fldModel, fldMake, fldYear, fldColor, fldLicensePlateNumber FROM tblClaims WHERE fldCustomerNumber = '%@'",customerNumber];
             //NSLog(@"%@", customerNumber);
             
             const char *select_stmt= [selectSQL UTF8String];
@@ -167,9 +168,15 @@
                     NSString *note=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 1)];
                     NSString *dateClaimCreated=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 2)];
                     NSString *dateClaimExpires=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 3)];
+                    NSString *vinNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 4)];
+                    NSString *model=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 5)];
+                    NSString *make=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 6)];
+                    NSString *year=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 7)];
+                    NSString *color=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 8)];
+                    NSString *licensePlateNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 9)];
                     
                     CPCCarInfo *tempClaim = [[CPCCarInfo alloc] init];
-                    [tempClaim setClaimNumber:claimNumber andNote:note andDateCreated:dateClaimCreated andDateExpires:dateClaimExpires andVehicleModel:nil andVehicleMake:nil andVehicleYear:nil andVehicleColor:nil andCustomerNumber:nil andLicensePlateNumber:nil andVinNumber:nil];
+                    [tempClaim setClaimNumber:claimNumber andNote:note andDateCreated:dateClaimCreated andDateExpires:dateClaimExpires andVehicleModel:model andVehicleMake:make andVehicleYear:year andVehicleColor:color andCustomerNumber:customerNumber andLicensePlateNumber:licensePlateNumber andVinNumber:vinNumber];
                     
                     [claimsList addObject:tempClaim];
                     
@@ -204,7 +211,7 @@
     if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
         
         NSString *insertSQL = [NSString stringWithFormat: 
-                               @"INSERT INTO tblClaims(fldClaimNumber, fldCustomerNumber, fldNote, fldDateClaimCreated, fldDateClaimExpires, fldVinNumber) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",[[claim claimNumber] UTF8String], [[claim customerNumber] UTF8String], [[claim note] UTF8String], [[claim dateClaimCreated] UTF8String], [[claim dateClaimExpires] UTF8String], [[claim vinNumber] UTF8String]];
+                               @"INSERT INTO tblClaims(fldClaimNumber, fldCustomerNumber, fldNote, fldDateClaimCreated, fldDateClaimExpires, fldVinNumber, fldModel, fldMake, fldYear, fldColor, fldLicensePlateNumber) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",[[claim claimNumber] UTF8String], [[claim customerNumber] UTF8String], [[claim note] UTF8String], [[claim dateClaimCreated] UTF8String], [[claim dateClaimExpires] UTF8String], [[claim vinNumber] UTF8String], [[claim model] UTF8String], [[claim make] UTF8String], [[claim  vehicleYear] UTF8String], [[claim vehicleColor] UTF8String], [[claim licensePlateNumber] UTF8String]];
         const char *insert_stmt = [insertSQL UTF8String];
         NSLog(@"%@", insertSQL);
         
@@ -228,6 +235,11 @@
     }
     
     [self refreshClaimsList];
+}
+
+-(void) setCurrentlyActiveClaim:(NSInteger)row
+{
+    activeClaim = [claimsList objectAtIndex:row];
 }
 
 @end

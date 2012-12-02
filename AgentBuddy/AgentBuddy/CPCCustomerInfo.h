@@ -16,11 +16,13 @@
 
     sqlite3 *database;
     NSMutableArray *claimsList;
+    CPCCarInfo *activeClaim;
   
 }
 
 @property (nonatomic,retain)NSString *customerNumber, *firstName, *lastName, *houseAddress, *city, *state, *zipCode, *email, *phoneNumber, *birthDate, *licenseNumber;
 @property (nonatomic, retain) NSMutableArray *claimsList;
+@property (nonatomic, retain) CPCCarInfo *activeClaim;
 
 -(void) makeDBCopyAsNeeded;
 
@@ -31,6 +33,7 @@
 -(void) refreshClaimsList;
 -(void) addClaimToCustomer:(CPCCarInfo *) claim;
 -(NSMutableArray *) claimsList;
+-(void) setCurrentlyActiveClaim:(NSInteger) row;
 
 //-(void) findCustomer: (NSString *)theFirstName andTheLastName:(NSString *)theLastName;
 

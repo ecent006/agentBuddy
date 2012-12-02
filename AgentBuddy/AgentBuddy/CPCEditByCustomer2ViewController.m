@@ -162,8 +162,8 @@
 //            
 //    }                                                    
 
-    NSString *customerNumber = [[claimsList objectAtIndex:indexPath.row ] customerNumber];
-    [[CPCDataClass sharedInstance] setCurrentClaim:nil];
+    //NSString *customerNumber = [[claimsList objectAtIndex:indexPath.row ] customerNumber];
+    [[[CPCDataClass sharedInstance]customerInfo]setCurrentlyActiveClaim:indexPath.row];
 
     CPCClaimReportViewController *claimReportViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"claimReportView"];
     [self.navigationController pushViewController:claimReportViewController animated:YES];

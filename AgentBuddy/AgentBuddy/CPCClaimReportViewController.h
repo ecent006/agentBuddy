@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPCDataClass.h"
 
 @interface CPCClaimReportViewController : UIViewController <UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *vinField;
+@property (strong, nonatomic) IBOutlet UITextField *modelField;
+@property (strong, nonatomic) IBOutlet UITextField *makeField;
+@property (strong, nonatomic) IBOutlet UITextField *yearField;
+@property (strong, nonatomic) IBOutlet UITextField *colorField;
+@property (strong, nonatomic) IBOutlet UITextField *licensePlateField;
+@property (strong, nonatomic) IBOutlet UITextView *noteField;
+@property (strong, nonatomic) IBOutlet UILabel *customerNameField;
 
 @end

@@ -50,29 +50,43 @@
 }
 
 - (IBAction)searchCustomerID:(id)sender {
-    if([[[CPCDataClass sharedInstance] customerInfo] setCurrentCustomerByCustomerID:customerID.text])
+    if(![customerID.text isEqualToString:@""])
     {
-        CPCEditByCustomer2ViewController *editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
-        [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
-        
+        if([[[CPCDataClass sharedInstance] customerInfo] setCurrentCustomerByCustomerID:customerID.text])
+        {
+            CPCEditByCustomer2ViewController *editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
+            [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
+            
+        }
+        else 
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Customer not found!" message:@"Could not locate Customer based on Customer ID" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
     }
-    else 
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Customer not found!" message:@"Could not locate Customer based on Customer ID" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Customer Number not entered!" message:@"Please enter a Customer ID in order to search" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
 }
 
 - (IBAction)searchClaimNumber:(id)sender {
-    if([[[CPCDataClass sharedInstance] customerInfo] searchForClaimByID:claimNumber.text])
+    if(![claimNumber.text isEqualToString:@""])
     {
-        CPCClaimReportViewController *claimReportViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"claimReportView"];
-        [self.navigationController pushViewController:claimReportViewController animated:YES];
+        if([[[CPCDataClass sharedInstance] customerInfo] searchForClaimByID:claimNumber.text])
+        {
+            CPCClaimReportViewController *claimReportViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"claimReportView"];
+            [self.navigationController pushViewController:claimReportViewController animated:YES];
+        }
+        else 
+        {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Claim not found!" message:@"Could not locate Claim based on Claim ID" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
     }
-    else 
-    {
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Claim not found!" message:@"Could not locate Claim based on Claim ID" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Claim Number Not Entered!" message:@"Please enter a Claim Number in order to search" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
 }

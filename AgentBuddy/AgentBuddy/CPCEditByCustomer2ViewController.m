@@ -151,16 +151,24 @@
     //Navigation logic may go here. Create and push another view controller from the menuView
     //CPCEditByCustomer2ViewController *editByCustomer2ViewController = [[CPCEditByCustomer2ViewController alloc] init];
     
-    switch(indexPath.row)
-    {
-        case 0:
-            // newClaimViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"claim"]; 
-            // [self.navigationController pushViewController:newClaimViewController animated:YES];
-            break;
-            // case 1:
-            
-            
-    }                                                    
+//    switch(indexPath.row)
+//    {
+//        case 0:
+//            // newClaimViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"claim"]; 
+//            // [self.navigationController pushViewController:newClaimViewController animated:YES];
+//            break;
+//            // case 1:
+//            
+//            
+//    }                                                    
+
+    NSString *customerNumber = [[claimsList objectAtIndex:indexPath.row ] customerNumber];
+    [[CPCDataClass sharedInstance] setCurrentClaim:nil];
+
+    CPCClaimReportViewController *claimReportViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"claimReportView"];
+    [self.navigationController pushViewController:claimReportViewController animated:YES];
+
+
     
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

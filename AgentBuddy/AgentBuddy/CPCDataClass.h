@@ -35,5 +35,6 @@
 -(void) setAddClaimState:(BOOL)state;
 -(BOOL) editClaimState;
 -(void) setEditClaimState:(BOOL)state;
+-(void) setCurrentClaim:(CPCCarInfo *) claim;
 
 @end

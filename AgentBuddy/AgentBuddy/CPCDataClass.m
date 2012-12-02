@@ -78,4 +78,9 @@
     editClaimState = state;
 }
 
+-(void) setCurrentClaim:(CPCCarInfo *)claim
+{
+    carInfo = claim;
+}
+
 @end

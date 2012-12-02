@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CPCDataClass.h"
+#import "CPCClaimReportViewController.h"
 
 @class CPCEditClaimByCustomerViewController;
 

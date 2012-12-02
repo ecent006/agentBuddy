@@ -313,7 +313,17 @@
     CPCCarInfo *tempCarInfo = [[CPCCarInfo alloc] init];
     NSString *claimNumber=[NSString stringWithFormat:@"%0.5u", arc4random()];
     
-    [tempCarInfo setClaimNumber:claimNumber andNote: self.claimNotes.text andDateCreated:@"" andDateExpires:@"" andVehicleModel:model.text andVehicleMake:self.make.text andVehicleYear:self.year.text andVehicleColor:self.color.text andCustomerNumber: [[[CPCDataClass sharedInstance]customerInfo] customerNumber] andLicensePlateNumber:self.licensePlateNumber.text andVinNumber:self.vinNumber.text];
+    [tempCarInfo setClaimNumber:claimNumber 
+                 andNote: self.claimNotes.text 
+                 andDateCreated:[NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle] 
+                 andDateExpires:@"" 
+                 andVehicleModel:model.text 
+                 andVehicleMake:self.make.text 
+                 andVehicleYear:self.year.text 
+                 andVehicleColor:self.color.text 
+                 andCustomerNumber: [[[CPCDataClass sharedInstance]customerInfo] customerNumber] 
+                 andLicensePlateNumber:self.licensePlateNumber.text 
+                 andVinNumber:self.vinNumber.text];
     
     [[[CPCDataClass sharedInstance]customerInfo]addClaimToCustomer:tempCarInfo];
     

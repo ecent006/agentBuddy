@@ -50,6 +50,16 @@
 }
 
 - (IBAction)searchCustomerID:(id)sender {
+    if([[[CPCDataClass sharedInstance] customerInfo] setCurrentCustomerByCustomerID:customerID.text])
+    {
+        CPCEditByCustomer2ViewController *editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
+        [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
+    }
+    else 
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Customer not found!" message:@"Could not locate Customer based on Customer ID" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 - (IBAction)searchClaimNumber:(id)sender {

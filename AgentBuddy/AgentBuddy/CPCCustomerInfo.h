@@ -29,7 +29,7 @@
 -(void) storeCustomerInfo;
 -(void) setCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName andAddress:(NSString *)setAddress andCity:(NSString *)setCity andState:(NSString *)setState andZipCode:(NSString *)setZipCode andEmail:(NSString *)setEmail andPhoneNumber:(NSString *)setPhoneNumber andBirthDate:(NSString *)setBirthDate andLicenseNumber:(NSString *)setLicenseNumber;
 -(void) setCustomerInfo:(NSString *) setCustomerNumber andFirstName:(NSString *)setFirstName andLastName:(NSString *)setLastName;
--(void) setCurrentCustomerByCustomerID: (NSString *) custID;
+-(BOOL) setCurrentCustomerByCustomerID: (NSString *) custID;
 -(void) refreshClaimsList;
 -(void) addClaimToCustomer:(CPCCarInfo *) claim;
 -(NSMutableArray *) claimsList;

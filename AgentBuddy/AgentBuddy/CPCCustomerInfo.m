@@ -111,7 +111,7 @@
    
 }
 
--(void) setCurrentCustomerByCustomerID:(NSString *)custID
+-(BOOL) setCurrentCustomerByCustomerID:(NSString *)custID
 {
     if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
         //const char *sql1 = "SELECT fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber FROM tblCustomer WHERE fldCustomer = '%@'";
@@ -136,9 +136,13 @@
                 licenseNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 10)];
                 
                 [self refreshClaimsList];
+                
+                return YES;
             }
         }
+        
     }
+    return NO;
 }
 
 -(void) refreshClaimsList

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE11CDE616517AF80040F455 /* CPCMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE11CDE516517AF80040F455 /* CPCMenuViewController.m */; };
 		CE11CDF2165191FF0040F455 /* CPCNewClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE11CDF1165191FF0040F455 /* CPCNewClaimViewController.m */; };
+		CE21DCA1166BE9D10023FE65 /* MyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CE21DCA0166BE9D10023FE65 /* MyDatabase.sqlite */; };
 		CE2943591667BC1D0089912B /* CPCNewClaimViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2943581667BC1D0089912B /* CPCNewClaimViewController2.m */; };
 		CE296B6B1669487D007A03B5 /* CPCDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CE296B6A1669487D007A03B5 /* CPCDataClass.m */; };
 		CE3A8E031667048A0096790D /* CPCCarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3A8E021667048A0096790D /* CPCCarInfo.m */; };
@@ -21,7 +22,6 @@
 		CE8961D71669AC5B000264D9 /* camera_iconTAP.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CE8961D61669AC5B000264D9 /* camera_iconTAP.jpeg */; };
 		CE8A123E1669018F00D4B35B /* CPCLookUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8A123D1669018F00D4B35B /* CPCLookUpViewController.m */; };
 		CE8D626E166AEB0500CD3F6A /* CPCClaimReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D626D166AEB0500CD3F6A /* CPCClaimReportViewController.m */; };
-		CEB957B11658372600C7282F /* MyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CEB957B01658372600C7282F /* MyDatabase.sqlite */; };
 		CEFA0382164ED41E00616D50 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0381164ED41E00616D50 /* UIKit.framework */; };
 		CEFA0384164ED41E00616D50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0383164ED41E00616D50 /* Foundation.framework */; };
 		CEFA0386164ED41E00616D50 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0385164ED41E00616D50 /* CoreGraphics.framework */; };
@@ -40,6 +40,7 @@
 		CE11CDE516517AF80040F455 /* CPCMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCMenuViewController.m; sourceTree = "<group>"; };
 		CE11CDF0165191FF0040F455 /* CPCNewClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCNewClaimViewController.h; sourceTree = "<group>"; };
 		CE11CDF1165191FF0040F455 /* CPCNewClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCNewClaimViewController.m; sourceTree = "<group>"; };
+		CE21DCA0166BE9D10023FE65 /* MyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyDatabase.sqlite; sourceTree = "<group>"; };
 		CE2943571667BC1D0089912B /* CPCNewClaimViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCNewClaimViewController2.h; sourceTree = "<group>"; };
 		CE2943581667BC1D0089912B /* CPCNewClaimViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCNewClaimViewController2.m; sourceTree = "<group>"; };
 		CE296B691669487D007A03B5 /* CPCDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCDataClass.h; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		CE8A123D1669018F00D4B35B /* CPCLookUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCLookUpViewController.m; sourceTree = "<group>"; };
 		CE8D626C166AEB0500CD3F6A /* CPCClaimReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCClaimReportViewController.h; sourceTree = "<group>"; };
 		CE8D626D166AEB0500CD3F6A /* CPCClaimReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCClaimReportViewController.m; sourceTree = "<group>"; };
-		CEB957B01658372600C7282F /* MyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = MyDatabase.sqlite; path = ../MyDatabase.sqlite; sourceTree = "<group>"; };
 		CEFA037D164ED41E00616D50 /* AgentBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgentBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFA0381164ED41E00616D50 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CEFA0383164ED41E00616D50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,8 +155,8 @@
 		CEFA0372164ED41E00616D50 = {
 			isa = PBXGroup;
 			children = (
+				CE21DCA0166BE9D10023FE65 /* MyDatabase.sqlite */,
 				CE79E0B8166A8A42000EFB10 /* MobileCoreServices.framework */,
-				CEB957B01658372600C7282F /* MyDatabase.sqlite */,
 				CEFA0387164ED41E00616D50 /* AgentBuddy */,
 				CEFA0380164ED41E00616D50 /* Frameworks */,
 				CEFA037E164ED41E00616D50 /* Products */,
@@ -261,13 +261,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEB957B11658372600C7282F /* MyDatabase.sqlite in Resources */,
 				CEFA038C164ED41E00616D50 /* InfoPlist.strings in Resources */,
 				CEFA0395164ED41E00616D50 /* MainStoryboard.storyboard in Resources */,
 				CEFA039F164ED73500616D50 /* Logo.png in Resources */,
 				CEFA03A4164EDA2E00616D50 /* login field cells.PNG in Resources */,
 				CEFA03AA164EDDDB00616D50 /* Default-Portrait~ipad.png in Resources */,
 				CE8961D71669AC5B000264D9 /* camera_iconTAP.jpeg in Resources */,
+				CE21DCA1166BE9D10023FE65 /* MyDatabase.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

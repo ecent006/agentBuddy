@@ -9,6 +9,8 @@
 #import "CPCEditByCustomer2ViewController.h"
 
 @implementation CPCEditByCustomer2ViewController
+@synthesize myTableView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,9 +32,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //Edit button to delete
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     CPCCustomerInfo *customerInfo = [[CPCDataClass sharedInstance] customerInfo];
     claimsList = [customerInfo claimsList];
+    
     
     if([claimsList count] == 0)
     {
@@ -46,6 +51,7 @@
 - (void)viewDidUnload
 {
     
+    [self setMyTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -171,9 +177,34 @@
 
     
 }
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [myTableView setEditing:editing animated:YES];
+}
+
+
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [claimsList removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
 
 @end

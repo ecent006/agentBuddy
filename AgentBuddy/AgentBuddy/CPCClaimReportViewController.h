@@ -18,5 +18,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *licensePlateField;
 @property (strong, nonatomic) IBOutlet UITextView *noteField;
 @property (strong, nonatomic) IBOutlet UILabel *customerNameField;
+- (IBAction)btnUpdate:(id)sender;
 
 @end

@@ -17,5 +17,6 @@
 {
     NSMutableArray *claimsList;
 }
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 @end

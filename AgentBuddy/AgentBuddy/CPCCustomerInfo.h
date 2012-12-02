@@ -15,6 +15,7 @@
     NSString *customerNumber, *firstName, *lastName, *houseAddress, *city, *state, *zipCode, *email, *phoneNumber, *birthDate, *licenseNumber;
 
     sqlite3 *database;
+    sqlite3 *database2;
     NSMutableArray *claimsList;
     CPCCarInfo *activeClaim;
   
@@ -34,6 +35,8 @@
 -(void) addClaimToCustomer:(CPCCarInfo *) claim;
 -(NSMutableArray *) claimsList;
 -(void) setCurrentlyActiveClaim:(NSInteger) row;
+-(BOOL) setCurrentlyActiveClaimByID:(NSString *) claimID;
+-(BOOL) searchForClaimByID:(NSString *) claimID;
 
 //-(void) findCustomer: (NSString *)theFirstName andTheLastName:(NSString *)theLastName;
 

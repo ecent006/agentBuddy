@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CPCDataClass.h"
 #import "CPCEditByCustomer2ViewController.h"
+#import "CPCClaimReportViewController.h"
 
 @interface CPCLookUpViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *lastName;

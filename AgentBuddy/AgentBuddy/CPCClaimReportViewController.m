@@ -44,5 +44,10 @@
     [super viewDidUnload];
 }
 - (IBAction)btnUpdate:(id)sender {
+    
+    CPCCarInfo *tempClaim = [[CPCCarInfo alloc] init];
+    [tempClaim setClaimNumber:nil andNote:self.noteField.text andDateCreated:nil andDateExpires:nil andVehicleModel:self.modelField.text andVehicleMake:self.makeField.text andVehicleYear:self.yearField.text andVehicleColor:self.colorField.text andCustomerNumber:nil andLicensePlateNumber:self.licensePlateField.text andVinNumber:self.vinField.text];
+    
+    [[[[CPCDataClass sharedInstance] customerInfo] activeClaim ] updateClaimInfo:tempClaim];
 }
 @end

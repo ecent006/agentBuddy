@@ -31,5 +31,6 @@
    andCustomerNumber:(NSString *)setCustomerNumber 
 andLicensePlateNumber:(NSString *)setLincensePlateNumber;
 
+-(void) updateClaimInfo:(CPCCarInfo *) claim;
 
 @end

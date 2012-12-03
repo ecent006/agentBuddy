@@ -36,6 +36,7 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     CPCCustomerInfo *customerInfo = [[CPCDataClass sharedInstance] customerInfo];
+    [customerInfo refreshClaimsList];
     claimsList = [customerInfo claimsList];
     
     
@@ -59,7 +60,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [[[CPCDataClass sharedInstance] customerInfo]refreshClaimsList];
+    [self.myTableView reloadData];
   // [self.myTableView reloadData];
 }
 

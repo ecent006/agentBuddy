@@ -37,6 +37,7 @@
 -(void) setCurrentlyActiveClaim:(NSInteger) row;
 -(BOOL) setCurrentlyActiveClaimByID:(NSString *) claimID;
 -(BOOL) searchForClaimByID:(NSString *) claimID;
+-(void) deleteClaimByClaimID:(NSString *) claimID;
 
 //-(void) findCustomer: (NSString *)theFirstName andTheLastName:(NSString *)theLastName;
 

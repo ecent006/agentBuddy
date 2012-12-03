@@ -313,4 +313,33 @@
     return NO;
 }
 
+-(void) deleteClaimByClaimID:(NSString *)claimID
+{
+    [self makeDBCopyAsNeeded];
+    sqlite3_stmt *deleteStmt;
+    //sqlite3 *database2;
+    
+    if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
+        NSString  *deleteSQL = [NSString stringWithFormat:@"DELETE FROM tblClaims WHERE fldClaimNumber = '%@'",claimID];
+        const char *sql = [deleteSQL UTF8String];
+        if(sqlite3_prepare_v2(database, sql, -1, &deleteStmt, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Error creating delete statement.");
+        }
+        //NSAssert1(0, @"Error while creating delete statement. '%s'", sqlite3_errmsg(database));
+        
+        //When binding parameters, index starts from 1 and not zero.
+        //sqlite3_bind_int(deleteStmt, 1, coffeeID);
+        
+        if (SQLITE_DONE != sqlite3_step(deleteStmt))
+            NSAssert1(0, @"Error while deleting. '%s'", sqlite3_errmsg(database));
+    
+        sqlite3_reset(deleteStmt);
+    }
+    else 
+    {
+        sqlite3_close(database);
+    }
+}
+
 @end

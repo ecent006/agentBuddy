@@ -17,6 +17,7 @@
 		CE79E0B9166A8A42000EFB10 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE79E0B8166A8A42000EFB10 /* MobileCoreServices.framework */; };
 		CE7FC679165689A700788FFE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7FC678165689A700788FFE /* libsqlite3.dylib */; };
 		CE7FC67C165689E900788FFE /* CPCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC67B165689E900788FFE /* CPCLogin.m */; };
+		CE8060F8166CFA6300B4343B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8060F7166CFA6300B4343B /* MessageUI.framework */; };
 		CE88638D1668442100883CAB /* CPCEditByCustomer2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88638C1668442100883CAB /* CPCEditByCustomer2ViewController.m */; };
 		CE894E541667AF80009850F6 /* CPCEditClaimByCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE894E531667AF80009850F6 /* CPCEditClaimByCustomerViewController.m */; };
 		CE8961D71669AC5B000264D9 /* camera_iconTAP.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CE8961D61669AC5B000264D9 /* camera_iconTAP.jpeg */; };
@@ -53,6 +54,7 @@
 		CE7FC678165689A700788FFE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CE7FC67A165689E900788FFE /* CPCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCLogin.h; sourceTree = "<group>"; };
 		CE7FC67B165689E900788FFE /* CPCLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCLogin.m; sourceTree = "<group>"; };
+		CE8060F7166CFA6300B4343B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CE88638B1668442000883CAB /* CPCEditByCustomer2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCEditByCustomer2ViewController.h; sourceTree = "<group>"; };
 		CE88638C1668442100883CAB /* CPCEditByCustomer2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCEditByCustomer2ViewController.m; sourceTree = "<group>"; };
 		CE894E521667AF80009850F6 /* CPCEditClaimByCustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCEditClaimByCustomerViewController.h; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8060F8166CFA6300B4343B /* MessageUI.framework in Frameworks */,
 				CE79E0B9166A8A42000EFB10 /* MobileCoreServices.framework in Frameworks */,
 				CE7FC679165689A700788FFE /* libsqlite3.dylib in Frameworks */,
 				CEFA0382164ED41E00616D50 /* UIKit.framework in Frameworks */,
@@ -155,6 +158,7 @@
 		CEFA0372164ED41E00616D50 = {
 			isa = PBXGroup;
 			children = (
+				CE8060F7166CFA6300B4343B /* MessageUI.framework */,
 				CE21DCA0166BE9D10023FE65 /* MyDatabase.sqlite */,
 				CE79E0B8166A8A42000EFB10 /* MobileCoreServices.framework */,
 				CEFA0387164ED41E00616D50 /* AgentBuddy */,

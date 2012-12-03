@@ -19,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet UITextView *claimNotes;
 @property (weak, nonatomic) IBOutlet UIImageView *picture1;
 @property (weak, nonatomic) IBOutlet UIImageView *picture2;
+@property (weak, nonatomic) NSData *storePicture1;
+@property (weak, nonatomic) NSData *storePicture2;
+
+
 @property (strong, nonatomic) IBOutlet UILabel *customerLabel;
 - (IBAction)addClaimBtn:(UIButton *)sender;
 

@@ -29,6 +29,7 @@
 @synthesize picture1;
 @synthesize picture2;
 @synthesize customerLabel;
+@synthesize storePicture1,storePicture2;
 
 
 @synthesize  keyboardNavigateToolBar;
@@ -279,11 +280,13 @@
     // View the image on screen 
     if(selectPicture1 ==true){
     self.picture1.image = imageToSave;
+        self.storePicture1 = UIImagePNGRepresentation(self.picture1.image);    
     selectPicture1=false;
     }
 
     if(selectPicture2==true){
     self.picture2.image = imageToSave; 
+        self.storePicture2 = UIImagePNGRepresentation(self.picture2.image);
     selectPicture2=false;
     }   
     // Tell controller to remove the picker from the view hierarchy and release object.

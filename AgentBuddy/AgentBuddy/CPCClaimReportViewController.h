@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "CPCDataClass.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface CPCClaimReportViewController : UIViewController <UITextFieldDelegate>
+@interface CPCClaimReportViewController : UIViewController <UITextFieldDelegate, MFMailComposeViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *vinField;
 @property (strong, nonatomic) IBOutlet UITextField *modelField;
 @property (strong, nonatomic) IBOutlet UITextField *makeField;
@@ -18,6 +20,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *licensePlateField;
 @property (strong, nonatomic) IBOutlet UITextView *noteField;
 @property (strong, nonatomic) IBOutlet UILabel *customerNameField;
+
 - (IBAction)btnUpdate:(id)sender;
+- (IBAction)btnMail:(id)sender;
 
 @end

@@ -11,7 +11,7 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
-@interface CPCClaimReportViewController : UIViewController <UITextFieldDelegate, MFMailComposeViewControllerDelegate>
+@interface CPCClaimReportViewController : UIViewController <UITextFieldDelegate,UITextViewDelegate, MFMailComposeViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *vinField;
 @property (strong, nonatomic) IBOutlet UITextField *modelField;
 @property (strong, nonatomic) IBOutlet UITextField *makeField;
@@ -20,6 +20,11 @@
 @property (strong, nonatomic) IBOutlet UITextField *licensePlateField;
 @property (strong, nonatomic) IBOutlet UITextView *noteField;
 @property (strong, nonatomic) IBOutlet UILabel *customerNameField;
+@property (weak, nonatomic) IBOutlet UIImageView *picture1;
+@property (weak, nonatomic) IBOutlet UIImageView *picture2;
+@property (weak, nonatomic) NSData *storePicture1;
+@property (weak, nonatomic) NSData *storePicture2;
+
 
 - (IBAction)btnUpdate:(id)sender;
 - (IBAction)btnMail:(id)sender;

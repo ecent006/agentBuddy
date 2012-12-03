@@ -280,7 +280,7 @@
     // View the image on screen 
     if(selectPicture1 ==true){
     self.picture1.image = imageToSave;
-        self.storePicture1 = UIImagePNGRepresentation(self.picture1.image);    
+        self.storePicture1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[animal imageURL]]];;    
     selectPicture1=false;
     }
 

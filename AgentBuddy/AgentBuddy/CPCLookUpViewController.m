@@ -47,6 +47,24 @@
 }
 
 - (IBAction)searchLastName:(id)sender {
+    if(![lastName.text isEqualToString:@""])
+    {
+        if([[[CPCDataClass sharedInstance] customerInfo] setCurrentCustomerByCustomerLastName:lastName.text])
+        {
+            CPCEditByCustomer2ViewController *editByCustomer2ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"editClaim2"]; 
+            [self.navigationController pushViewController:editByCustomer2ViewController animated:YES];
+            
+        }
+        else 
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Customer not found!" message:@"Could not locate Customer based on Customer Last Name" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Customer Last Name not entered!" message:@"Please enter a Customer Last Name in order to search" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 - (IBAction)searchCustomerID:(id)sender {

@@ -153,6 +153,48 @@
     return NO;
 }
 
+-(BOOL) setCurrentCustomerByCustomerLastName:(NSString *)ltName
+{
+    if (sqlite3_open([[self getDBPath] UTF8String], &database)== SQLITE_OK) {
+        //const char *sql1 = "SELECT fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber FROM tblCustomer WHERE fldCustomer = '%@'";
+        NSString *sqlStatement = [NSString stringWithFormat:@"SELECT fldCustomerNumber, fldFirstName, fldLastName, fldAddress, fldCity, fldState, fldZipCode, fldEmail, fldPhoneNumber, fldBirthDate, fldLicenseNumber FROM tblCustomer WHERE fldLastName = '%@'",ltName];
+        sqlite3_stmt *selectstmt1;
+        if(sqlite3_prepare_v2(database, [sqlStatement UTF8String], -1, &selectstmt1, NULL)==SQLITE_OK) {
+            
+            while (sqlite3_step(selectstmt1)==SQLITE_ROW) {
+                
+                
+                
+                customerNumber = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectstmt1, 0)];
+                firstName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 1)];
+                lastName=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 2)];
+                houseAddress=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 3)];
+                city=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 4)];
+                state=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 5)];
+                zipCode=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 6)];
+                email=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 7)];
+                phoneNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 8)];
+                birthDate=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 9)];
+                licenseNumber=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt1, 10)];
+                
+                [self refreshClaimsList];
+                
+                sqlite3_finalize(selectstmt1);
+                return YES;
+            }
+            sqlite3_finalize(selectstmt1);
+        }
+        
+    }
+    
+    else {
+        
+        
+        sqlite3_close(database);
+    }
+    return NO;
+}
+
 -(void) refreshClaimsList
 {
     

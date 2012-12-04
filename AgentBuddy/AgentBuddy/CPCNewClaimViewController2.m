@@ -14,6 +14,7 @@
     UITouch *selectCamera;
     bool selectPicture1;
     bool selectPicture2;
+    bool claimAdded;
  
 }
 @property (nonatomic, retain) UIToolbar *keyboardNavigateToolBar;
@@ -95,6 +96,7 @@
     CPCCustomerInfo *customerInfo = [[CPCDataClass sharedInstance] customerInfo];
     customerLabel.text = [NSString stringWithFormat:@"%@, %@", [customerInfo lastName], [customerInfo firstName]];
     
+    claimAdded = NO;
 }
 
 
@@ -334,6 +336,7 @@
     NSString *messageClaim=[NSString stringWithFormat:@"The Claim has been completed. \n Your Claim Number is: %@",claimNumber];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Claim Completed" message:messageClaim delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
+    claimAdded = YES;
 
    
 }
@@ -343,7 +346,9 @@
         [self dismissModalViewControllerAnimated:YES];
 
         //Pop back to Menu View Controller
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+        if(claimAdded){
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+        }
 
     }
         }

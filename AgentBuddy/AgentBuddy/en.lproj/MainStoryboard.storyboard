@@ -478,6 +478,8 @@
                         <outlet property="makeField" destination="lZT-nE-pHv" id="vFv-X1-U3l"/>
                         <outlet property="modelField" destination="QSh-0c-VgT" id="0bZ-Gu-GJt"/>
                         <outlet property="noteField" destination="5zn-Qy-azH" id="chb-gm-YmF"/>
+                        <outlet property="picture1" destination="nQF-jX-Knr" id="ZuP-km-TcH"/>
+                        <outlet property="picture2" destination="KhP-G4-wtV" id="YTT-Hb-d3q"/>
                         <outlet property="vinField" destination="Ouy-xz-MgH" id="rVu-wA-UTm"/>
                         <outlet property="yearField" destination="aBA-bd-hFa" id="XRA-SL-hQG"/>
                     </connections>

@@ -68,6 +68,8 @@
         
 
     }
+    //To display when text field become first responders
+    //
     agentUsername.inputAccessoryView = keyboardNavigateToolBar;
     agentPassword.inputAccessoryView = keyboardNavigateToolBar;
     //Must assign the delegate to self for the firstresponder to work after return key are presssed

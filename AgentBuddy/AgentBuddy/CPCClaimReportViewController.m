@@ -14,11 +14,14 @@
     UITouch *selectCamera;
     bool selectPicture1;
     bool selectPicture2;
+    
 }
 @property (nonatomic, retain) UIToolbar *keyboardNavigateToolBar;
 
 @end
-@implementation CPCClaimReportViewController
+@implementation CPCClaimReportViewController{
+CPCCustomerInfo *activeCustomer;
+}
 @synthesize  keyboardNavigateToolBar;
 @synthesize vinField;
 @synthesize modelField;
@@ -34,7 +37,7 @@
 
 -(void) viewDidLoad
 {
-    CPCCustomerInfo *activeCustomer = [[CPCDataClass sharedInstance] customerInfo];
+   activeCustomer = [[CPCDataClass sharedInstance] customerInfo];
     
     self.vinField.text = [[activeCustomer activeClaim] vinNumber];
     self.customerNameField.text = [NSString stringWithFormat:@"%@, %@",[activeCustomer lastName], [activeCustomer firstName]];
@@ -201,21 +204,21 @@
     if(mailClass !=nil){
     MFMailComposeViewController *mailComposeViewController=[[MFMailComposeViewController alloc] init];  
      mailComposeViewController.mailComposeDelegate = self;  
-    [mailComposeViewController setSubject:[NSString stringWithFormat:@"Claim Report of Customer: %@", self.customerNameField.text]];
+    [mailComposeViewController setSubject:[NSString stringWithFormat:@"Claim Report of Customer: %@", [NSString stringWithFormat:@"%@, %@",[activeCustomer lastName], [activeCustomer firstName]]]];
     
-    NSString *messageBody=[[NSString alloc] initWithFormat:@" Name: %@ <br />Vin#: %@ <br />Model: %@ <br />Make: %@ <br />Year: %@ <br />Color: %@ <br />License Plate #: %@ <br />Notes: %@ ",self.customerNameField.text, self.vinField.text, self.modelField.text,self.makeField.text, self.yearField.text,self.colorField.text, self.licensePlateField.text, self.noteField.text];
+    NSString *messageBody=[[NSString alloc] initWithFormat:@" Name: %@ <br />Vin#: %@ <br />Model: %@ <br />Make: %@ <br />Year: %@ <br />Color: %@ <br />License Plate #: %@ <br />Notes: %@  <br /><br />Claim Pictures are attached to this email<br />",[NSString stringWithFormat:@"%@, %@",[activeCustomer lastName], [activeCustomer firstName]],[[activeCustomer activeClaim] vinNumber], [[activeCustomer activeClaim] model],[[activeCustomer activeClaim] make], [[activeCustomer activeClaim] vehicleYear],[[activeCustomer activeClaim] vehicleColor], [[activeCustomer activeClaim] licensePlateNumber], [[activeCustomer activeClaim] note]];
 
     
     
-    // getting path for the image we have in the tutorial project  
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Logo" ofType:@"png"];  
+      [mailComposeViewController setMessageBody:messageBody isHTML:YES];
     
     // loading content of the image into NSData with claim pictures  
-    NSData *imageData = [NSData dataWithContentsOfFile:path];
+        NSData *imageData = UIImagePNGRepresentation([[activeCustomer activeClaim] picture1]);
+        NSData *imageData1= UIImagePNGRepresentation([[activeCustomer activeClaim] picture2]);
+     [mailComposeViewController addAttachmentData:imageData mimeType:@"image/png" fileName:@"Picture1"]; 
+     [mailComposeViewController addAttachmentData:imageData1 mimeType:@"image/png" fileName:@"Picture2"]; 
     
-     [mailComposeViewController addAttachmentData:imageData mimeType:@"image/png" fileName:@"Logo"]; 
     
-    [mailComposeViewController setMessageBody:messageBody isHTML:YES];
       if([mailClass canSendMail])
      [self presentModalViewController:mailComposeViewController animated:YES];  
     }  
@@ -365,5 +368,9 @@
 - (void) doSomethingElse {
     NSLog(@"Camera Dismissed");
     
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 @end

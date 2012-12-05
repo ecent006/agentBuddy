@@ -407,7 +407,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView contentMode="scaleToFill" image="camera_iconTAP.jpeg" id="nQF-jX-Knr">
+                            <imageView contentMode="scaleAspectFill" image="camera_iconTAP.jpeg" id="nQF-jX-Knr">
                                 <rect key="frame" x="63" y="726" width="190" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -415,8 +415,8 @@
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
                             </imageView>
-                            <imageView contentMode="scaleToFill" image="camera_iconTAP.jpeg" id="KhP-G4-wtV">
-                                <rect key="frame" x="515" y="726" width="190" height="180"/>
+                            <imageView contentMode="scaleAspectFill" image="camera_iconTAP.jpeg" id="KhP-G4-wtV">
+                                <rect key="frame" x="517" y="726" width="190" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>

@@ -39,6 +39,7 @@
 @synthesize phoneNumber;
 @synthesize birthDate;
 @synthesize licenseNumber;
+@synthesize birthDatePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -119,6 +120,7 @@
     [self setBirthDate:nil];
     [self setLicenseNumber:nil];
     //customer=nil;
+    [self setBirthDatePicker:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -288,8 +290,13 @@
         
         CPCCustomerInfo *tempCustomerInfo = [[CPCCustomerInfo alloc] init];
         
+        NSDate *date = [birthDatePicker date];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MMMM d, YYYY"];
+        NSString *dateString = [dateFormat stringFromDate:date];
+        
         customerNumber  = [NSString stringWithFormat:@"%0.5u", arc4random()];
-        [tempCustomerInfo setCustomerInfo:customerNumber andFirstName:firstName.text andLastName:lastName.text andAddress:address.text andCity:city.text andState:state.text andZipCode:zipCode.text andEmail:email.text andPhoneNumber:phoneNumber.text andBirthDate:birthDate.text andLicenseNumber:licenseNumber.text];
+        [tempCustomerInfo setCustomerInfo:customerNumber andFirstName:firstName.text andLastName:lastName.text andAddress:address.text andCity:city.text andState:state.text andZipCode:zipCode.text andEmail:email.text andPhoneNumber:phoneNumber.text andBirthDate:dateString andLicenseNumber:licenseNumber.text];
         [tempCustomerInfo storeCustomerInfo];
         
         

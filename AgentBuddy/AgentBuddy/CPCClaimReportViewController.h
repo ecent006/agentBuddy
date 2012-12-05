@@ -25,6 +25,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *picture2;
 @property (weak, nonatomic) NSData *storePicture1;
 @property (weak, nonatomic) NSData *storePicture2;
+@property (strong, nonatomic) IBOutlet UILabel *addressField;
+@property (strong, nonatomic) IBOutlet UILabel *emailField;
+@property (strong, nonatomic) IBOutlet UILabel *phoneField;
+@property (strong, nonatomic) IBOutlet UILabel *birthDateField;
+@property (strong, nonatomic) IBOutlet UILabel *licenseNumberField;
+@property (strong, nonatomic) IBOutlet UILabel *address2Field;
 
 
 - (IBAction)btnUpdate:(id)sender;

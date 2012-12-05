@@ -26,6 +26,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *customerLabel;
 - (IBAction)addClaimBtn:(UIButton *)sender;
+- (UIImage *) fixOrientation: (UIImage *) theImage;
 
 //-(IBAction)showCamera1:(id)sender;
 //-(IBAction)showCamera2:(id)sender;

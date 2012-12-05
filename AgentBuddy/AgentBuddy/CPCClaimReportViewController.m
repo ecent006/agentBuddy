@@ -22,6 +22,12 @@
 @implementation CPCClaimReportViewController{
 CPCCustomerInfo *activeCustomer;
 }
+@synthesize addressField;
+@synthesize emailField;
+@synthesize phoneField;
+@synthesize birthDateField;
+@synthesize licenseNumberField;
+@synthesize address2Field;
 @synthesize  keyboardNavigateToolBar;
 @synthesize vinField;
 @synthesize modelField;
@@ -40,7 +46,7 @@ CPCCustomerInfo *activeCustomer;
    activeCustomer = [[CPCDataClass sharedInstance] customerInfo];
     
     self.vinField.text = [[activeCustomer activeClaim] vinNumber];
-    self.customerNameField.text = [NSString stringWithFormat:@"%@, %@",[activeCustomer lastName], [activeCustomer firstName]];
+    self.customerNameField.text = [NSString stringWithFormat:@"%@, %@ - %@",[activeCustomer lastName], [activeCustomer firstName], [activeCustomer customerNumber]];
     self.modelField.text = [[activeCustomer activeClaim] model];
     self.makeField.text = [[activeCustomer activeClaim] make];
     self.yearField.text = [[activeCustomer activeClaim] vehicleYear];
@@ -49,7 +55,12 @@ CPCCustomerInfo *activeCustomer;
     self.noteField.text = [[activeCustomer activeClaim] note];
     self.picture1.image = [[activeCustomer activeClaim] picture1];
     self.picture2.image = [[activeCustomer activeClaim] picture2];
-    
+    self.addressField.text = [activeCustomer houseAddress];
+    self.address2Field.text = [NSString stringWithFormat:@"%@ %@, %@", [activeCustomer city], [activeCustomer state], [activeCustomer zipCode]];
+    self.emailField.text = [activeCustomer email];
+    self.phoneField.text = [activeCustomer phoneNumber];
+    self.birthDateField.text = [activeCustomer birthDate];
+    self.licenseNumberField.text = [activeCustomer licenseNumber];
 
     
     if(keyboardNavigateToolBar ==nil)
@@ -103,6 +114,12 @@ CPCCustomerInfo *activeCustomer;
     [self setLicensePlateField:nil];
     [self setNoteField:nil];
     [self setCustomerNameField:nil];
+    [self setAddressField:nil];
+    [self setEmailField:nil];
+    [self setPhoneField:nil];
+    [self setBirthDateField:nil];
+    [self setLicenseNumberField:nil];
+    [self setAddress2Field:nil];
     [super viewDidUnload];
 }
 

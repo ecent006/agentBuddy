@@ -11,6 +11,7 @@
 
 @implementation CPCEditByCustomer2ViewController
 @synthesize myTableView;
+@synthesize customerNameLabel;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,7 +40,7 @@
     CPCCustomerInfo *customerInfo = [[CPCDataClass sharedInstance] customerInfo];
     [customerInfo refreshClaimsList];
     claimsList = [customerInfo claimsList];
-    
+    customerNameLabel.text = [NSString stringWithFormat:@"%@, %@",[customerInfo lastName], [customerInfo firstName]];
     
     if([claimsList count] == 0)
     {
@@ -54,6 +55,7 @@
 {
     
     [self setMyTableView:nil];
+    [self setCustomerNameLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

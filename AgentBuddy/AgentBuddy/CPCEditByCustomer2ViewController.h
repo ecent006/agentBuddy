@@ -19,5 +19,6 @@
     NSMutableArray *claimsList;
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property (strong, nonatomic) IBOutlet UILabel *customerNameLabel;
 
 @end

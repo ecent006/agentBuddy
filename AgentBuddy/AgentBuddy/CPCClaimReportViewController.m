@@ -43,6 +43,8 @@
     self.colorField.text = [[activeCustomer activeClaim] vehicleColor];
     self.licensePlateField.text = [[activeCustomer activeClaim] licensePlateNumber];
     self.noteField.text = [[activeCustomer activeClaim] note];
+    self.picture1.image = [[activeCustomer activeClaim] picture1];
+    self.picture2.image = [[activeCustomer activeClaim] picture2];
     
 
     
@@ -187,7 +189,7 @@
 //    [alert show];
     
     CPCCarInfo *tempClaim = [[CPCCarInfo alloc] init];
-    [tempClaim setClaimNumber:nil andNote:self.noteField.text andDateCreated:nil andDateExpires:nil andVehicleModel:self.modelField.text andVehicleMake:self.makeField.text andVehicleYear:self.yearField.text andVehicleColor:self.colorField.text andCustomerNumber:nil andLicensePlateNumber:self.licensePlateField.text andVinNumber:self.vinField.text];
+    [tempClaim setClaimNumber:nil andNote:self.noteField.text andDateCreated:nil andDateExpires:nil andVehicleModel:self.modelField.text andVehicleMake:self.makeField.text andVehicleYear:self.yearField.text andVehicleColor:self.colorField.text andCustomerNumber:nil andLicensePlateNumber:self.licensePlateField.text andVinNumber:self.vinField.text andPicture1:picture1.image andPicture2:picture2.image];
     
     [[[[CPCDataClass sharedInstance] customerInfo] activeClaim ] updateClaimInfo:tempClaim];
 }

@@ -328,7 +328,9 @@
                  andVehicleColor:self.color.text 
                  andCustomerNumber: [[[CPCDataClass sharedInstance]customerInfo] customerNumber] 
                  andLicensePlateNumber:self.licensePlateNumber.text 
-                 andVinNumber:self.vinNumber.text];
+                 andVinNumber:self.vinNumber.text
+                 andPicture1:picture1.image 
+                 andPicture2:picture2.image];
     
     [[[CPCDataClass sharedInstance]customerInfo]addClaimToCustomer:tempCarInfo];
     

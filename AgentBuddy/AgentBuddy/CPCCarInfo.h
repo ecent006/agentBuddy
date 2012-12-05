@@ -14,14 +14,17 @@
     
     NSString *claimNumber, *note, *dateClaimCreated, *dateClaimExpires, *vinNumber, *model, *make, *vehicleYear, *vehicleColor, *customerNumber, *licensePlateNumber;
     sqlite3 *database;
+    UIImage *picture1, *picture2;
+    
     
 }
 
 @property (nonatomic,retain) NSString *claimNumber, *note, *dateClaimCreated, *dateClaimExpires, *vinNumber, *model, *make, *vehicleYear, *vehicleColor, *customerNumber, *licensePlateNumber;
+@property (nonatomic, retain) UIImage *picture1, *picture2;
 
 -(void) makeDBCopyAsNeeded;
 //-(void) getClaimByCustomerNumber:(NSString *)theCustomerNumber;
--(void) setClaimNumber:(NSString *)theClaimNumber andNote:(NSString *) theNote andDateCreated:(NSString *)theDateCreated andDateExpires:(NSString *) theDateExpires andVehicleModel:(NSString *)theVehicleModel andVehicleMake:(NSString *)theVehicleMake andVehicleYear:(NSString *)theVehicleYear andVehicleColor:(NSString *)theVehicleColor andCustomerNumber:(NSString *)theCustomerNumber andLicensePlateNumber:(NSString *)theLincensePlateNumber andVinNumber:(NSString *) theVinNumber;
+-(void) setClaimNumber:(NSString *)theClaimNumber andNote:(NSString *) theNote andDateCreated:(NSString *)theDateCreated andDateExpires:(NSString *) theDateExpires andVehicleModel:(NSString *)theVehicleModel andVehicleMake:(NSString *)theVehicleMake andVehicleYear:(NSString *)theVehicleYear andVehicleColor:(NSString *)theVehicleColor andCustomerNumber:(NSString *)theCustomerNumber andLicensePlateNumber:(NSString *)theLincensePlateNumber andVinNumber:(NSString *) theVinNumber andPicture1:(UIImage *) thePicture1 andPicture2:(UIImage *) thePicture2;
 
 -(void) storeCarInfo:(NSString *)setVinNumber 
      andVehicleModel:(NSString *)setVehicleModel 

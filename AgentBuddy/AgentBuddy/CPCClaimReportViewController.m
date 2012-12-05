@@ -201,6 +201,8 @@ CPCCustomerInfo *activeCustomer;
 - (IBAction)btnMail:(id)sender {
     //Erick Centeno Extra credit api mail the report
     Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+    
+    //Check if mail instance exist if not create it
     if(mailClass !=nil){
     MFMailComposeViewController *mailComposeViewController=[[MFMailComposeViewController alloc] init];  
      mailComposeViewController.mailComposeDelegate = self;  
@@ -208,17 +210,17 @@ CPCCustomerInfo *activeCustomer;
     
     NSString *messageBody=[[NSString alloc] initWithFormat:@" Name: %@ <br />Vin#: %@ <br />Model: %@ <br />Make: %@ <br />Year: %@ <br />Color: %@ <br />License Plate #: %@ <br />Notes: %@  <br /><br />Claim Pictures are attached to this email<br />",[NSString stringWithFormat:@"%@, %@",[activeCustomer lastName], [activeCustomer firstName]],[[activeCustomer activeClaim] vinNumber], [[activeCustomer activeClaim] model],[[activeCustomer activeClaim] make], [[activeCustomer activeClaim] vehicleYear],[[activeCustomer activeClaim] vehicleColor], [[activeCustomer activeClaim] licensePlateNumber], [[activeCustomer activeClaim] note]];
 
-    
+      //Body of the message
     
       [mailComposeViewController setMessageBody:messageBody isHTML:YES];
     
-    // loading content of the image into NSData with claim pictures  
+    // Attach content of images into NSData with claim pictures  
         NSData *imageData = UIImagePNGRepresentation([[activeCustomer activeClaim] picture1]);
         NSData *imageData1= UIImagePNGRepresentation([[activeCustomer activeClaim] picture2]);
      [mailComposeViewController addAttachmentData:imageData mimeType:@"image/png" fileName:@"Picture1"]; 
      [mailComposeViewController addAttachmentData:imageData1 mimeType:@"image/png" fileName:@"Picture2"]; 
     
-    
+     //Make sure the evice can place the email. Use hasn't set up an account they need to in order to send mail
       if([mailClass canSendMail])
      [self presentModalViewController:mailComposeViewController animated:YES];  
     }  
@@ -226,36 +228,38 @@ CPCCustomerInfo *activeCustomer;
 
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {  
-    // switchng the result  
+    //Result notify user the status of the email
+    
     switch (result) {  
-        case MFMailComposeResultCancelled:  
-            NSLog(@"Mail send canceled.");  
-            /* 
-             Execute your code for canceled event here ... 
-             */  
+        case MFMailComposeResultCancelled: { 
+
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail send canceled" message:@"Mail was canceled" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
             break;  
-        case MFMailComposeResultSaved:  
-            NSLog(@"Mail saved.");  
-            /* 
-             Execute your code for email saved event here ... 
-             */  
+        case MFMailComposeResultSaved:  {
+          
+            UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"Mail saved" message:@"Mail was saved" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert1 show];
+        }
+            break; 
+        
+        case MFMailComposeResultSent:  {
+           
+            UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"Mail sent" message:@"Mail was sent" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert2 show]; 
+        }
             break;  
-        case MFMailComposeResultSent:  
-            NSLog(@"Mail sent.");  
-            /* 
-             Execute your code for email sent event here ... 
-             */  
-            break;  
-        case MFMailComposeResultFailed:  
-            NSLog(@"Mail send error: %@.", [error localizedDescription]);  
-            /* 
-             Execute your code for email send failed event here ... 
-             */  
+        case MFMailComposeResultFailed:  {
+            NSString *errorMsg= [NSString stringWithFormat: @"Mail send error: %@.", [error localizedDescription]];  
+            UIAlertView *alert3 = [[UIAlertView alloc] initWithTitle:@"Mail errot" message:errorMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert3 show];
+        }
             break;  
         default:  
             break;  
     }  
-    // hide the modal view controller  
+    // Hides the modal view controller  
     [self dismissModalViewControllerAnimated:YES];  
 }  
 

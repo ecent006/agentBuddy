@@ -30,8 +30,8 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo.png" id="1NG-d9-Xf2">
-                                <rect key="frame" x="170" y="228" width="428" height="387"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo2.png" id="1NG-d9-Xf2">
+                                <rect key="frame" x="188" y="70" width="393" height="402"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="login field cells.PNG" id="fdE-OV-EL4">
@@ -86,7 +86,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.17647059261798859" green="0.48627454042434692" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="vuB-So-7DT">
                         <barButtonItem key="backBarButtonItem" title="Log Out" id="LOX-wk-D20"/>
@@ -104,17 +104,17 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cA1-aV-cYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="Menu" id="4CP-zF-Xom" customClass="CPCMenuViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ODV-jX-Wii">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ODV-jX-Wii">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.19646956683346883" green="0.39735217512510168" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo.png" id="XQS-HH-Q3D">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="284"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="right" image="MenuLogo.png" id="XQS-HH-Q3D">
+                            <rect key="frame" x="0.0" y="0.0" width="768" height="438"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="r8w-hw-23c">
-                                <rect key="frame" x="0.0" y="318" width="768" height="46"/>
+                                <rect key="frame" x="0.0" y="472" width="768" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="45" y="1" width="678" height="43"/>
@@ -149,8 +149,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo.png" id="yuL-ZN-zdQ">
-                                <rect key="frame" x="156" y="90" width="429" height="183"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo2.png" id="yuL-ZN-zdQ">
+                                <rect key="frame" x="408" y="64" width="385" height="183"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="hyE-u7-P04">
@@ -174,7 +174,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.10196079313755035" green="0.33725491166114807" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Select Customer" id="Edz-Mh-zKD">
                         <barButtonItem key="backBarButtonItem" title="Customer" id="5U3-BP-fGF"/>
@@ -193,46 +193,46 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Claim Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="g4k-Nh-4kx">
-                                <rect key="frame" x="201" y="283" width="149" height="21"/>
+                                <rect key="frame" x="201" y="476" width="149" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Customer Last Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="sTD-7W-7aX">
-                                <rect key="frame" x="201" y="205" width="193" height="21"/>
+                                <rect key="frame" x="201" y="398" width="193" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Customer ID:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Cuh-Oe-BMI">
-                                <rect key="frame" x="201" y="244" width="113" height="21"/>
+                                <rect key="frame" x="201" y="437" width="113" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="dvo-ok-vl2">
-                                <rect key="frame" x="384" y="200" width="183" height="31"/>
+                                <rect key="frame" x="384" y="393" width="183" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="rm1-OT-RLV">
-                                <rect key="frame" x="384" y="239" width="183" height="31"/>
+                                <rect key="frame" x="384" y="432" width="183" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Dix-eU-3ME">
-                                <rect key="frame" x="384" y="278" width="183" height="31"/>
+                                <rect key="frame" x="384" y="471" width="183" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5RZ-68-cgo">
-                                <rect key="frame" x="313" y="414" width="220" height="37"/>
+                                <rect key="frame" x="313" y="607" width="220" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Search By Last Name">
@@ -247,7 +247,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="D5M-R0-MCo">
-                                <rect key="frame" x="313" y="483" width="220" height="37"/>
+                                <rect key="frame" x="313" y="676" width="220" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Search By Customer ID">
@@ -262,7 +262,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZCL-5W-ntq">
-                                <rect key="frame" x="313" y="554" width="220" height="37"/>
+                                <rect key="frame" x="313" y="747" width="220" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Search By Claim Number">
@@ -276,8 +276,12 @@
                                     <action selector="searchClaimNumber:" destination="cs7-eI-lPH" eventType="touchUpInside" id="4Tx-1Q-hhe"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo2.png" id="eRT-QL-ogN">
+                                <rect key="frame" x="365" y="69" width="385" height="183"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.078431375324726105" green="0.26666668057441711" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Look Up" id="SoA-Bo-pFD"/>
                     <connections>
@@ -298,10 +302,6 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo.png" id="LCt-Tw-0Vk">
-                                <rect key="frame" x="144" y="70" width="429" height="183"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vin #:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="wnv-fv-osn">
                                 <rect key="frame" x="195" y="294" width="150" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -467,8 +467,12 @@
                                     <action selector="btnMail:" destination="Jx7-z5-W2D" eventType="touchUpInside" id="m7F-xg-m8Q"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo2.png" id="WwT-Hr-rOa">
+                                <rect key="frame" x="399" y="81" width="385" height="183"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.078431375324726105" green="0.26666668057441711" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Claim Report" id="qhP-3r-UdT"/>
                     <connections>
@@ -497,18 +501,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Claim #|  Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Mam-CE-CFU">
-                                <rect key="frame" x="70" y="307" width="442" height="21"/>
+                                <rect key="frame" x="70" y="340" width="442" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo.png" id="DNP-fN-p8P">
-                                <rect key="frame" x="156" y="81" width="429" height="183"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bPU-hp-46k">
-                                <rect key="frame" x="20" y="301" width="728" height="623"/>
+                                <rect key="frame" x="20" y="336" width="728" height="623"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -527,8 +527,12 @@
                                     <outlet property="delegate" destination="8Hw-En-cNu" id="Mt6-Pz-c4H"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo2.png" id="1Aw-xe-rUT">
+                                <rect key="frame" x="395" y="99" width="385" height="183"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1019607931" green="0.33725491169999999" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Claims" id="UGf-sX-3aL"/>
                     <connections>
@@ -717,12 +721,12 @@
                                     <action selector="btnContinue:" destination="q5e-cY-ffM" eventType="touchUpInside" id="upo-uN-Zh7"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo.png" id="BDd-kz-nBC">
-                                <rect key="frame" x="11" y="59" width="675" height="216"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo2.png" id="YIv-m3-Rmu">
+                                <rect key="frame" x="397" y="82" width="385" height="183"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.13333334028720856" green="0.41176474094390869" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Customer Information" id="J0B-x6-hjV">
                         <barButtonItem key="backBarButtonItem" title="Customer" id="YQK-B7-sbw"/>
@@ -752,10 +756,6 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo.png" id="sIq-B7-cTO">
-                                <rect key="frame" x="457" y="32" width="291" height="196"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vin #:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="RqV-dJ-A0D">
                                 <rect key="frame" x="195" y="288" width="150" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -906,8 +906,12 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo2.png" id="LcK-vw-arC">
+                                <rect key="frame" x="398" y="67" width="385" height="183"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1019607931" green="0.33725491169999999" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Claim Information" id="dvD-Ty-SRL"/>
                     <connections>
@@ -928,10 +932,94 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo.png" width="720" height="460"/>
+        <image name="Logo2.png" width="720" height="460"/>
+        <image name="MenuLogo.png" width="720" height="460"/>
         <image name="camera_iconTAP.jpeg" width="300" height="300"/>
         <image name="login field cells.PNG" width="286" height="89"/>
     </resources>
+    <classes>
+        <class className="CPCClaimReportViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCClaimReportViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnMail:"/>
+                <relationship kind="action" name="btnUpdate:"/>
+                <relationship kind="outlet" name="colorField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="customerNameField" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="licensePlateField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="makeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="modelField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="noteField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="picture1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="picture2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="vinField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="yearField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CPCEditByCustomer2ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCEditByCustomer2ViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="CPCEditClaimByCustomerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCEditClaimByCustomerViewController.h"/>
+        </class>
+        <class className="CPCLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCLoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="agentPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="agentUsername" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CPCLookUpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCLookUpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="searchClaimNumber:"/>
+                <relationship kind="action" name="searchCustomerID:"/>
+                <relationship kind="action" name="searchLastName:"/>
+                <relationship kind="outlet" name="claimNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="customerID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CPCMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCMenuViewController.h"/>
+        </class>
+        <class className="CPCNewClaimViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCNewClaimViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnContinue:"/>
+                <relationship kind="action" name="showCalendar:"/>
+                <relationship kind="outlet" name="address" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="birthDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="city" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="licenseNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phoneNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="state" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="zipCode" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CPCNewClaimViewController2" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPCNewClaimViewController2.h"/>
+            <relationships>
+                <relationship kind="action" name="addClaimBtn:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="claimNotes" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="color" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="customerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="licensePlateNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="make" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="model" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="picture1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="picture2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="vinNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="year" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPCMenuViewController : UITableViewController <UITableViewDelegate,UITableViewDataSource>{
+@interface CPCMenuViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>{
     
     NSArray *menuList;
 

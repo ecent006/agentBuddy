@@ -17,7 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    sleep(1);//Delay application to display splashcreen for 1 seconds.
+    //sleep(1);//Delay application to display splashcreen for 1 seconds.
     
 
 

@@ -23,6 +23,10 @@
 		CE8961D71669AC5B000264D9 /* camera_iconTAP.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CE8961D61669AC5B000264D9 /* camera_iconTAP.jpeg */; };
 		CE8A123E1669018F00D4B35B /* CPCLookUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8A123D1669018F00D4B35B /* CPCLookUpViewController.m */; };
 		CE8D626E166AEB0500CD3F6A /* CPCClaimReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D626D166AEB0500CD3F6A /* CPCClaimReportViewController.m */; };
+		CE968444166FEE05001C6106 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFA03A9164EDDDB00616D50 /* Default-Portrait~ipad.png */; };
+		CE96844C166FFBD9001C6106 /* MenuLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE96844B166FFBD9001C6106 /* MenuLogo.png */; };
+		CE96844E166FFBE2001C6106 /* Logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE96844D166FFBE1001C6106 /* Logo2.png */; };
+		CE9684501670019F001C6106 /* SplashPage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE96844F1670019F001C6106 /* SplashPage.png */; };
 		CEFA0382164ED41E00616D50 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0381164ED41E00616D50 /* UIKit.framework */; };
 		CEFA0384164ED41E00616D50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0383164ED41E00616D50 /* Foundation.framework */; };
 		CEFA0386164ED41E00616D50 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFA0385164ED41E00616D50 /* CoreGraphics.framework */; };
@@ -33,7 +37,6 @@
 		CEFA0398164ED41E00616D50 /* CPCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFA0397164ED41E00616D50 /* CPCLoginViewController.m */; };
 		CEFA039F164ED73500616D50 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFA039E164ED73500616D50 /* Logo.png */; };
 		CEFA03A4164EDA2E00616D50 /* login field cells.PNG in Resources */ = {isa = PBXBuildFile; fileRef = CEFA03A3164EDA2E00616D50 /* login field cells.PNG */; };
-		CEFA03AA164EDDDB00616D50 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFA03A9164EDDDB00616D50 /* Default-Portrait~ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		CE8A123D1669018F00D4B35B /* CPCLookUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCLookUpViewController.m; sourceTree = "<group>"; };
 		CE8D626C166AEB0500CD3F6A /* CPCClaimReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCClaimReportViewController.h; sourceTree = "<group>"; };
 		CE8D626D166AEB0500CD3F6A /* CPCClaimReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCClaimReportViewController.m; sourceTree = "<group>"; };
+		CE96844B166FFBD9001C6106 /* MenuLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuLogo.png; sourceTree = "<group>"; };
+		CE96844D166FFBE1001C6106 /* Logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo2.png; sourceTree = "<group>"; };
+		CE96844F1670019F001C6106 /* SplashPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashPage.png; sourceTree = "<group>"; };
 		CEFA037D164ED41E00616D50 /* AgentBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgentBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFA0381164ED41E00616D50 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CEFA0383164ED41E00616D50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -201,6 +207,9 @@
 		CEFA0388164ED41E00616D50 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE96844F1670019F001C6106 /* SplashPage.png */,
+				CE96844D166FFBE1001C6106 /* Logo2.png */,
+				CE96844B166FFBD9001C6106 /* MenuLogo.png */,
 				CE8961D61669AC5B000264D9 /* camera_iconTAP.jpeg */,
 				CEFA03A9164EDDDB00616D50 /* Default-Portrait~ipad.png */,
 				CEFA03A7164EDD5600616D50 /* Default.png */,
@@ -269,9 +278,12 @@
 				CEFA0395164ED41E00616D50 /* MainStoryboard.storyboard in Resources */,
 				CEFA039F164ED73500616D50 /* Logo.png in Resources */,
 				CEFA03A4164EDA2E00616D50 /* login field cells.PNG in Resources */,
-				CEFA03AA164EDDDB00616D50 /* Default-Portrait~ipad.png in Resources */,
 				CE8961D71669AC5B000264D9 /* camera_iconTAP.jpeg in Resources */,
 				CE21DCA1166BE9D10023FE65 /* MyDatabase.sqlite in Resources */,
+				CE968444166FEE05001C6106 /* Default-Portrait~ipad.png in Resources */,
+				CE96844C166FFBD9001C6106 /* MenuLogo.png in Resources */,
+				CE96844E166FFBE2001C6106 /* Logo2.png in Resources */,
+				CE9684501670019F001C6106 /* SplashPage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

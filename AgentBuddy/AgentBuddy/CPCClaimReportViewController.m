@@ -205,9 +205,6 @@ CPCCustomerInfo *activeCustomer;
     }
     
     
-//    NSString *messageClaim=[NSString stringWithFormat:@"The Claim has been updated it"];
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Claim Successfully Updated It" message:messageClaim delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//    [alert show];
     
     CPCCarInfo *tempClaim = [[CPCCarInfo alloc] init];
     [tempClaim setClaimNumber:nil andNote:self.noteField.text andDateCreated:nil andDateExpires:nil andVehicleModel:self.modelField.text andVehicleMake:self.makeField.text andVehicleYear:self.yearField.text andVehicleColor:self.colorField.text andCustomerNumber:nil andLicensePlateNumber:self.licensePlateField.text andVinNumber:self.vinField.text andPicture1:picture1.image andPicture2:picture2.image];
@@ -225,7 +222,7 @@ CPCCustomerInfo *activeCustomer;
      mailComposeViewController.mailComposeDelegate = self;  
     [mailComposeViewController setSubject:[NSString stringWithFormat:@"Claim Report of Customer: %@", [NSString stringWithFormat:@"%@, %@",[activeCustomer lastName], [activeCustomer firstName]]]];
     
-    NSString *messageBody=[[NSString alloc] initWithFormat:@" Name: %@ <br />Vin#: %@ <br />Model: %@ <br />Make: %@ <br />Year: %@ <br />Color: %@ <br />License Plate #: %@ <br />Notes: %@  <br /><br />Claim Pictures are attached to this email<br />",[NSString stringWithFormat:@"%@, %@",[activeCustomer lastName], [activeCustomer firstName]],[[activeCustomer activeClaim] vinNumber], [[activeCustomer activeClaim] model],[[activeCustomer activeClaim] make], [[activeCustomer activeClaim] vehicleYear],[[activeCustomer activeClaim] vehicleColor], [[activeCustomer activeClaim] licensePlateNumber], [[activeCustomer activeClaim] note]];
+    NSString *messageBody=[[NSString alloc] initWithFormat:@" Name: %@ <br /> Customer ID: %@ <br /> Vin#: %@ <br />Model: %@ <br />Make: %@ <br />Year: %@ <br />Color: %@ <br />License Plate #: %@ <br />Notes: %@  <br /><br />Claim Pictures are attached to this email<br />",[NSString stringWithFormat:@"%@, %@",[activeCustomer lastName], [activeCustomer firstName]],[[activeCustomer activeClaim]customerNumber],[[activeCustomer activeClaim] vinNumber], [[activeCustomer activeClaim] model],[[activeCustomer activeClaim] make], [[activeCustomer activeClaim] vehicleYear],[[activeCustomer activeClaim] vehicleColor], [[activeCustomer activeClaim] licensePlateNumber], [[activeCustomer activeClaim] note]];
 
       //Body of the message
     
@@ -361,10 +358,13 @@ CPCCustomerInfo *activeCustomer;
     
     // Create an image and store the acquired picture
     
-    UIImage  *imageToSave;
+    UIImage  *imageTaken;
+    UIImage *imageToSave;
     
-    imageToSave = (UIImage *) [info objectForKey:
-                               UIImagePickerControllerOriginalImage];
+    imageTaken = (UIImage *) [info objectForKey:
+                              UIImagePickerControllerOriginalImage];
+    
+    imageToSave = [self fixOrientation:imageTaken];
     
     // Save the new image to the Camera Roll
     UIImageWriteToSavedPhotosAlbum (imageToSave, nil, nil , nil);
@@ -388,6 +388,96 @@ CPCCustomerInfo *activeCustomer;
 
 - (void) doSomethingElse {
     NSLog(@"Camera Dismissed");
+    
+}
+
+-(UIImage *) fixOrientation:(UIImage *)theImage
+{
+    //    if (theImage.imageOrientation == UIImageOrientationUp) return theImage; 
+    //    
+    //    UIGraphicsBeginImageContextWithOptions(theImage.size, NO, theImage.scale);
+    //    [theImage drawInRect:(CGRect){0, 0, theImage.size}];
+    //    UIImage *normalizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    //    UIGraphicsEndImageContext();
+    //    return normalizedImage;
+    
+    // No-op if the orientation is already correct
+    if (theImage.imageOrientation == UIImageOrientationUp) return theImage;
+    
+    // We need to calculate the proper transformation to make the image upright.
+    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch (theImage.imageOrientation) {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, theImage.size.width, theImage.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, theImage.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, theImage.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+        case UIImageOrientationUp:
+        case UIImageOrientationUpMirrored:
+            break;
+    }
+    
+    switch (theImage.imageOrientation) {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, theImage.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, theImage.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        case UIImageOrientationUp:
+        case UIImageOrientationDown:
+        case UIImageOrientationLeft:
+        case UIImageOrientationRight:
+            break;
+    }
+    
+    // Now we draw the underlying CGImage into a new context, applying the transform
+    // calculated above.
+    CGContextRef ctx = CGBitmapContextCreate(NULL, theImage.size.width, theImage.size.height,
+                                             CGImageGetBitsPerComponent(theImage.CGImage), 0,
+                                             CGImageGetColorSpace(theImage.CGImage),
+                                             CGImageGetBitmapInfo(theImage.CGImage));
+    CGContextConcatCTM(ctx, transform);
+    switch (theImage.imageOrientation) {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            // Grr...
+            CGContextDrawImage(ctx, CGRectMake(0,0,theImage.size.height,theImage.size.width), theImage.CGImage);
+            break;
+            
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0,0,theImage.size.width,theImage.size.height), theImage.CGImage);
+            break;
+    }
+    
+    // And now we just create a new UIImage from the drawing context
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage *img = [UIImage imageWithCGImage:cgimg];
+    CGContextRelease(ctx);
+    CGImageRelease(cgimg);
+    return img;
+    
     
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

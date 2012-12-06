@@ -35,5 +35,6 @@
 
 - (IBAction)btnUpdate:(id)sender;
 - (IBAction)btnMail:(id)sender;
+- (UIImage *) fixOrientation: (UIImage *) theImage;
 
 @end

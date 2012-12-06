@@ -147,10 +147,8 @@
         [zipCode becomeFirstResponder];
     else if ([phoneNumber isFirstResponder]) 
         [email becomeFirstResponder];
-    else if ([birthDate isFirstResponder]) 
-        [phoneNumber becomeFirstResponder];
     else if ([licenseNumber isFirstResponder]) 
-        [birthDate becomeFirstResponder];
+        [phoneNumber becomeFirstResponder];
     
 }
 -(void)nextField:(id)sender {
@@ -169,8 +167,6 @@
     else if ([email isFirstResponder]) 
         [phoneNumber becomeFirstResponder];
     else if ([phoneNumber isFirstResponder]) 
-        [birthDate becomeFirstResponder];
-    else if ([birthDate isFirstResponder]) 
         [licenseNumber becomeFirstResponder];
     else if ([licenseNumber isFirstResponder]) 
         [firstName becomeFirstResponder];
@@ -227,14 +223,10 @@
         
 	}else if (textField == phoneNumber) {
 		[textField resignFirstResponder];
-        [birthDate becomeFirstResponder];
+        [licenseNumber becomeFirstResponder];
         
 	}
-    else if (textField == birthDate) {
-		[textField resignFirstResponder];
-        [licenseNumber becomeFirstResponder];
-
-    }
+    
 	else if (textField == licenseNumber) {
 		[textField resignFirstResponder];
        

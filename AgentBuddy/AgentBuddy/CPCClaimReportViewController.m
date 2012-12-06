@@ -126,12 +126,12 @@ CPCCustomerInfo *activeCustomer;
 -(void)previousField:(id)sender {
     if([vinField isFirstResponder])
         [noteField becomeFirstResponder];
-    else if ([modelField isFirstResponder]) 
-        [vinField becomeFirstResponder];
     else if ([makeField isFirstResponder]) 
-        [modelField becomeFirstResponder];
-    else if ([yearField isFirstResponder]) 
+        [vinField becomeFirstResponder];
+    else if ([modelField isFirstResponder]) 
         [makeField becomeFirstResponder];
+    else if ([yearField isFirstResponder]) 
+        [modelField becomeFirstResponder];
     else if ([colorField isFirstResponder]) 
         [yearField becomeFirstResponder];
     else if ([licensePlateField isFirstResponder]) 
@@ -143,10 +143,10 @@ CPCCustomerInfo *activeCustomer;
 }
 -(void)nextField:(id)sender {
     if([vinField isFirstResponder])
-        [modelField becomeFirstResponder];
-    else if ([modelField isFirstResponder]) 
         [makeField becomeFirstResponder];
     else if ([makeField isFirstResponder]) 
+        [modelField becomeFirstResponder];
+    else if ([modelField isFirstResponder]) 
         [yearField becomeFirstResponder];
     else if ([yearField isFirstResponder]) 
         [colorField becomeFirstResponder];
@@ -162,14 +162,14 @@ CPCCustomerInfo *activeCustomer;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	if (textField == vinField) {
 		[textField resignFirstResponder];
-		[modelField becomeFirstResponder];
+		[makeField becomeFirstResponder];
 	} 
-	else if (textField == modelField) {
+	else if (textField == makeField) {
 		[textField resignFirstResponder];
-        [makeField becomeFirstResponder];
+        [modelField becomeFirstResponder];
         
 	}
-    else if (textField == makeField) {
+    else if (textField == modelField) {
 		[textField resignFirstResponder];
         [yearField becomeFirstResponder];
         

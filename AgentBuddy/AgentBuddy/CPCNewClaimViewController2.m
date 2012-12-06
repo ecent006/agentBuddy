@@ -123,27 +123,27 @@
 -(void)previousField:(id)sender {
     if([vinNumber isFirstResponder])
         [claimNotes becomeFirstResponder];
-    else if ([model isFirstResponder]) 
-        [vinNumber becomeFirstResponder];
-    else if ([make isFirstResponder]) 
-        [model becomeFirstResponder];
-    else if ([year isFirstResponder]) 
-        [make becomeFirstResponder];
-    else if ([color isFirstResponder]) 
-        [year becomeFirstResponder];
-    else if ([licensePlateNumber isFirstResponder]) 
-        [color becomeFirstResponder];
     else if ([claimNotes isFirstResponder]) 
         [licensePlateNumber becomeFirstResponder];
+    else if ([licensePlateNumber isFirstResponder]) 
+        [color becomeFirstResponder];
+    else if ([color isFirstResponder]) 
+        [year becomeFirstResponder];
+    else if ([year isFirstResponder]) 
+        [model becomeFirstResponder];
+    else if ([model isFirstResponder]) 
+        [make becomeFirstResponder];
+    else if ([make isFirstResponder]) 
+        [vinNumber becomeFirstResponder];
  
     
 }
 -(void)nextField:(id)sender {
     if([vinNumber isFirstResponder])
-        [model becomeFirstResponder];
-    else if ([model isFirstResponder]) 
         [make becomeFirstResponder];
     else if ([make isFirstResponder]) 
+        [model becomeFirstResponder];
+    else if ([model isFirstResponder]) 
         [year becomeFirstResponder];
     else if ([year isFirstResponder]) 
         [color becomeFirstResponder];
@@ -159,14 +159,14 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	if (textField == vinNumber) {
 		[textField resignFirstResponder];
-		[model becomeFirstResponder];
+		[make becomeFirstResponder];
 	} 
-	else if (textField == model) {
+	else if (textField == make) {
 		[textField resignFirstResponder];
-        [make becomeFirstResponder];
+        [model becomeFirstResponder];
         
 	}
-    else if (textField == make) {
+    else if (textField == model) {
 		[textField resignFirstResponder];
         [year becomeFirstResponder];
         

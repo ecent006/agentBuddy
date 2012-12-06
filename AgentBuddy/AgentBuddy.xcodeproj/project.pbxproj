@@ -13,6 +13,7 @@
 		CE2943591667BC1D0089912B /* CPCNewClaimViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2943581667BC1D0089912B /* CPCNewClaimViewController2.m */; };
 		CE296B6B1669487D007A03B5 /* CPCDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CE296B6A1669487D007A03B5 /* CPCDataClass.m */; };
 		CE3A8E031667048A0096790D /* CPCCarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3A8E021667048A0096790D /* CPCCarInfo.m */; };
+		CE6EB60A1670F1B900DBE8B2 /* ContactCard.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6EB6091670F1B900DBE8B2 /* ContactCard.png */; };
 		CE7647561666B31C00D25872 /* CPCCustomerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7647551666B31C00D25872 /* CPCCustomerInfo.m */; };
 		CE79E0B9166A8A42000EFB10 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE79E0B8166A8A42000EFB10 /* MobileCoreServices.framework */; };
 		CE7FC679165689A700788FFE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7FC678165689A700788FFE /* libsqlite3.dylib */; };
@@ -51,6 +52,7 @@
 		CE296B6A1669487D007A03B5 /* CPCDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCDataClass.m; sourceTree = "<group>"; };
 		CE3A8E011667048A0096790D /* CPCCarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCCarInfo.h; sourceTree = "<group>"; };
 		CE3A8E021667048A0096790D /* CPCCarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCCarInfo.m; sourceTree = "<group>"; };
+		CE6EB6091670F1B900DBE8B2 /* ContactCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContactCard.png; sourceTree = "<group>"; };
 		CE7647541666B31C00D25872 /* CPCCustomerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCCustomerInfo.h; sourceTree = "<group>"; };
 		CE7647551666B31C00D25872 /* CPCCustomerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCCustomerInfo.m; sourceTree = "<group>"; };
 		CE79E0B8166A8A42000EFB10 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -207,6 +209,7 @@
 		CEFA0388164ED41E00616D50 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE6EB6091670F1B900DBE8B2 /* ContactCard.png */,
 				CE96844F1670019F001C6106 /* SplashPage.png */,
 				CE96844D166FFBE1001C6106 /* Logo2.png */,
 				CE96844B166FFBD9001C6106 /* MenuLogo.png */,
@@ -284,6 +287,7 @@
 				CE96844C166FFBD9001C6106 /* MenuLogo.png in Resources */,
 				CE96844E166FFBE2001C6106 /* Logo2.png in Resources */,
 				CE9684501670019F001C6106 /* SplashPage.png in Resources */,
+				CE6EB60A1670F1B900DBE8B2 /* ContactCard.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

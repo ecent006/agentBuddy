@@ -197,6 +197,63 @@ CPCCustomerInfo *activeCustomer;
 }
 
 
+- (IBAction)sendToDropbox:(UIButton *)sender {
+    if (![[DBSession sharedSession] isLinked]) {
+        [[DBSession sharedSession] linkFromController:self];
+    }
+    
+    //get the documents directory:
+    NSArray *paths = NSSearchPathForDirectoriesInDomains
+    (NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    
+    //make a file name to write the data to using the documents directory:
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@.txt", [activeCustomer customerNumber], [[activeCustomer activeClaim] claimNumber]];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@", 
+                          documentsDirectory, fileName];
+
+    //create content - four lines of text
+    NSString *content = [NSString stringWithFormat:@" Name: %@ \n Customer ID: %@ \n Vin#: %@ \n Model: %@ \n Make: %@ \n Year: %@ \n Color: %@ \n License Plate #: %@ \n Notes: %@ ",[NSString stringWithFormat:@"%@, %@",[activeCustomer lastName], [activeCustomer firstName]],[[activeCustomer activeClaim]customerNumber],[[activeCustomer activeClaim] vinNumber], [[activeCustomer activeClaim] model],[[activeCustomer activeClaim] make], [[activeCustomer activeClaim] vehicleYear],[[activeCustomer activeClaim] vehicleColor], [[activeCustomer activeClaim] licensePlateNumber], [[activeCustomer activeClaim] note]];
+    
+    //save content to the documents directory
+    [content writeToFile:filePath 
+              atomically:NO 
+                encoding:NSStringEncodingConversionAllowLossy 
+                   error:nil];
+    
+    //NSString *localPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+    //NSString *filename = [NSString@"Info.plist";
+    NSString *destDir = @"/";
+    [[self restClient] uploadFile:fileName toPath:destDir
+                    withParentRev:nil fromPath:filePath];
+}
+
+- (void)restClient:(DBRestClient*)client uploadedFile:(NSString*)destPath
+              from:(NSString*)srcPath metadata:(DBMetadata*)metadata {
+    
+    NSLog(@"File uploaded successfully to path: %@", metadata.path);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload Successful!" message:@"Your report has been sent to your Dropbox!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
+
+- (void)restClient:(DBRestClient*)client uploadFileFailedWithError:(NSError*)error {
+    NSLog(@"File upload failed with error - %@", error);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload Failed!" message:@"Something went wrong! Your report has not been uploaded." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+- (DBRestClient *)restClient {
+    if (!restClient) {
+        restClient =
+        [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+        restClient.delegate = self;
+    }
+    return restClient;
+}
+
+
 - (IBAction)btnUpdate:(id)sender {
     if ([vinField.text isEqualToString:@""] || [modelField.text isEqualToString:@""]|| [makeField.text isEqualToString:@""] || [yearField.text isEqualToString:@""] || [colorField.text isEqualToString:@""] || [licensePlateField.text isEqualToString:@""] || [noteField.text isEqualToString:@""] ) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Do not leave anything blank" message:@"Please make sure you fully completed the text fields" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -211,6 +268,7 @@ CPCCustomerInfo *activeCustomer;
     
     [[[[CPCDataClass sharedInstance] customerInfo] activeClaim ] updateClaimInfo:tempClaim];
 }
+
 
 - (IBAction)btnMail:(id)sender {
     //Erick Centeno Extra credit api mail the report

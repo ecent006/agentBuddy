@@ -9,6 +9,7 @@
 
 #import "CPCAppDelegate.h"
 //#import "CPCDatabase.h"
+#import <DropboxSDK/DropboxSDK.h>
 
 @implementation CPCAppDelegate
 
@@ -18,10 +19,28 @@
 {
     // Override point for customization after application launch.
     //sleep(1);//Delay application to display splashcreen for 1 seconds.
-    
+    DBSession* dbSession =
+    [[DBSession alloc]
+      initWithAppKey:@"aoacz81gmiqmiwg"
+      appSecret:@"vk0rhrlfvt5vu0q"
+     root:kDBRootAppFolder]; // either kDBRootAppFolder or kDBRootDropbox
+     
+    [DBSession setSharedSession:dbSession];
 
 
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    if ([[DBSession sharedSession] handleOpenURL:url]) {
+        if ([[DBSession sharedSession] isLinked]) {
+            NSLog(@"App linked successfully!");
+            // At this point you can start making API calls
+        }
+        return YES;
+    }
+    // Add whatever other url handling code your app requires here
+    return NO;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

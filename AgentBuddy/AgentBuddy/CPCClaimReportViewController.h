@@ -11,8 +11,12 @@
 #import "CPCDataClass.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import <DropboxSDK/DropboxSDK.h>
 
-@interface CPCClaimReportViewController : UIViewController <UITextFieldDelegate,UITextViewDelegate, MFMailComposeViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface CPCClaimReportViewController : UIViewController <UITextFieldDelegate,UITextViewDelegate, MFMailComposeViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,DBRestClientDelegate>
+{
+    DBRestClient *restClient;
+}
 @property (strong, nonatomic) IBOutlet UITextField *vinField;
 @property (strong, nonatomic) IBOutlet UITextField *modelField;
 @property (strong, nonatomic) IBOutlet UITextField *makeField;
@@ -31,7 +35,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *birthDateField;
 @property (strong, nonatomic) IBOutlet UILabel *licenseNumberField;
 @property (strong, nonatomic) IBOutlet UILabel *address2Field;
-
+- (IBAction)sendToDropbox:(UIButton *)sender;
+- (DBRestClient *)restClient;
 
 - (IBAction)btnUpdate:(id)sender;
 - (IBAction)btnMail:(id)sender;

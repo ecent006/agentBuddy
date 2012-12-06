@@ -14,6 +14,9 @@
 		CE296B6B1669487D007A03B5 /* CPCDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CE296B6A1669487D007A03B5 /* CPCDataClass.m */; };
 		CE3A8E031667048A0096790D /* CPCCarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3A8E021667048A0096790D /* CPCCarInfo.m */; };
 		CE6EB60A1670F1B900DBE8B2 /* ContactCard.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6EB6091670F1B900DBE8B2 /* ContactCard.png */; };
+		CE6EB60D1670FF6500DBE8B2 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6EB60C1670FF6500DBE8B2 /* DropboxSDK.framework */; };
+		CE6EB60F1670FF8800DBE8B2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6EB60E1670FF8800DBE8B2 /* Security.framework */; };
+		CE6EB6111670FF8E00DBE8B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6EB6101670FF8E00DBE8B2 /* QuartzCore.framework */; };
 		CE7647561666B31C00D25872 /* CPCCustomerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7647551666B31C00D25872 /* CPCCustomerInfo.m */; };
 		CE79E0B9166A8A42000EFB10 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE79E0B8166A8A42000EFB10 /* MobileCoreServices.framework */; };
 		CE7FC679165689A700788FFE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7FC678165689A700788FFE /* libsqlite3.dylib */; };
@@ -53,6 +56,9 @@
 		CE3A8E011667048A0096790D /* CPCCarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCCarInfo.h; sourceTree = "<group>"; };
 		CE3A8E021667048A0096790D /* CPCCarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCCarInfo.m; sourceTree = "<group>"; };
 		CE6EB6091670F1B900DBE8B2 /* ContactCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContactCard.png; sourceTree = "<group>"; };
+		CE6EB60C1670FF6500DBE8B2 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
+		CE6EB60E1670FF8800DBE8B2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CE6EB6101670FF8E00DBE8B2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CE7647541666B31C00D25872 /* CPCCustomerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCCustomerInfo.h; sourceTree = "<group>"; };
 		CE7647551666B31C00D25872 /* CPCCustomerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCCustomerInfo.m; sourceTree = "<group>"; };
 		CE79E0B8166A8A42000EFB10 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -96,12 +102,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6EB6111670FF8E00DBE8B2 /* QuartzCore.framework in Frameworks */,
+				CE6EB60F1670FF8800DBE8B2 /* Security.framework in Frameworks */,
 				CE8060F8166CFA6300B4343B /* MessageUI.framework in Frameworks */,
 				CE79E0B9166A8A42000EFB10 /* MobileCoreServices.framework in Frameworks */,
 				CE7FC679165689A700788FFE /* libsqlite3.dylib in Frameworks */,
 				CEFA0382164ED41E00616D50 /* UIKit.framework in Frameworks */,
 				CEFA0384164ED41E00616D50 /* Foundation.framework in Frameworks */,
 				CEFA0386164ED41E00616D50 /* CoreGraphics.framework in Frameworks */,
+				CE6EB60D1670FF6500DBE8B2 /* DropboxSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +175,9 @@
 		CEFA0372164ED41E00616D50 = {
 			isa = PBXGroup;
 			children = (
+				CE6EB6101670FF8E00DBE8B2 /* QuartzCore.framework */,
+				CE6EB60E1670FF8800DBE8B2 /* Security.framework */,
+				CE6EB60C1670FF6500DBE8B2 /* DropboxSDK.framework */,
 				CE8060F7166CFA6300B4343B /* MessageUI.framework */,
 				CE21DCA0166BE9D10023FE65 /* MyDatabase.sqlite */,
 				CE79E0B8166A8A42000EFB10 /* MobileCoreServices.framework */,
@@ -387,6 +399,10 @@
 		CEFA039C164ED41E00616D50 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AgentBuddy/AgentBuddy-Prefix.pch";
 				INFOPLIST_FILE = "AgentBuddy/AgentBuddy-Info.plist";
@@ -398,6 +414,10 @@
 		CEFA039D164ED41E00616D50 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AgentBuddy/AgentBuddy-Prefix.pch";
 				INFOPLIST_FILE = "AgentBuddy/AgentBuddy-Info.plist";
